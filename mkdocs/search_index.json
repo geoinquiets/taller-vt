@@ -1,0 +1,14 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Taller de Vector Tiles\n\n\nHola mundo", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#taller-de-vector-tiles", 
+            "text": "Hola mundo", 
+            "title": "Taller de Vector Tiles"
+        }
+    ]
+}
