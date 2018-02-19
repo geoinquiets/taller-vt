@@ -2,13 +2,28 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Taller de Vector Tiles\n\n\nHola mundo", 
+            "text": "Taller de Vector Tiles\n\n\nHola mundo.\n\n\n--KEEPME-- Chuleta Markdown\n\n\nT\u00edtulo 3\n\n\nT\u00edtulo 4\n\n\nTexto en \ncursiva\n, \nnegrita\n, \ncursiva y negrita\n.\n\n\nLista desordenada:\n\n\n\n\nLista\n\n\nDesordenada\n\n\n\n\nLista ordenada:\n\n\n\n\nLista\n\n\nOrdenada\n\n\n(Da igual el n\u00famero que pongas)\n\n\n\n\nEsto es un \nenlace\n.\n\n\nLo siguiente es una imagen:\n\n\n\n\nUn comando: \nnpm install\n.\n\n\nUn bloque de c\u00f3digo coloreado (especificar formato, casi cualquiera est\u00e1 soportado):\n\n\n{\n    \nkey\n: \nvalue\n,\n    \nnumbers\n: [1, 2, 3]\n}\n\n\n\n\nY una tabla:\n\n\n\n\n\n\n\n\nHeader 1\n\n\nHeader 2\n\n\n\n\n\n\n\n\n\n\nTal y\n\n\nCual\n\n\n\n\n\n\nFulanito\n\n\nMenganito", 
             "title": "Home"
         }, 
         {
             "location": "/#taller-de-vector-tiles", 
-            "text": "Hola mundo", 
+            "text": "Hola mundo.", 
             "title": "Taller de Vector Tiles"
+        }, 
+        {
+            "location": "/#-keepme-chuleta-markdown", 
+            "text": "", 
+            "title": "--KEEPME-- Chuleta Markdown"
+        }, 
+        {
+            "location": "/#titulo-3", 
+            "text": "", 
+            "title": "T\u00edtulo 3"
+        }, 
+        {
+            "location": "/#titulo-4", 
+            "text": "Texto en  cursiva ,  negrita ,  cursiva y negrita .  Lista desordenada:   Lista  Desordenada   Lista ordenada:   Lista  Ordenada  (Da igual el n\u00famero que pongas)   Esto es un  enlace .  Lo siguiente es una imagen:   Un comando:  npm install .  Un bloque de c\u00f3digo coloreado (especificar formato, casi cualquiera est\u00e1 soportado):  {\n     key :  value ,\n     numbers : [1, 2, 3]\n}  Y una tabla:     Header 1  Header 2      Tal y  Cual    Fulanito  Menganito", 
+            "title": "T\u00edtulo 4"
         }
     ]
 }
