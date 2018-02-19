@@ -9,6 +9,8 @@ Para compilarla se usa [mkdocs.org](http://mkdocs.org). Acceder a la web para ve
 * Chuleta rápida sobre links, imágenes y tablas en markdown: http://www.mkdocs.org/user-guide/writing-your-docs/#linking-documents
 * [Especificación Markdown](http://spec.commonmark.org/0.28/) completa.
 
+Plantilla de diseño: https://sourcefoundry.org/cinder/
+
 Visual Studio Code ofrece una vista de Preview que va mostrando el resultado del markdown en tiempo real sin tener que salir del editor.
 
 ## Comandos mkdocs
