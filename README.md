@@ -1,5 +1,7 @@
 # Taller de Vector Tiles
 
+# Documentación aquí: https://geoinquiets.github.io/taller-vt/
+
 ## Herramienta de documentación
 
 Para compilarla se usa [mkdocs.org](http://mkdocs.org). Acceder a la web para ver cómo instalar.
