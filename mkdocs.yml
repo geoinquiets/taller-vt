@@ -3,4 +3,5 @@ theme_dir: cinder-theme
 repo_url: "https://github.com/geoinquiets/taller-vt"
 pages:
 - Home: index.md
+- Servidor web: servidor_web.md
 
