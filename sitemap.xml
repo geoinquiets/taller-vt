@@ -4,7 +4,31 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-02-19</lastmod>
+     <lastmod>2018-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/servidor_web/</loc>
+     <lastmod>2018-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/visor_simple/</loc>
+     <lastmod>2018-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/tileserver_gl/</loc>
+     <lastmod>2018-04-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

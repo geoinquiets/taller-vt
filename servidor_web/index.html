@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title></title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="..">Taller de Vector Tiles</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Servidor web</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../visor_simple/">Visor Simple</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../tileserver_gl/">TileServer GL</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../visor_simple/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/geoinquiets/taller-vt/edit/master/docs/servidor_web.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#servidor-web">Servidor Web</a></li>
+            <li class="second-level"><a href="#instalacion">Instalación</a></li>
+                
+            <li class="second-level"><a href="#ejemplo-hola-mundo">Ejemplo Hola Mundo</a></li>
+                
+            <li class="second-level"><a href="#ejemplo-servir-una-pagina-web-estatica">Ejemplo Servir una página web estática</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="servidor-web">Servidor Web</h1>
+<p>Para desplegar las aplicaciones que desarrollaremos durante el taller tenemos que utilizar un servidor web ya sea un <a href="https://httpd.apache.org/">Apache</a>, <a href="https://nginx.org/">Nginx</a>, <a href="http://expressjs.com/es/">Express</a>, etc. En nuestro caso utilizaremos el Express.</p>
+<h2 id="instalacion">Instalación</h2>
+<p>Para instalar el Express es necesario tener instalado el <a href="https://nodejs.org/es/">Node.js</a>. Una vez instalado el Node.js crear un directorio llamado taller-vt-demo</p>
+<p>Abrir un terminal y escribir:</p>
+<ol>
+<li><code>mkdir taller-vt-demo</code> para crear el directorio de trabajo.</li>
+<li><code>cd taller-vt-demo</code> para entrar en el directorio de trabajo.</li>
+<li><code>npm init</code> para crear un archivo <strong>package.json</strong> para la aplicación. Este comando solicita varios elementos como, por ejemplo el nombre de la aplicación, la versión, etc. Para aceptar los valores predeterminador presionar ENTER. </li>
+<li><code>npm install express --save</code> para installar el Express en el directorio y guardarlo en la lista de dependencias.</li>
+</ol>
+<h2 id="ejemplo-hola-mundo">Ejemplo Hola Mundo</h2>
+<p>Crear una aplicación que inicia un servidor y escucha conexiones por el puerto 3000. Esta aplicación responde con "Hola Mundo!" para las solicitudes a la URL raíz (/).  </p>
+<ol>
+<li>Crear un archivo llamado <em>server.js</em> y escribir lo siguiente en el archivo</li>
+</ol>
+<pre><code class="js">var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hola Mundo!');
+});
+
+app.listen(3000, function () {
+  console.log('Servidor escuchando en el puerto 3000!');
+});
+</code></pre>
+
+<ol>
+<li>
+<p>Escribir en el terminal <code>node server.js</code> para arrancar el servidor</p>
+</li>
+<li>
+<p>Abrir un navegador y escribir http://localhost:3000 y comprobar que la salida es Hola Mundo!</p>
+</li>
+</ol>
+<h2 id="ejemplo-servir-una-pagina-web-estatica">Ejemplo Servir una página web estática</h2>
+<p>En el ejemplo anterior la respuesta del servidor era una cadena de texto. En este ejemplo modificaremos el servidor para que retorne archivos estáticos como html, css, imágenes, etc. </p>
+<ol>
+<li>Modificar el archivo <em>servidor.js</em> y escribir lo siguiente</li>
+</ol>
+<pre><code class="js">var express = require('express');
+var app = express();
+
+app.use(express.static('public'));
+
+app.get('/', function(req, res){
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
+</code></pre>
+
+<ol>
+<li>
+<p>Crear un directorio llamado <strong>public</strong> dentro de nuestro directorio de trabajo.</p>
+</li>
+<li>
+<p>Dentro del directorio <em>public</em> crear un archivo llamado <strong>index.html</strong> y escribir lo siguiente dentro del archivo</p>
+</li>
+</ol>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    Hola Mundo!!!
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<ol>
+<li>
+<p>Detener el servidor, presionar Ctrl+c en el terminal donde se está ejecutando el servidor.</p>
+</li>
+<li>
+<p>Arrancar de nuevo el servidor. Escribir en el terminal <code>node server.js</code>.</p>
+</li>
+<li>
+<p>Abrir un navegador y escribir http://localhost:3000 y comprobar que la salida es Hola Mundo!!!</p>
+</li>
+</ol></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/require.js"></script>
+    <script src="../search/search.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

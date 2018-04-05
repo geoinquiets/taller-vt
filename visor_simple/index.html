@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <link rel="shortcut icon" href="./img/favicon.ico">
+    <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title></title>
 
-    <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
     <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="./css/base.css" rel="stylesheet">
-    <link href="./css/cinder.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/highlight.css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -54,7 +54,7 @@
 
             <!-- Main title -->
 
-            <a class="navbar-brand" href=".">Taller de Vector Tiles</a>
+            <a class="navbar-brand" href="..">Taller de Vector Tiles</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -63,26 +63,26 @@
                 <ul class="nav navbar-nav">
                 
                 
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../servidor_web/">Servidor web</a>
+                    </li>
+                
+                
+                
                     <li class="active">
-                        <a href=".">Home</a>
+                        <a href="./">Visor Simple</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="servidor_web/">Servidor web</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="visor_simple/">Visor Simple</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="tileserver_gl/">TileServer GL</a>
+                        <a href="../tileserver_gl/">TileServer GL</a>
                     </li>
                 
                 
@@ -94,18 +94,18 @@
                             <i class="fa fa-search"></i> Search
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="next" >
+                    <li >
+                        <a rel="next" href="../servidor_web/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="servidor_web/">
+                        <a rel="prev" href="../tileserver_gl/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/geoinquiets/taller-vt/edit/master/docs/index.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                        <a href="https://github.com/geoinquiets/taller-vt/edit/master/docs/visor_simple.md"><i class="fa fa-github"></i> Edit on GitHub</a>
                     </li>
             </ul>
         </div>
@@ -116,58 +116,82 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#taller-de-vector-tiles">Taller de Vector Tiles</a></li>
-            <li class="second-level"><a href="#-keepme-chuleta-markdown">--KEEPME-- Chuleta Markdown</a></li>
+        <li class="first-level active"><a href="#visor-simple">Visor simple</a></li>
+            <li class="second-level"><a href="#agregar-el-control-para-inspeccion">Agregar el control para inspección</a></li>
                 
-                <li class="third-level"><a href="#titulo-3">Título 3</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="taller-de-vector-tiles">Taller de Vector Tiles</h1>
-<p>Hola mundo.</p>
-<h2 id="-keepme-chuleta-markdown">--KEEPME-- Chuleta Markdown</h2>
-<h3 id="titulo-3">Título 3</h3>
-<h4 id="titulo-4">Título 4</h4>
-<p>Texto en <em>cursiva</em>, <strong>negrita</strong>, <strong><em>cursiva y negrita</em></strong>.</p>
-<p>Lista desordenada:</p>
+<h1 id="visor-simple">Visor simple</h1>
+<p>En este primer ejemplo crearemos un visor de mapas utilizando la librería de Mapbox GL JS. Tanto los datos procedente de teselas vectoriales ó vector tiles (VT) como el estilo para simbolizar los mismo se encuentran en la red.</p>
 <ul>
-<li>Lista</li>
-<li>Desordenada</li>
+<li>Dentro de la carpeta public crear un archivo llamado visor_simple.html y copiar el siguiente código</li>
 </ul>
-<p>Lista ordenada:</p>
-<ol>
-<li>Lista</li>
-<li>Ordenada</li>
-<li>(Da igual el número que pongas)</li>
-</ol>
-<p>Esto es un <a href="http://www.sigte.udg.edu/">enlace</a>.</p>
-<p>Lo siguiente es una imagen:</p>
-<p><img alt="Pie de la imagen" src="https://1.bp.blogspot.com/-Rr97Qr-GbkU/WXESqk0aY9I/AAAAAAAAPD8/POrHGptS_UUVQAeIURPhnZNXGeXOooMHQCLcBGAs/s400/JornadasSIGLibre.jpg" /></p>
-<p>Un comando: <code>npm install</code>.</p>
-<p>Un bloque de código coloreado (especificar formato, casi cualquiera está soportado):</p>
-<pre><code class="json">{
-    &quot;key&quot;: &quot;value&quot;,
-    &quot;numbers&quot;: [1, 2, 3]
-}
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8' /&gt;
+    &lt;title&gt;Display a map&lt;/title&gt;
+    &lt;meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' /&gt;
+    &lt;script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'&gt;&lt;/script&gt;
+    &lt;link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' /&gt;
+    &lt;style&gt;
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id='map'&gt;&lt;/div&gt;
+&lt;script&gt;
+var map = new mapboxgl.Map({
+    container: 'map', // id contenedor
+    style: 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json', // ubicación del estilo
+    center: [2, 42], // posición inicial [lng, lat]
+    zoom: 7 // zoom inicial
+});
+
+// Agregar los controles de zoom y rotación al mapa.
+map.addControl(new mapboxgl.NavigationControl());
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 
-<p>Y una tabla:</p>
+<ul>
+<li>Abrir el navegador y escribir http://localhost:3000/visor_simple.html en la barra de navegación.</li>
+</ul>
+<h3 id="agregar-el-control-para-inspeccion">Agregar el control para inspección</h3>
+<p>El <a href="https://github.com/lukasmartinelli/mapbox-gl-inspect">Inspect Control</a> permite ver todos los elementos de un VT y también permite pasar el cursor sobre los elementos para ver sus propiedades.</p>
+<ul>
+<li>Agregar la librería <em>mapbox-gl-inspect</em> en el archivo visor_simple.html para esto agregar los siguiente justo debajo de donde se carga el estilo mapbox-gl.css</li>
+</ul>
+<pre><code class="html">&lt;script src='http://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.min.js'&gt;&lt;/script&gt;
+&lt;link href='http://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.css' rel='stylesheet' /&gt;  
+</code></pre>
+
+<ul>
+<li>Para agregar el control de inspección al mapa, Escribir lo siguente debajo de donde se agrega el <em>NavigationControl</em></li>
+</ul>
+<pre><code class="js">// Agragar el control de inspección
+map.addControl(new MapboxInspect());
+</code></pre>
+
+<ul>
+<li>Recargar la página en el navegador y comprobar que aparece el Inspect control</li>
+</ul>
 <table>
 <thead>
 <tr>
-<th>Header 1</th>
-<th>Header 2</th>
+<th align="center"><img alt="Resultado visor simple" src="../img/visor_simple.png" /></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Tal y</td>
-<td>Cual</td>
-</tr>
-<tr>
-<td>Fulanito</td>
-<td>Menganito</td>
+<td align="center"><em>Resultado visor simple</em></td>
 </tr>
 </tbody>
 </table></div>
@@ -180,17 +204,17 @@
         <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
     </footer>
 
-    <script src="./js/jquery-1.10.2.min.js"></script>
-    <script src="./js/bootstrap-3.0.3.min.js"></script>
-    <script src="./js/highlight.pack.js"></script>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script>
-    var base_url = '.';
+    var base_url = '..';
     </script>
-    <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-    <script src="./js/base.js"></script>
-    <script src="./search/require.js"></script>
-    <script src="./search/search.js"></script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/require.js"></script>
+    <script src="../search/search.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
