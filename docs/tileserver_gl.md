@@ -22,9 +22,9 @@ Para instalar el TileServer GL Light es necesario tener instalado el [Node.js](h
 
 * Escribir `cd datos` para entrar en el directorio de datos.
 
-* Descargar los datos. Para ello ir [OpenMapTiles](https://openmaptiles.com/downloads) y descargar el archivo **OpenStreetMap vector tiles** del área que se quiera dentro del directorio *datos*. Para este taller descargaremos el archivo de [España](https://openmaptiles.com/downloads/europe/spain/)
+* Descargar los datos. Para ello ir [OpenMapTiles](https://openmaptiles.com/downloads) y descargar el archivo **OpenStreetMap vector tiles** del área que se quiera dentro del directorio *datos*. Para este taller descargaremos el archivo de [Barcelona](https://openmaptiles.com/downloads/europe/spain/barcelona/)
 
-* Escribir `tileserver-gl-light 2017-07-03_europe_spain.mbtiles`
+* Escribir `tileserver-gl-light 2017-07-03_spain_barcelona.mbtiles`
 
 * Abrir el navegador y escribir http://localhost:8080 y comprobar que aparece la página del TileServer.
 
