@@ -4,31 +4,63 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-04-05</lastmod>
+     <lastmod>2018-04-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/servidor_web/</loc>
-     <lastmod>2018-04-05</lastmod>
+     <loc>/1_teoria/</loc>
+     <lastmod>2018-04-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/visor_simple/</loc>
-     <lastmod>2018-04-05</lastmod>
+     <loc>/2_visor_simple/</loc>
+     <lastmod>2018-04-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/tileserver_gl/</loc>
-     <lastmod>2018-04-05</lastmod>
+     <loc>/3_tileserver_gl/</loc>
+     <lastmod>2018-04-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/4_tippecanoe/</loc>
+     <lastmod>2018-04-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/5_estilos/</loc>
+     <lastmod>2018-04-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/6_servidor_dinamico/</loc>
+     <lastmod>2018-04-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/x_markdown/</loc>
+     <lastmod>2018-04-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
