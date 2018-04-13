@@ -1,0 +1,1 @@
+# Cómo simbolizar teselas vectoriales

@@ -1,17 +1,24 @@
 # Trabajando con teselas vectoriales
 
-1. [Qué son las teselas vectoriales](1_teoria.md)
-2. [Mi primer mapa vectorial](2_visor_simple.md)
-3. [Sirviendo teselas vectoriales](3_tileserver_gl.md)
-4. [Creando teselas vectoriales](4_tippecanoe.md)
-5. [Mapas con estilo (a mano y a máquina)](5_estilos.md)
-6. [Sirviendo datos dinámicos](6_servidor_dinamico.md)
-0. [*(Markdown)*](x_markdown.md)
+Bienvenidos al taller de teselas vectoriales. Este manual está publicado aquí:
+
+# [https://geoinquiets.github.io/taller-vt/](https://geoinquiets.github.io/taller-vt/)
 
 
-## Recursos 
+## Requisitos de software
 
-Vía [Raf](https://twitter.com/fakeraf), nuestra fuente diaria de vitaminas. 
+* [node y npm](https://nodejs.org/es/download/package-manager/#distribuciones-de-linux-basadas-en-debian-y-ubuntu)
+* [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions)
+
+
+## Datos necesarios
+
+* `barcelona.mbtiles`
+
+
+## Recursos extra
+
+Mayormente vía [Raf](https://twitter.com/fakeraf), nuestra fuente diaria de vitaminas. 
 
 * [Awesome Vector Tiles](https://github.com/mapbox/awesome-vector-tiles) 
 * [Natural Earth Vector Tiles by Lukas Martinelli](https://github.com/lukasmartinelli/naturalearthtiles)
@@ -19,3 +26,5 @@ Vía [Raf](https://twitter.com/fakeraf), nuestra fuente diaria de vitaminas.
 * [Tilemaker, de OSM a mbtiles de una tacada](https://github.com/systemed/tilemaker)
 * [Qué son las teselas vectoriales (vector tiles) y cómo generarlos con PostGIS / GeoServer](https://mappinggis.com/2017/09/que-son-los-vector-tiles-y-como-generarlos-con-geoserver/)
 * [Natural Earth Quickstart Style implemented with Tegola](http://www.gretchenpeterson.com/blog/archives/4901)
+* [GeoServer MBStyle Cookbook](http://docs.geoserver.org/stable/en/user/styling/mbstyle/cookbook/index.html)
+* [GeoServer MBStyle Styling Workbook](http://docs.geoserver.org/stable/en/user/styling/workshop/mbstyle/index.html)

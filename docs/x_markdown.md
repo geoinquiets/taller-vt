@@ -1,4 +1,4 @@
-# Chuleta de Markdown
+# Markdown
 
 ## Título 2
 
