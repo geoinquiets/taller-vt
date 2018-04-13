@@ -2,7 +2,11 @@ site_name: Taller de Vector Tiles
 theme_dir: cinder-theme
 repo_url: "https://github.com/geoinquiets/taller-vt"
 pages:
-- Home: index.md
-- Servidor web: servidor_web.md
-- Visor Simple: visor_simple.md
-- TileServer GL: tileserver_gl.md
+- Índice: index.md
+- Teoría: 1_teoria.md
+- Visor: 2_visor_simple.md
+- Servidor: 3_tileserver_gl.md
+- Datos: 4_tippecanoe.md
+- Estilos: 5_estilos.md
+- Live: 6_servidor_dinamico.md
+- (md): x_markdown.md
