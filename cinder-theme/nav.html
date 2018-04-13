@@ -59,12 +59,12 @@
                     {%- if page and (page.next_page or page.previous_page) %}
                     <li {% if not page.previous_page %}class="disabled"{% endif %}>
                         <a rel="next" {% if page.previous_page %}href="{{ page.previous_page.url }}"{% endif %}>
-                            <i class="fa fa-arrow-left"></i> Previous
+                            <i class="fa fa-arrow-left"></i> Anterior
                         </a>
                     </li>
                     <li {% if not page.next_page %}class="disabled"{% endif %}>
                         <a rel="prev" {% if page.next_page %}href="{{ page.next_page.url }}"{% endif %}>
-                            Next <i class="fa fa-arrow-right"></i>
+                            Siguiente <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
                     {%- endif %}
@@ -75,11 +75,11 @@
                     <li>
                         <a href="{{ page.edit_url }}">
                             {%- if config.repo_name == 'GitHub' -%}
-                            <i class="fa fa-github"></i> Edit on {{ config.repo_name }}
+                            <i class="fa fa-github"></i> Editar en {{ config.repo_name }}
                             {%- elif config.repo_name == 'Bitbucket' -%}
-                            <i class="fa fa-bitbucket"></i> Edit on {{ config.repo_name }}
+                            <i class="fa fa-bitbucket"></i> Editar en {{ config.repo_name }}
                             {%- else -%}
-                            Edit on {{ config.repo_name }}
+                            Editar en {{ config.repo_name }}
                             {%- endif -%}
                         </a>
                     </li>
