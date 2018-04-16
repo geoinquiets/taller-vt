@@ -44,8 +44,7 @@ Crea un fichero `index.html`:
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mapa VT</title>
 </head>
 <body id="map">
@@ -65,13 +64,12 @@ simbolizar los mismos se encuentran en la red.
 
 Modificar el archivo `index.html` para que contenga el siguiente código:
 
-```html hl_lines="8 9 10 11 12 13 14 15 18 19 20 21 22 23 24 25 26 27 28 29 30"
+```html hl_lines="7 8 9 10 11 12 13 14 17 18 19 20 21 22 23 24 25 26 27 28 29"
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mapa VT</title>
     <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
@@ -111,13 +109,12 @@ de un VT y también permite pasar el cursor sobre los elementos para ver sus pro
 Agregar el código de la librería, e instanciar el control tras crear el mapa:
 
 
-```html hl_lines="10 11 33 34"
+```html hl_lines="9 10 32 33"
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mapa VT</title>
     <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
