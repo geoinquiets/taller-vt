@@ -103,7 +103,10 @@ El primer error que vemos hace referencia a que no existe la capa *aerodrome_lab
 
 El siguiente error hace referencia a que no puede cargar los archivos con las fuentes para pintar las etiquetas del mapa. Si vamos a la línea 55 de nuestro archivo de estilos observamos que en la url de carga solicita una llave (**key**). Para obtener esta **key** hay que registrarse (tienen un plan gratuito) en [Tilehosting](https://www.tilehosting.com/).
 
-Sustituir en la url del glyphs (línea 55) donde dice **{key}** por nuestra key. Para no tener que generar una key en este taller podremos usar *RiS4gsgZPZqeeMlIyxFo*. NOTA: para desplegar un mapa en producción o fuera del ámbito del taller se debe usar la key propia.
+Sustituir en la url del glyphs (línea 55) donde dice **{key}** por nuestra key. Para no tener que generar una key en este taller podremos usar *RiS4gsgZPZqeeMlIyxFo*. 
+
+!!! warning "Nota"
+    Para desplegar un mapa en producción o fuera del ámbito del taller se debe usar la key propia.
 
 ```js hl_lines="3"
 ...

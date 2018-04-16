@@ -5,6 +5,7 @@ theme:
 markdown_extensions:
   - codehilite:
       linenums: True
+  - admonition
 extra_css:
     - css/styles.css
 repo_url: "https://github.com/geoinquiets/taller-vt"
