@@ -1,9 +1,19 @@
-site_name: Taller de Vector Tiles
-theme_dir: cinder-theme
+site_name: Trabajando con VT
+theme:
+  name: 'material'
+  language: 'es'
+markdown_extensions:
+  - codehilite:
+      linenums: True
+extra_css:
+    - css/styles.css
 repo_url: "https://github.com/geoinquiets/taller-vt"
 pages:
 - Home: index.md
-- Servidor web: servidor_web.md
-- Visor Simple: visor_simple.md
-- TileServer GL: tileserver_gl.md
-- Visor Local: visor_local.md
+- 1. Qué son: 1_teoria.md
+- 2. Cómo visualizarlas: 2_visor_simple.md
+- 3. Cómo servirlas: 3_tileserver_gl.md
+- 4. Cómo crearlas: 4_tippecanoe.md
+- 5. Cómo simbolizarlas: 5_estilos.md
+- 6. Cómo servir datos dinámicos: 6_servidor_dinamico.md
+- (chuleta markdown): x_markdown.md

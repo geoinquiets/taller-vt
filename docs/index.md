@@ -1,46 +1,30 @@
-# Taller de Vector Tiles
+# Trabajando con teselas vectoriales
 
-Hola mundo.
+Bienvenidos al taller de teselas vectoriales. Este manual está publicado aquí:
 
-## --KEEPME-- Chuleta Markdown
+# [https://geoinquiets.github.io/taller-vt/](https://geoinquiets.github.io/taller-vt/)
 
-### Título 3
 
-#### Título 4
+## Requisitos de software
 
-Texto en *cursiva*, **negrita**, ***cursiva y negrita***.
+* [node y npm](https://nodejs.org/es/download/package-manager/#distribuciones-de-linux-basadas-en-debian-y-ubuntu)
+* [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions)
 
-Lista desordenada:
 
-* Lista
-* Desordenada
+## Datos necesarios
 
-Lista ordenada:
+* `barcelona.mbtiles`
 
-1. Lista
-1. Ordenada
-5. (Da igual el número que pongas)
 
-Esto es un [enlace](http://www.sigte.udg.edu/).
+## Recursos extra
 
-Lo siguiente es una imagen:
+Mayormente vía [Raf](https://twitter.com/fakeraf), nuestra fuente diaria de vitaminas. 
 
-![Pie de la imagen](https://1.bp.blogspot.com/-Rr97Qr-GbkU/WXESqk0aY9I/AAAAAAAAPD8/POrHGptS_UUVQAeIURPhnZNXGeXOooMHQCLcBGAs/s400/JornadasSIGLibre.jpg)
-
-Un comando: `npm install`.
-
-Un bloque de código coloreado (especificar formato, casi cualquiera está soportado):
-
-```json
-{
-    "key": "value",
-    "numbers": [1, 2, 3]
-}
-```
-
-Y una tabla:
-
-Header 1 | Header 2
----------| -----------
-Tal y    | Cual
-Fulanito | Menganito
+* [Awesome Vector Tiles](https://github.com/mapbox/awesome-vector-tiles) 
+* [Natural Earth Vector Tiles by Lukas Martinelli](https://github.com/lukasmartinelli/naturalearthtiles)
+* [Tutorial de los Geoinquietos de Londres](https://geovation.github.io/build-your-own-static-vector-tile-pipeline)
+* [Tilemaker, de OSM a mbtiles de una tacada](https://github.com/systemed/tilemaker)
+* [Qué son las teselas vectoriales (vector tiles) y cómo generarlos con PostGIS / GeoServer](https://mappinggis.com/2017/09/que-son-los-vector-tiles-y-como-generarlos-con-geoserver/)
+* [Natural Earth Quickstart Style implemented with Tegola](http://www.gretchenpeterson.com/blog/archives/4901)
+* [GeoServer MBStyle Cookbook](http://docs.geoserver.org/stable/en/user/styling/mbstyle/cookbook/index.html)
+* [GeoServer MBStyle Styling Workbook](http://docs.geoserver.org/stable/en/user/styling/workshop/mbstyle/index.html)
