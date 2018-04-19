@@ -62,3 +62,21 @@ wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojs
 ```
 tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed -L ocean:ne_10m_ocean.geojson -L land:ne_10m_land.geojson -L admin:ne_10m_admin_0_countries.geojson -L coastline:ne_10m_coastline.geojson -L lakes:ne_10m_lakes.geojson -L rivers:ne_10m_rivers_lake_centerlines.geojson -L rail:ne_10m_railroads.geojson -L roads:ne_10m_roads.geojson -L cities:ne_10m_populated_places.geojson -L airports:ne_10m_airports.geojson 
 ```
+
+## Visualizar el mbtiles
+
+Para visualizar el *natural_earth.mbtiles* creado con el Tippecanoe utilizaremos el TileServer. En la terminal escribimos lo siguiente:
+
+```
+tileserver-gl-light natural_earth.mbtiles -p 8181
+``` 
+
+Abrir el navegador y escribir http://localhost:8181 y comprobar que aparece la página del TileServer con nuestro mbtiles
+
+![TileServer GL Light](img/mbtiles_tippecanoe.png)
+*TileServer GL Light*
+
+Apretar el botón de **Inspect** y comprobar que en el mapa aparecen todas las capas agregadas al mbtiles
+
+![Mbtiles Natural Earth](img/natural_earth_mbtiles.png)
+*Mbtiles Natural Earth*
