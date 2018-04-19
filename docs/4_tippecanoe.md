@@ -42,22 +42,52 @@ tippecanoe: must specify -o out.mbtiles or -e directory
 
 ## Datos 
 
-Descageremos algunos datos de Natural Earth en nuestra carpeta de datos. Para ahorrarnos la transformación de Shape a GeoJSON utilizaremos los datos procedentes de https://github.com/nvkelso/natural-earth-vector/tree/master/geojson
+Descageremos algunos datos de [Natural Earth](http://www.naturalearthdata.com/) en nuestra carpeta de datos. En el apartado de descargas de Natural Earth hay varios conjuntos de datos (en formato Shapefile) según la escala. 
+
+En el taller trabajaremos con un subconjunto de los datos de la escala 1:10m (1:10.000.000). Para ahorrarnos la transformación de Shapefile a GeoJSON utilizaremos los datos procedentes de [https://github.com/nvkelso/natural-earth-vector/tree/master/geojson](https://github.com/nvkelso/natural-earth-vector/tree/master/geojson)
+
+Descagaremos las siguientes capas:
+
+* Cultural
+    * Admin 0 – Countries (247 países en el mundo. Groenlandia separada de Dinamarca)
+    * Populated Places (Puntos de ciudades y pueblos)
+    * Roads (Carreteras principales)
+    * Railroads (Vías de Trenes)
+    * Airports (Aeropuertos)
+* Physical
+    * Coastline (Línea de costa que incluyen islas principales)
+    * Land (Polígonos terrestres que incluyen islas principales)
+    * Ocean (Oceano)
+    * Rivers + lake centerlines (Rios en única línea que incluyen líneas centrales de lagos)
+    * Lakes + Reservoirs (Lagos naturales y artificiales)
+
+Para descargar las capas escribiremos lo siguiente en nuestro terminal.
 
 ```
 wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson
-wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_airports.geojson
-wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_railroads.geojson
 wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson
 wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_roads.geojson
-wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_ocean.geojson
-wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_land.geojson
-wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_lakes.geojson
+wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_railroads.geojson
+wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_airports.geojson
 wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_coastline.geojson
+wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_land.geojson
+wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_ocean.geojson
 wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_rivers_lake_centerlines.geojson
+wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_lakes.geojson
 ```
 
 ## Crear el mbtiles
+
+Una vez descargados todos nuestros datos vamos a crear un mbtiles llamado *natural_earth.mbtiles* que contendrá nuestras 10 capas. 
+
+Para crear el mbtiles utilizaremos las siguientes opciones del Tippecanoe ([Listado de opciones](https://github.com/mapbox/tippecanoe#options)):
+
+* -o *nombre.mbtiles*: nombre del archivo de salida.
+* -zg: Estima un maxzoom razonable basado en el espaciado de los elementos.
+* --drop-densest-as-needed: Si una tesela es demasiado grande, intenta reducirla a menos de 500K aumentando el espacio mínimo entre los elementos.
+* -L *nombre*:*archivo.json*: permite definir nombres de capa para cada archivo individual.  
+
+Para generar el archivo mbtiles escribiremos lo siguiente en el terminal.
 
 ```
 tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed -L ocean:ne_10m_ocean.geojson -L land:ne_10m_land.geojson -L admin:ne_10m_admin_0_countries.geojson -L coastline:ne_10m_coastline.geojson -L lakes:ne_10m_lakes.geojson -L rivers:ne_10m_rivers_lake_centerlines.geojson -L rail:ne_10m_railroads.geojson -L roads:ne_10m_roads.geojson -L cities:ne_10m_populated_places.geojson -L airports:ne_10m_airports.geojson 
@@ -65,7 +95,7 @@ tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed -L ocean:ne_10m
 
 ## Visualizar el mbtiles
 
-Para visualizar el *natural_earth.mbtiles* creado con el Tippecanoe utilizaremos el TileServer. En la terminal escribimos lo siguiente:
+Utilizaremos el TileServer para visualizar el mbtiles creado con el Tippecanoe. Para ello escribimos lo siguiente en el terminal:
 
 ```
 tileserver-gl-light natural_earth.mbtiles -p 8181
