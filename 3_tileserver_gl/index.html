@@ -55,8 +55,6 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../css/styles.css">
-    
     
   </head>
   
@@ -312,15 +310,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#probar-el-servidor" title="Probar el servidor" class="md-nav__link">
-    Probar el servidor
+  <a href="#obtencion-de-datos" title="Obtención de datos" class="md-nav__link">
+    Obtención de datos
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#descargar-el-estilo" title="Descargar el estilo" class="md-nav__link">
-    Descargar el estilo
+  <a href="#arrancar-el-servidor" title="Arrancar el servidor" class="md-nav__link">
+    Arrancar el servidor
   </a>
   
 </li>
@@ -432,15 +430,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#probar-el-servidor" title="Probar el servidor" class="md-nav__link">
-    Probar el servidor
+  <a href="#obtencion-de-datos" title="Obtención de datos" class="md-nav__link">
+    Obtención de datos
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#descargar-el-estilo" title="Descargar el estilo" class="md-nav__link">
-    Descargar el estilo
+  <a href="#arrancar-el-servidor" title="Arrancar el servidor" class="md-nav__link">
+    Arrancar el servidor
   </a>
   
 </li>
@@ -478,75 +476,61 @@
                 
                 <h1 id="como-servir-teselas-vectoriales">Cómo servir teselas vectoriales</h1>
 <h2 id="tileserver-gl">TileServer GL</h2>
-<p>El <a href="http://tileserver.org/">TileServer GL</a> es un servidor de mapas de código abierto creado para teselas vectoriales, y capaz de renderizar en teselas raster con MapBox GL Native engine en el lado del servidor.</p>
-<p>Proporciona mapas para aplicaciones web y móviles. Es compatibles con Mapbox GL JS, Android SDK, iOS SDK, Leaflet, OpenLayers, HighDPI/Retina, SIG a través de WMTS, etc.</p>
-<p>Si se quiere servir teselas raster lo mejor es utilizar la versión de Docker ya que son necesarias algunas librerías nativas que pueden variar dependiendo de la plataforma, estas librerías sirven para renderizar las teselas vectoriales en teselas raster. Si únicamente se quiere servir teselas vectoriales se puede utilizar el TileServer GL Light que no tiene ninguna dependencia nativa ya que está desarrollado en javascript.</p>
+<p>El <a href="http://tileserver.org/">TileServer GL</a> es un servidor de mapas de código abierto creado para teselas vectoriales, y
+capaz de renderizar en teselas raster con MapBox GL Native engine en el lado del servidor.</p>
+<p>Proporciona mapas para aplicaciones web y móviles. Es compatibles con Mapbox GL JS, Android SDK, iOS SDK, Leaflet,
+OpenLayers, HighDPI/Retina, SIG a través de WMTS, etc.</p>
+<p>Si se quiere servir teselas raster lo mejor es utilizar la versión de Docker ya que son necesarias algunas librerías
+nativas que pueden variar dependiendo de la plataforma, estas librerías sirven para renderizar las teselas vectoriales en teselas raster. Si únicamente se quiere servir teselas vectoriales se puede utilizar el TileServer GL Light que no tiene ninguna dependencia nativa ya que está desarrollado en javascript.</p>
 <h3 id="instalacion">Instalación</h3>
 <p>Para este taller utilizaremos la versión Light ya que serviremos sólo teselas vectoriales.</p>
-<p>Para instalar el TileServer GL Light es necesario tener instalado el <a href="https://nodejs.org/es/">Node.js</a> versión 6 o superior. Una vez instalado el Node.js</p>
-<ul>
-<li>
-<p>Abrir el terminal y escribir <code>npm install -g tileserver-gl-light</code></p>
-</li>
-<li>
-<p>Comprobar la instalación. Escribir <code>tileserver-gl-light -v</code>. En el terminal debe aparacer un mensaje con la versión del TileServer instalada. </p>
-</li>
-</ul>
-<h3 id="probar-el-servidor">Probar el servidor</h3>
-<ul>
-<li>
-<p>Crear una carpeta llamada <em>datos</em> dentro del directorio de trabajo <strong>taller-vt</strong>. Escribir en la terminal <code>mkdir datos</code></p>
-</li>
-<li>
-<p>Escribir <code>cd datos</code> para entrar en el directorio de datos.</p>
-</li>
-<li>
-<p>Descargar los datos. Para ello ir <a href="https://openmaptiles.com/downloads">OpenMapTiles</a> y descargar el archivo <strong>OpenStreetMap vector tiles</strong> del área que se quiera dentro del directorio <em>datos</em>. Para este taller descargaremos el archivo de <a href="https://openmaptiles.com/downloads/europe/spain/barcelona/">Barcelona</a></p>
-</li>
-<li>
-<p>Escribir <code>tileserver-gl-light 2017-07-03_spain_barcelona.mbtiles -p 8181</code>. El parámetro -p es para indicar el puerto. Por defecto el TileServer usa el puerto 8080. Como nuestro servidor web está utilizando el puerto 8080, utilizaremos el puerto 8181 para el TileServer.</p>
-</li>
-<li>
-<p>Abrir el navegador y escribir http://localhost:8181 y comprobar que aparece la página del TileServer.</p>
-</li>
-</ul>
-<p><img alt="TileServer GL Light" src="../img/tileServerGL.png" />
-<em>TileServer GL Light</em></p>
-<h3 id="descargar-el-estilo">Descargar el estilo</h3>
-<ul>
-<li>
-<p>Crear una carpeta llamada <em>styles</em> dentro del directorio de trabajo <strong>taller-vt</strong>. Escribir en la terminal <code>mkdir datos</code></p>
-</li>
-<li>
-<p>Escribir <code>cd styles</code> para entrar en el directorio de estilos. </p>
-</li>
-<li>
-<p>Descargar el estilo <a href="https://openmaptiles.org/styles/#osm-bright">OSM Bright de OpenMapTiles</a> dentro de la carpeta <em>styles</em>. El archivo de estilo se puede descargar directamente desde [este enlace])https://github.com/openmaptiles/osm-bright-gl-style/blob/master/style.json) </p>
-</li>
-<li>
-<p>Editar el archivo descargado style.json para que cargue los datos desde nuestro servidor local. Para ello modificar la línea 51 y reemplazar la url por <code>http://localhost:8080/data/v3.json</code></p>
-</li>
-</ul>
+<p>Es necesario tener instalado <a href="https://nodejs.org/es/">Node.js</a> versión 6.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>tileserver-gl-light NO se instalará correctamente si estamos usando una versión de Node.js superior a la 6.
+Debemos activar esta versión de node con el comando:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">...</span>
-    <span class="s2">&quot;sources&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;openmaptiles&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
-<span class="hll">            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8181/data/v3.json&quot;</span>
-</span>        <span class="p">}</span>
-    <span class="p">},</span>
-<span class="p">...</span>  
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>nvm use <span class="m">6</span>
+node -v <span class="c1"># Debería devolver: 6.x.x</span>
 </pre></div>
 </td></tr></table>
 
+</div>
+<p>Una vez comprobada la versión de node:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>npm install -g tileserver-gl-light@2.3.1
+tileserver-gl-light -v <span class="c1"># Deberia devolver: v2.3.1 </span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="obtencion-de-datos">Obtención de datos</h3>
+<p>Crear una carpeta llamada <code>tileserver/data</code> y copiar en ella el fichero <a href="../data/barcelona.mbtiles">barcelona.mbtiles</a>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir -p tileserver/data
+<span class="nb">cd</span> tileserver/data
+wget https://geoinquiets.github.io/taller-vt/data/barcelona.mbtiles
+</pre></div>
+</td></tr></table>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>En la web de <a href="https://openmaptiles.com/downloads">OpenMapTiles</a> se pueden descargar datos de muchas
+otras ciudades, países, e incluso el planeta entero. Es gratuíto, aunque hay que registrarse.</p>
+</div>
+<h3 id="arrancar-el-servidor">Arrancar el servidor</h3>
+<p>Ahora arrancaremos el servidor en el puerto <code>8181</code> (parámetro <code>-p</code>):</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tileserver-gl-light barcelona.mbtiles -p <span class="m">8181</span>
+</pre></div>
+</td></tr></table>
+
+<p>Abrir el navegador y escribir <a href="http://localhost:8181">http://localhost:8181</a>. Aparecerá la página del TileServer.</p>
+<p>Dejar el terminal abierto con el servidor arrancado.</p>
+<p><img alt="TileServer GL Light" src="../img/tileServerGL.png" />
+<em>TileServer GL Light</em></p>
 <h3 id="modificar-el-visor-de-mapas">Modificar el visor de mapas</h3>
-<p>Modificaremos nuestro archivo <em>index.html</em> para que el visor de mapas consuma las teselas vectoriales servidas por el TileServer.</p>
+<p>Modificaremos nuestro archivo <em>index.html</em> para que el visor de mapas consuma las teselas vectoriales servidas por
+ nuestro TileServer:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -603,7 +587,7 @@
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
         <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="c1">// id del elemento HTML que contendrá el mapa</span>
-<span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;./styles/style.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
+<span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8181/styles/osm-bright/style.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
 </span>        <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">2.175</span><span class="p">,</span> <span class="mf">41.39</span><span class="p">],</span> <span class="c1">// Ubicación inicial</span>
         <span class="nx">zoom</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span> <span class="c1">// Zoom inicial</span>
         <span class="nx">bearing</span><span class="o">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="c1">// Ángulo de rotación inicial</span>
@@ -620,28 +604,6 @@
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </td></tr></table>
-
-<p>Se recargará la página en el navegador y vemos que nuestro mapa deja de funcionar. Abrir la consola del desarrollador (F12) y ver que aparecen una serie de errores que hacen que no se vea el mapa.</p>
-<p>El primer error que vemos hace referencia a que no existe la capa <em>aerodrome_label</em> en nuestro archivo de teselas vectoriales. En nuestro estilo buscamos la capa <em>aerodrome_label</em> y la borramos (líneas 4286 hasta 4323). Se recargará la página y comprobamos que el error que hacía referencia a la capa <em>aerodrome_label</em> ha desaparecido, pero seguimos teniendo errores.</p>
-<p>El siguiente error hace referencia a que no puede cargar los archivos con las fuentes para pintar las etiquetas del mapa. Si vamos a la línea 55 de nuestro archivo de estilos observamos que en la url de carga solicita una llave (<strong>key</strong>). Para obtener esta <strong>key</strong> hay que registrarse (tienen un plan gratuito) en <a href="https://www.tilehosting.com/">Tilehosting</a>.</p>
-<p>Sustituir en la url del glyphs (línea 55) donde dice <strong>{key}</strong> por nuestra key. Para no tener que generar una key en este taller podremos usar <em>RiS4gsgZPZqeeMlIyxFo</em>. </p>
-<div class="admonition warning">
-<p class="admonition-title">Nota</p>
-<p>Para desplegar un mapa en producción o fuera del ámbito del taller se debe usar la key propia.</p>
-</div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">...</span>
-  <span class="s2">&quot;sprite&quot;</span><span class="o">:</span> <span class="s2">&quot;https://openmaptiles.github.io/osm-bright-gl-style/sprite&quot;</span><span class="p">,</span>
-<span class="hll">  <span class="s2">&quot;glyphs&quot;</span><span class="o">:</span> <span class="s2">&quot;https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo&quot;</span><span class="p">,</span>
-</span>  <span class="s2">&quot;layers&quot;</span><span class="o">:</span> <span class="p">[</span>
-<span class="p">...</span>  
-</pre></div>
-</td></tr></table>
-
-<p>Se recargará la página en el navegador y comprobamos que desaparecen los errores y que se ve nuestro mapa.</p>
                 
                   
                 

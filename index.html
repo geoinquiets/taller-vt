@@ -55,8 +55,6 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="./css/styles.css">
-    
     
   </head>
   
@@ -368,12 +366,31 @@
 <h1 id="httpsgeoinquietsgithubiotaller-vt"><a href="https://geoinquiets.github.io/taller-vt/">https://geoinquiets.github.io/taller-vt/</a></h1>
 <h2 id="requisitos-de-software">Requisitos de software</h2>
 <ul>
-<li><a href="https://nodejs.org/es/download/package-manager/#distribuciones-de-linux-basadas-en-debian-y-ubuntu">node y npm</a></li>
-<li><a href="https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions">Visual Studio Code</a></li>
+<li><a href="https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/">node6 y npm (instalar con nvm)</a>:</li>
 </ul>
-<h2 id="datos-necesarios">Datos necesarios</h2>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh <span class="p">|</span> bash
+  <span class="c1"># Cerrar y reabrir terminal</span>
+  nvm install <span class="m">6</span>
+  npm install -g npm
+  <span class="c1"># comprobar versiones</span>
+  node -v <span class="c1"># Debería ser 6.x.x</span>
+  npm -v <span class="c1"># Debería ser 5.x.x o mayor</span>
+</pre></div>
+</td></tr></table>
+
 <ul>
-<li><code>barcelona.mbtiles</code></li>
+<li>
+<p><a href="https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions">Visual Studio Code</a></p>
+</li>
+<li>
+<p><a href="https://www.google.com/chrome/">Chrome</a> con la extensión <a href="https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh">json-viewer</a></p>
+</li>
 </ul>
 <h2 id="recursos-extra">Recursos extra</h2>
 <p>Mayormente vía <a href="https://twitter.com/fakeraf">Raf</a>, nuestra fuente diaria de vitaminas. </p>
