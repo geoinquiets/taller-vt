@@ -318,6 +318,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#descargar-el-estilo" title="Descargar el estilo" class="md-nav__link">
+    Descargar el estilo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificar-el-visor-de-mapas" title="Modificar el visor de mapas" class="md-nav__link">
+    Modificar el visor de mapas
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -424,6 +438,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#descargar-el-estilo" title="Descargar el estilo" class="md-nav__link">
+    Descargar el estilo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificar-el-visor-de-mapas" title="Modificar el visor de mapas" class="md-nav__link">
+    Modificar el visor de mapas
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -467,23 +495,153 @@
 <h3 id="probar-el-servidor">Probar el servidor</h3>
 <ul>
 <li>
-<p>Crear una carpeta llamada <em>datos</em> dentro del directorio de trabajo <strong>taller-vt-demo</strong>. Escribir en la terminal <code>mkdir datos</code></p>
+<p>Crear una carpeta llamada <em>datos</em> dentro del directorio de trabajo <strong>taller-vt</strong>. Escribir en la terminal <code>mkdir datos</code></p>
 </li>
 <li>
 <p>Escribir <code>cd datos</code> para entrar en el directorio de datos.</p>
 </li>
 <li>
-<p>Descargar los datos. Para ello ir <a href="https://openmaptiles.com/downloads">OpenMapTiles</a> y descargar el archivo <strong>OpenStreetMap vector tiles</strong> del área que se quiera dentro del directorio <em>datos</em>. Para este taller descargaremos el archivo de <a href="https://openmaptiles.com/downloads/europe/spain/">España</a></p>
+<p>Descargar los datos. Para ello ir <a href="https://openmaptiles.com/downloads">OpenMapTiles</a> y descargar el archivo <strong>OpenStreetMap vector tiles</strong> del área que se quiera dentro del directorio <em>datos</em>. Para este taller descargaremos el archivo de <a href="https://openmaptiles.com/downloads/europe/spain/barcelona/">Barcelona</a></p>
 </li>
 <li>
-<p>Escribir <code>tileserver-gl-light 2017-07-03_europe_spain.mbtiles</code></p>
+<p>Escribir <code>tileserver-gl-light 2017-07-03_spain_barcelona.mbtiles -p 8181</code>. El parámetro -p es para indicar el puerto. Por defecto el TileServer usa el puerto 8080. Como nuestro servidor web está utilizando el puerto 8080, utilizaremos el puerto 8181 para el TileServer.</p>
 </li>
 <li>
-<p>Abrir el navegador y escribir http://localhost:8080 y comprobar que aparece la página del TileServer.</p>
+<p>Abrir el navegador y escribir http://localhost:8181 y comprobar que aparece la página del TileServer.</p>
 </li>
 </ul>
 <p><img alt="TileServer GL Light" src="../img/tileServerGL.png" />
 <em>TileServer GL Light</em></p>
+<h3 id="descargar-el-estilo">Descargar el estilo</h3>
+<ul>
+<li>
+<p>Crear una carpeta llamada <em>styles</em> dentro del directorio de trabajo <strong>taller-vt</strong>. Escribir en la terminal <code>mkdir datos</code></p>
+</li>
+<li>
+<p>Escribir <code>cd styles</code> para entrar en el directorio de estilos. </p>
+</li>
+<li>
+<p>Descargar el estilo <a href="https://openmaptiles.org/styles/#osm-bright">OSM Bright de OpenMapTiles</a> dentro de la carpeta <em>styles</em>. El archivo de estilo se puede descargar directamente desde [este enlace])https://github.com/openmaptiles/osm-bright-gl-style/blob/master/style.json) </p>
+</li>
+<li>
+<p>Editar el archivo descargado style.json para que cargue los datos desde nuestro servidor local. Para ello modificar la línea 51 y reemplazar la url por <code>http://localhost:8080/data/v3.json</code></p>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">...</span>
+    <span class="s2">&quot;sources&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;openmaptiles&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+<span class="hll">            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8181/data/v3.json&quot;</span>
+</span>        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">...</span>  
+</pre></div>
+</td></tr></table>
+
+<h3 id="modificar-el-visor-de-mapas">Modificar el visor de mapas</h3>
+<p>Modificaremos nuestro archivo <em>index.html</em> para que el visor de mapas consuma las teselas vectoriales servidas por el TileServer.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mapa VT<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#39;stylesheet&#39;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css&#39;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#39;https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.css&#39;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#39;stylesheet&#39;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.min.js&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+        <span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+            <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;map&#39;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
+        <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="c1">// id del elemento HTML que contendrá el mapa</span>
+<span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;./styles/style.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
+</span>        <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">2.175</span><span class="p">,</span> <span class="mf">41.39</span><span class="p">],</span> <span class="c1">// Ubicación inicial</span>
+        <span class="nx">zoom</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span> <span class="c1">// Zoom inicial</span>
+        <span class="nx">bearing</span><span class="o">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="c1">// Ángulo de rotación inicial</span>
+        <span class="nx">hash</span><span class="o">:</span> <span class="kc">true</span> <span class="c1">// Permite ir guardando la posición del mapa en la URL</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Agrega controles de navegación (zoom, rotación) al mapa:</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
+
+    <span class="c1">// Agregar el control de inspección</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">MapboxInspect</span><span class="p">());</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table>
+
+<p>Se recargará la página en el navegador y vemos que nuestro mapa deja de funcionar. Abrir la consola del desarrollador (F12) y ver que aparecen una serie de errores que hacen que no se vea el mapa.</p>
+<p>El primer error que vemos hace referencia a que no existe la capa <em>aerodrome_label</em> en nuestro archivo de teselas vectoriales. En nuestro estilo buscamos la capa <em>aerodrome_label</em> y la borramos (líneas 4286 hasta 4323). Se recargará la página y comprobamos que el error que hacía referencia a la capa <em>aerodrome_label</em> ha desaparecido, pero seguimos teniendo errores.</p>
+<p>El siguiente error hace referencia a que no puede cargar los archivos con las fuentes para pintar las etiquetas del mapa. Si vamos a la línea 55 de nuestro archivo de estilos observamos que en la url de carga solicita una llave (<strong>key</strong>). Para obtener esta <strong>key</strong> hay que registrarse (tienen un plan gratuito) en <a href="https://www.tilehosting.com/">Tilehosting</a>.</p>
+<p>Sustituir en la url del glyphs (línea 55) donde dice <strong>{key}</strong> por nuestra key. Para no tener que generar una key en este taller podremos usar <em>RiS4gsgZPZqeeMlIyxFo</em>. </p>
+<div class="admonition warning">
+<p class="admonition-title">Nota</p>
+<p>Para desplegar un mapa en producción o fuera del ámbito del taller se debe usar la key propia.</p>
+</div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">...</span>
+  <span class="s2">&quot;sprite&quot;</span><span class="o">:</span> <span class="s2">&quot;https://openmaptiles.github.io/osm-bright-gl-style/sprite&quot;</span><span class="p">,</span>
+<span class="hll">  <span class="s2">&quot;glyphs&quot;</span><span class="o">:</span> <span class="s2">&quot;https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo&quot;</span><span class="p">,</span>
+</span>  <span class="s2">&quot;layers&quot;</span><span class="o">:</span> <span class="p">[</span>
+<span class="p">...</span>  
+</pre></div>
+</td></tr></table>
+
+<p>Se recargará la página en el navegador y comprobamos que desaparecen los errores y que se ve nuestro mapa.</p>
                 
                   
                 
