@@ -9,7 +9,7 @@ automáticamente cuando se modifica el contenido de algún fichero.
 Para instalarlo, se usará el comando:
 
 ```bash
-sudo npm install --global live-server
+sudo npm install -g live-server
 ```
 
 Para arrancarlo, basta con situarse en el directorio que queramos servir y ejecutar:
@@ -20,7 +20,7 @@ cd taller-vt
 live-server
 ```
 
-Se abrirá el navegador por defecto con la dirección [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+Se abrirá el navegador por defecto con la dirección http://127.0.0.1:8080/
 y se mostrará el contenido del directorio para poder navegar por él.
 
 Deja la ventana del terminal abierta, y usa la combinación de teclas `Ctrl` + `C` para parar el servidor.
@@ -53,7 +53,7 @@ Crea un fichero `index.html`:
 </html>
 ```
 
-Recargar la página [http://127.0.0.1:8080/](http://127.0.0.1:8080/) en el navegador. Se debería ver un "Hola mundo".
+Recargar la página http://127.0.0.1:8080/ en el navegador. Se debería ver un "Hola mundo".
 
 
 ## Hola Mapa
