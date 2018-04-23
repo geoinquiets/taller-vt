@@ -6,8 +6,8 @@ markdown_extensions:
   - codehilite:
       linenums: True
   - admonition
-extra_css:
-    - css/styles.css
+  - pymdownx.magiclink
+  - pymdownx.superfences
 repo_url: "https://github.com/geoinquiets/taller-vt"
 pages:
 - Home: index.md

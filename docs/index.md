@@ -2,18 +2,26 @@
 
 Bienvenidos al taller de teselas vectoriales. Este manual está publicado aquí:
 
-# [https://geoinquiets.github.io/taller-vt/](https://geoinquiets.github.io/taller-vt/)
+# https://geoinquiets.github.io/taller-vt/
 
 
 ## Requisitos de software
 
-* [node y npm](https://nodejs.org/es/download/package-manager/#distribuciones-de-linux-basadas-en-debian-y-ubuntu)
+* [node6 y npm (instalar con nvm)](https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/):
+
+```bash
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+  # Cerrar y reabrir terminal
+  nvm install 6
+  npm install -g npm
+  # comprobar versiones
+  node -v # Debería ser 6.x.x
+  npm -v # Debería ser 5.x.x o mayor
+```
+
 * [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions)
 
-
-## Datos necesarios
-
-* `barcelona.mbtiles`
+* [Chrome](https://www.google.com/chrome/) con la extensión [json-viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
 
 
 ## Recursos extra
