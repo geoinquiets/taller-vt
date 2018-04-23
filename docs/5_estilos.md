@@ -41,6 +41,10 @@ Abrir el navegador y escribir http://localhost:8888 y comprobar que aparece la p
 
 En el editor del Maputnik en la barra de menú seleccionamos la opción de **Source** para desplegar el diálogo de gestionar fuentes de datos. En la parte inferior del diálogo esta el apartado para agregar una fuente nueva de datos *Add New Source*. Para agregar nuestra fuente de datos mbtiles tenemos dos opciones.
 
+![Maputnik Add Source](img/maputnik_add_source.png)
+
+*Maputnik agregar origen de datos*
+
 1. Vector (TileJSON URL)
 
 *Source ID*: identificador único de la capa: es el nombre que utilizaremos como referencia en las capas. En nuestro caso pondremos *natural_earth*
@@ -66,7 +70,11 @@ En el editor del Maputnik en la barra de menú seleccionamos la opción de **Sou
 
 En el editor de Maputnik presionamos el botón de **Add Layer** para desplegar el diálogo de agregar capa al mapa. 
 
-*ID*: identificador único de la capa. Pondremos *land*
+![Maputnik Add Layer](img/maputnik_add_layer.png)
+
+*Maputnik agregar capa*
+
+*ID*: identificador único de la capa. Pondremos *continentes*
 
 *Type*: tipo de capa. Seleccionar la opción de *Fill*
 
@@ -74,3 +82,15 @@ En el editor de Maputnik presionamos el botón de **Add Layer** para desplegar e
 
 *Source Layer*: identificador de la capa dentro del origen de datos. Pondremos *land* para agregar la capa de tierra firme.
 
+### Agregar sprite y glyph
+
+En el editor de Maputnik en la barra de menú seleccionamos la opción de **Style Settings** para desplegar el diálogo de gestionar la configuración del estilo.
+
+![Maputnik Style Settings](img/maputnik_style_settings.png)
+
+*Maputnik configuración de estilo*
+
+
+*Sprite URL*: proporciona una plantilla para cargar imágenes pequeñas para usar en la representación de estilo del fondo, patrones de relleno, patrones de líneas e imagenes de iconos. En nuestro caso pondremos "https://openmaptiles.github.io/osm-bright-gl-style/sprite"
+
+*Glyphs URL*: proporciona una plantilla para cargar conjuntos de glifos formato PBF. Aquí es donde se cargan las diferentes fuentes. En nuestro caso pondremos "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo"
