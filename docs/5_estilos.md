@@ -6,27 +6,27 @@ Es un editor visual gratuito y abierto para estilos Mapbox GL dirigidos tanto a 
 
 Se puede utilizar en línea en [*Maputnik editor*](https://maputnik.github.io/editor/) (todo se guarda en el almacenamiento local) ó se puede hacer una instalación local.
 
-### Instalación 
+### Instalación
 
 Si vamos a la página de [*Releases*](https://github.com/maputnik/editor/releases) de Maputnik aparece que la última versión es la v1.0.2. Realmente existe una versión v1.1.0 que está en la página de releases pero que no está marcada como la última versión.
 
 Descagaremos la versión v1.1.0 que es la última versión disponible para la fecha de este taller. 
 
-```
+```bash
 wget https://github.com/maputnik/editor/archive/v1.1.0.tar.gz
 tar -xzvf archivo.tar.gz
 ```
 
 Vamos a la carpeta *editor-1.1.0* creada al descomprimir el archivo descargado he instalamos las dependencias del Maputnik
 
-```
+```bash
 cd editor-1.1.0
 npm install
 ```
 
 Al finalizar la instalación comprobamos que no aparezca ningún error (pueden aparecer algunos WARN) y arrancamos el servidor de Maputnik
 
-```
+```bash
 npm start
 ```
 
@@ -54,7 +54,6 @@ En el editor del Maputnik en la barra de menú seleccionamos la opción de **Sou
 *Source Type*: tipo de la fuente de datos. Seleccionar la opción de *Vector (TileJSON URL)*
 
 *TileJSON URL*: url del archivo JSON de descripción de la fuente. Pondremos la url de nuestro TileServerGL http://localhost:8181/data/natural_earth.json
-
 
 2. Vector (XYZ URL)
 
@@ -114,7 +113,7 @@ En esta versión de maputnik (v1.1.0) no está implemantado el estilo [basado en
 
 2. Vemos que aparecen todas las carreteras en el mapa.
 
-3. Filtar la información. Selección la capa de *ferrys* y en el apartado de Filter presionar el botón de **Add filter**. En registro que aparece poner la siguiente información:  
+3. Filtar la información. Selección la capa de *ferrys* y en el apartado de Filter presionar el botón de **Add filter**. En registro que aparece poner la siguiente información:
 
 ![Maputnik Add Filter](img/maputnik_add_filter.png)
 
@@ -147,7 +146,6 @@ Comprobar que sólo aparacen las líneas de Ferry en el mapa.
 
 3. Estilizar las etiquetas. En el apartado de **Text paint properties** podemos definir el estilo de las etiquetas. Para los textos podemos definir un Halo para que el teto destaque mejor en nuestro mapa.
 
-
 ### Utilizar un icono para simbolizar nuestra capa
 
 1. Agregar la capa de aeropuertos. Presionar el botón de **Add Layer** y rellenar el formulario con la siguiente información:
@@ -166,8 +164,84 @@ Comprobar que sólo aparacen las líneas de Ferry en el mapa.
 
 !!! tip
     Aqui puede ver la lista de los nombres de las imágenes del sprite que estamos utilizando https://github.com/openmaptiles/osm-bright-gl-style/tree/master/icons.
- 
 
- ## Ejercicio
+## Ejercicio
 
- Agregar y aplicar estilo al resto de capas del **natural_earth.mbtiles** 
+ Agregar y aplicar estilo al resto de capas del **natural_earth.mbtiles**
+
+### Exportar el estilo creado
+
+En el editor de Maputnik en la barra de menú seleccionamos la opción de **Export** para desplegar el diálogo de exportación del estilo.
+
+En el dialogo presionamos el boton de **Download** para descargar el estilo en nuestro ordenador.
+
+Descargamos el archivo y lo renombramos a **natural_earth.json**. Luego lo movemos a la carpeta *data*
+
+Dentro de la carpeta *data* crear un fichero **config.json**. Para más detalles http://tileserver.readthedocs.io/en/latest/config.html#
+
+```js
+{
+  "styles": {
+    "natural-earth": {
+      "style": "natural_earth.json",
+      "tilejson": {
+        "type": "overlay"
+      }
+    }
+  },
+  "data": {
+    "natural_earth": {
+      "mbtiles": "natural_earth.mbtiles"
+    }
+  }
+}
+```
+
+Ejecutar el tileserver utilizando el archivo de configuración creado
+
+```bash
+tileserver-gl-light -c config.test.json -p 8181
+```
+
+Abrir el navegador y escribir http://localhost:8181. Aparecerá la página del TileServer donde podemos comprobar nuestro estilo presionando el botón de *Vector*
+
+Modificar e; archivo *index.html* para que el visor de mapa para cargue los datos de Natural Earth con el estilo creado en Maputnik
+
+```html hl_lines="22"
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa VT</title>
+    <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.css' rel='stylesheet' />
+    <script src='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.min.js'></script>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id='map'>
+<script>
+    var map = new mapboxgl.Map({
+        container: 'map', // id del elemento HTML que contendrá el mapa
+        style: 'http://localhost:8181/styles/natural-earth/style.json', // Ubicación del estilo
+        center: [2.175, 41.39], // Ubicación inicial
+        zoom: 13, // Zoom inicial
+        bearing: -45, // Ángulo de rotación inicial
+        hash: true // Permite ir guardando la posición del mapa en la URL
+    });
+
+    // Agrega controles de navegación (zoom, rotación) al mapa:
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Agregar el control de inspección
+    map.addControl(new MapboxInspect());
+</script>
+</body>
+</html>
+```
