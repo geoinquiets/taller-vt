@@ -6,7 +6,7 @@ Es un editor visual gratuito y abierto para estilos Mapbox GL dirigidos tanto a 
 
 Se puede utilizar en línea en [*Maputnik editor*](https://maputnik.github.io/editor/) (todo se guarda en el almacenamiento local) ó se puede hacer una instalación local.
 
-### Instalación 
+### Instalación
 
 Si vamos a la página de [*Releases*](https://github.com/maputnik/editor/releases) de Maputnik aparece que la última versión es la v1.0.2. Realmente existe una versión v1.1.0 que está en la página de releases pero que no está marcada como la última versión.
 
@@ -245,4 +245,3 @@ Modificar e; archivo *index.html* para que el visor de mapa para cargue los dato
 </body>
 </html>
 ```
-
