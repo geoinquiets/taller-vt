@@ -134,7 +134,7 @@ Comprobar que sólo aparacen las líneas de Ferry en el mapa.
 
 1. Agregar la capa de ciudades. Presionar el botón de **Add Layer** y rellenar el formulario con la siguiente información:
 
-    *ID*: *ciudades*
+    *ID*: *ciudades_etiquetas*
 
     *Type*: *Symbol* ya que queremos que sea de tipo texto
 
@@ -205,7 +205,7 @@ tileserver-gl-light -c config.test.json -p 8181
 
 Abrir el navegador y escribir http://localhost:8181. Aparecerá la página del TileServer donde podemos comprobar nuestro estilo presionando el botón de *Vector*
 
-Modificar e; archivo *index.html* para que el visor de mapa para cargue los datos de Natural Earth con el estilo creado en Maputnik
+Modificar el archivo *index.html* para que el visor de mapa para cargue los datos de Natural Earth con el estilo creado en Maputnik
 
 ```html hl_lines="22"
 <!DOCTYPE html>
@@ -230,6 +230,242 @@ Modificar e; archivo *index.html* para que el visor de mapa para cargue los dato
     var map = new mapboxgl.Map({
         container: 'map', // id del elemento HTML que contendrá el mapa
         style: 'http://localhost:8181/styles/natural-earth/style.json', // Ubicación del estilo
+        center: [2.175, 41.39], // Ubicación inicial
+        zoom: 13, // Zoom inicial
+        bearing: -45, // Ángulo de rotación inicial
+        hash: true // Permite ir guardando la posición del mapa en la URL
+    });
+
+    // Agrega controles de navegación (zoom, rotación) al mapa:
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Agregar el control de inspección
+    map.addControl(new MapboxInspect());
+</script>
+</body>
+</html>
+```
+
+## Estilo basado en datos (data-driven style)
+
+El estilo basado en datos le permite estilizar los datos en función de sus propiedades. Por ejemplo, cambiar el radio de un círculo en función de la cantidad de clientes, cambiar el color de un polígono de estado según la población o usar la lógica condicional para crear etiquetas bilingües.
+
+Para crear estilos basados en datos debemos usar las Mapbox GL JS expressions. En la especificación de estilo de Mapbox, el valor de cualquier propiedad de diseño, propiedad de estilo o filtro se puede especificar como una expresión. Las expresiones definen cómo se combinan uno o más valores de propiedad y / o el nivel de zoom actual utilizando operaciones lógicas, matemáticas, de cadena o de color para producir el valor de propiedad de estilo apropiado o la decisión de filtro.
+
+Para más información y ejemplos https://www.mapbox.com/help/how-map-design-works/#data-driven-styles
+
+### Crear un estilo basado en datos
+
+Copiar el estilo **natural_earth.json** en un fichero llamado *natural_earth_2.json*
+
+#### Estilo basado en valores concretos de una propiedad
+
+Editar el fichero *natural_earth_2.json* y eliminar las capas con id **secundarias**, **principales** y **ferrys**
+
+Entre la capa con id *land* y la capa con id *aeropuertos* crear una capa con id **roads**. El color de las líneas de esta capa varia dependiendo del valor de la propiedad *type*.
+
+```js
+{
+    "id": "roads",
+    "type": "line",
+    "source": "local",
+    "source-layer": "roads",
+    "layout": {
+        "visibility": "visible"
+    },
+    "paint": {
+        "line-color": [
+            "match",
+            [
+                "get",
+                "type"
+            ],
+            "Secondary Highway",
+            "rgba(206, 32, 79, 1)",
+            "Ferry Route",
+            "rgba(138, 154, 241, 1)",
+            "Major Highway",
+            "rgba(20, 52, 232, 1)",
+            "#000000"
+        ],
+        "line-width": 2
+    }
+},
+```
+
+#### Estilo basado en el nivel del zoom
+
+Editar el fichero *natural_earth_2.json* modificar la capa **ciudades_etiquetas** para cambiar el tamaño del texto basado en el nivel de zoom del mapa y en la propiedad *SCALERANK*
+
+```js
+{
+    "id": "ciudades_etiquetas",
+    "type": "symbol",
+    "source": "local",
+    "source-layer": "cities",
+    "layout": {
+    "symbol-placement": "point",
+    "text-field": "{NAME}",
+    "visibility": "visible",
+    "text-anchor": "bottom",
+    "text-offset": [0, -1],
+    "text-size": [
+        "step",
+        ["zoom"],
+        [
+        "case",
+        [
+            "<",
+            [
+            "number",
+            ["get", "SCALERANK"]
+            ],
+            3
+        ],
+        18,
+        0
+        ],
+        5,
+        [
+        "case",
+        [
+            "<=",
+            [
+            "number",
+            ["get", "SCALERANK"]
+            ],
+            2
+        ],
+        20,
+        [
+            "<=",
+            [
+            "number",
+            ["get", "SCALERANK"]
+            ],
+            5
+        ],
+        14,
+        10
+        ],
+        8,
+        [
+        "case",
+        [
+            "<=",
+            [
+            "number",
+            ["get", "SCALERANK"]
+            ],
+            2
+        ],
+        24,
+        [
+            "<=",
+            [
+            "number",
+            ["get", "SCALERANK"]
+            ],
+            5
+        ],
+        18,
+        14
+        ]
+    ]
+    },
+    "paint": {
+    "text-halo-color": "rgba(253, 253, 253, 1)",
+    "text-halo-width": 5,
+    "text-color": "rgba(16, 16, 16, 1)",
+    "text-halo-blur": 2
+    }
+}
+
+```
+
+#### Estilo basado en una propiedad
+
+Crear una capa con id **ciudades** y de tipo *circle* entre las capas *aeropuertos* y la capa *ciudades_etiquetas*. En esta nueva capa el tamaño del circulo utilizará directamente el valor de la propiedad *SCALERANK*
+
+```js
+{
+    "id": "ciudades",
+    "type": "circle",
+    "source": "local",
+    "source-layer": "cities",
+    "layout": {
+    "visibility": "visible"
+    },
+    "paint": {
+    "circle-color": [
+        "match",
+        ["get", "ADM0CAP"],
+        0,
+        "hsl(285, 75%, 68%)",
+        "hsl(0, 96%, 48%)"
+    ],
+    "circle-radius": ["-", 15, ["get","SCALERANK"]]
+    }
+},
+```
+
+Agregar el nuevo estilo al fichero de configuración *config.json* del tileserver-gl
+
+```js hl_lines="9 10 11 12 13 14"
+{
+  "styles": {
+    "natural-earth": {
+      "style": "natural_earth.json",
+      "tilejson": {
+        "type": "overlay"
+      }
+    },
+    "natural-earth-2": {
+      "style": "natural_earth_2.json",
+      "tilejson": {
+        "type": "overlay"
+      }
+    }
+  },
+  "data": {
+    "natural_earth": {
+      "mbtiles": "natural_earth.mbtiles"
+    }
+  }
+}
+```
+
+Parar *Ctrl+c* y arrancar el tileserver utilizando el archivo de configuración creado
+
+```bash
+tileserver-gl-light -c config.test.json -p 8181
+```
+
+Modificar el archivo *index.html* para que el visor de mapa para cargue los datos de Natural Earth con el nuevo estilo creado
+
+```html hl_lines="22"
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa VT</title>
+    <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.css' rel='stylesheet' />
+    <script src='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.min.js'></script>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id='map'>
+<script>
+    var map = new mapboxgl.Map({
+        container: 'map', // id del elemento HTML que contendrá el mapa
+        style: 'http://localhost:8181/styles/natural-earth-2/style.json', // Ubicación del estilo
         center: [2.175, 41.39], // Ubicación inicial
         zoom: 13, // Zoom inicial
         bearing: -45, // Ángulo de rotación inicial
