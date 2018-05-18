@@ -364,34 +364,60 @@
                 <h1 id="trabajando-con-teselas-vectoriales">Trabajando con teselas vectoriales</h1>
 <p>Bienvenidos al taller de teselas vectoriales. Este manual está publicado aquí:</p>
 <h1 id="httpsgeoinquietsgithubiotaller-vt"><a href="https://geoinquiets.github.io/taller-vt/">https://geoinquiets.github.io/taller-vt/</a></h1>
-<h2 id="requisitos-de-software">Requisitos de software</h2>
-<ul>
-<li><a href="https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/">node6 y npm (instalar con nvm)</a>:</li>
-</ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh <span class="p">|</span> bash
-  <span class="c1"># Cerrar y reabrir terminal</span>
-  nvm install <span class="m">6</span>
-  npm install -g npm
-  <span class="c1"># comprobar versiones</span>
-  node -v <span class="c1"># Debería ser 6.x.x</span>
-  npm -v <span class="c1"># Debería ser 5.x.x o mayor</span>
+<h2 id="preinstalacion-de-software">Preinstalación de software</h2>
+<ol>
+<li><a href="https://www.google.com/chrome/">Google Chrome</a></li>
+<li>La extensión <a href="https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh">json-viewer</a> en Chrome</li>
+<li><a href="https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions">Microsoft Visual Studio Code</a></li>
+<li>Terminator:
+    <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>sudo apt install terminator
+</pre></div>
+</td></tr></table></li>
+<li>
+<p>node6 y npm (sobre nvm):</p>
+<p>Primero, instalar nvm:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh <span class="p">|</span> bash
 </pre></div>
 </td></tr></table>
 
-<ul>
-<li>
-<p><a href="https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions">Visual Studio Code</a></p>
+<p>Cerrar y reabrir el terminal.
+Luego, instalar node 6 y npm:</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>  nvm install 6
+  npm install -g npm
+  # comprobar versiones
+  node -v # Debería ser 6.x.x
+  npm -v # Debería ser 6.x.x o mayor
+</pre></div>
+</td></tr></table>
+6. t-rex:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>curl -O -L https://github.com/t-rex-tileserver/t-rex/releases/download/v0.8.2/t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb <span class="o">&amp;&amp;</span> sudo dpkg -i t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb
+</pre></div>
+</td></tr></table>
+
 </li>
-<li>
-<p><a href="https://www.google.com/chrome/">Chrome</a> con la extensión <a href="https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh">json-viewer</a></p>
-</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Todo el taller se basa en tener un navegador con capacidades WebGL, que debería
+ poder moverse RÁPIDO.</p>
+<ol>
+<li>Comprobar que al abrirse esta página, se ve un mapa de Girona:
+<a href="http://tileserver.fonts.cat/styles/klokantech-basic/?vector#14.37/41.9703/2.815">http://tileserver.fonts.cat/styles/klokantech-basic/?vector#14.37/41.9703/2.815</a></li>
+<li>Comprobar que el mapa se mueve con soltura.</li>
+<li>Si no se puede correr el SO nativo (sería lo ideal), ajustar la configuración
+de VirtualBox para tener activadas las opciones:<ul>
+<li>System &gt; Processor &gt; "Enable PAE/NX"</li>
+<li>Display &gt; Screen &gt; Aumentar MB disponibles para la tarjeta gráfica.</li>
+<li>Display &gt; Screen &gt; "Enable 3D acceleration".</li>
+<li>Tener instaladas las "VirtualBox Guest Additions" en la máquina virtual.</li>
 </ul>
+</li>
+</ol>
+</div>
 <h2 id="recursos-extra">Recursos extra</h2>
 <p>Mayormente vía <a href="https://twitter.com/fakeraf">Raf</a>, nuestra fuente diaria de vitaminas. </p>
 <ul>

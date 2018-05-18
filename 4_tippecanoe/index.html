@@ -491,30 +491,38 @@
 <p>Para instalar Tippecanoe en Ubuntu lo más fácil es compilarlo desde el repositorio fuente. Abrimos un terminal y escribimos</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git clone git@github.com:mapbox/tippecanoe.git
-cd tippecanoe
+<span class="nb">cd</span> tippecanoe
 </pre></div>
 </td></tr></table>
 
 <p>Tippecanoe require las librerías sqlite3 y zlib. Para instalar las dependencias escribimos lo siguiente </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>sudo apt-get install build-essential libsqlite3-dev zlib1g-dev
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>sudo apt install build-essential libsqlite3-dev zlib1g-dev
 </pre></div>
 </td></tr></table>
 
 <p>Una vez instaladas las dependencias vamos a compliar el programa, para ello escribiremos</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>make -j
-make install
+sudo make install
 </pre></div>
 </td></tr></table>
 
-<p>Para probar que la instalación ha sido correcta escribimos <code>tippecanoe</code> en el terminal y nos debe retornar el siguiente mensaje</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">tippecanoe</span><span class="o">:</span> <span class="n">must</span> <span class="n">specify</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span><span class="o">.</span><span class="na">mbtiles</span> <span class="n">or</span> <span class="o">-</span><span class="n">e</span> <span class="n">directory</span>
+<p>Para probar que la instalación ha sido correcta escribimos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tippecanoe -v
+</pre></div>
+</td></tr></table>
+
+<p>y nos debe retornar la versión de tippecanoe instalada.</p>
+<p>Una vez está instalado el ejecutable, podemos borrar el proyecto:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ..
+rm -rf tippecanoe
 </pre></div>
 </td></tr></table>
 
 <h2 id="datos">Datos</h2>
 <p>Descageremos algunos datos de <a href="http://www.naturalearthdata.com/">Natural Earth</a> en nuestra carpeta de datos. En el apartado de descargas de Natural Earth hay varios conjuntos de datos (en formato Shapefile) según la escala. </p>
-<p>En el taller trabajaremos con un subconjunto de los datos de la escala 1:10m (1:10.000.000). Para ahorrarnos la transformación de Shapefile a GeoJSON utilizaremos los datos procedentes de <a href="https://github.com/nvkelso/natural-earth-vector/tree/master/geojson"><a href="https://github.com/nvkelso/natural-earth-vector/tree/master/geojson">https://github.com/nvkelso/natural-earth-vector/tree/master/geojson</a></a></p>
+<p>En el taller trabajaremos con un subconjunto de los datos de la escala 1:10m (1:10.000.000). Para ahorrarnos la transformación de Shapefile a GeoJSON utilizaremos los datos procedentes de <a href="https://github.com/nvkelso/natural-earth-vector/tree/master/geojson"><a href="https://github.com/nvkelso/natural-earth-vector/">https://github.com/nvkelso/natural-earth-vector/</a></a></p>
 <p>Descagaremos las siguientes capas:</p>
 <ul>
 <li>Cultural<ul>
@@ -544,7 +552,11 @@ make install
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir naturalearth
+<span class="nb">cd</span> naturalearth
+wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson
 wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_populated_places.geojson
 wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_roads.geojson
 wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_railroads.geojson
@@ -567,13 +579,37 @@ wget https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojs
 <li>-L <em>nombre</em>:<em>archivo.json</em>: permite definir nombres de capa para cada archivo individual.  </li>
 </ul>
 <p>Para generar el archivo mbtiles escribiremos lo siguiente en el terminal.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed -L ocean:ne_10m_ocean.geojson -L land:ne_10m_land.geojson -L admin:ne_10m_admin_0_countries.geojson -L coastline:ne_10m_coastline.geojson -L lakes:ne_10m_lakes.geojson -L rivers:ne_10m_rivers_lake_centerlines.geojson -L rail:ne_10m_railroads.geojson -L roads:ne_10m_roads.geojson -L cities:ne_10m_populated_places.geojson -L airports:ne_10m_airports.geojson 
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed \
+  -L ocean:ne_10m_ocean.geojson \
+  -L land:ne_10m_land.geojson \
+  -L admin:ne_10m_admin_0_countries.geojson \
+  -L coastline:ne_10m_coastline.geojson \
+  -L lakes:ne_10m_lakes.geojson \
+  -L rivers:ne_10m_rivers_lake_centerlines.geojson \
+  -L rail:ne_10m_railroads.geojson \
+  -L roads:ne_10m_roads.geojson \
+  -L cities:ne_10m_populated_places.geojson \
+  -L airports:ne_10m_airports.geojson
 </pre></div>
 </td></tr></table>
 
 <h2 id="visualizar-el-mbtiles">Visualizar el mbtiles</h2>
 <p>Utilizaremos el TileServer para visualizar el mbtiles creado con el Tippecanoe. Para ello escribimos lo siguiente en el terminal:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tileserver-gl-light natural_earth.mbtiles -p 8181
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mv natural_earth.mbtiles ../servidor/data
+cd ../servidor
+npx tileserver-gl-light data/natural_earth.mbtiles -p 8181
 </pre></div>
 </td></tr></table>
 

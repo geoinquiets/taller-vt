@@ -312,9 +312,45 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        6. Cómo servir datos dinámicos
+      </label>
+    
     <a href="./" title="6. Cómo servir datos dinámicos" class="md-nav__link md-nav__link--active">
       6. Cómo servir datos dinámicos
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descarga-datos-de-edificios-de-osm" title="Descarga datos de edificios de OSM" class="md-nav__link">
+    Descarga datos de edificios de OSM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cargar-los-datos-en-postgis" title="Cargar los datos en Postgis" class="md-nav__link">
+    Cargar los datos en Postgis
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -348,6 +384,29 @@
     
   
   
+    <label class="md-nav__title" for="toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descarga-datos-de-edificios-de-osm" title="Descarga datos de edificios de OSM" class="md-nav__link">
+    Descarga datos de edificios de OSM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cargar-los-datos-en-postgis" title="Cargar los datos en Postgis" class="md-nav__link">
+    Cargar los datos en Postgis
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -362,6 +421,34 @@
                 
                 
                 <h1 id="como-servir-datos-dinamicos">Cómo servir datos dinámicos</h1>
+<h2 id="descarga-datos-de-edificios-de-osm">Descarga datos de edificios de OSM</h2>
+<p>Abrimos en un navegador <a href="https://overpass-turbo.eu/">https://overpass-turbo.eu/</a>. Situar la vista del mapa sobre una ciudad (en nuestro caso Barcelona) y copiar el siguiente código.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="x">[out:json][timeout:25];</span>
+<span class="x">// gather results</span>
+<span class="x">(</span>
+<span class="x">  way[&quot;building&quot;=&quot;yes&quot;](</span><span class="cp">{{</span><span class="nv">bbox</span><span class="cp">}}</span><span class="x">);</span>
+<span class="x">);</span>
+<span class="x">// print results</span>
+<span class="x">out body;</span>
+<span class="x">&gt;;</span>
+<span class="x">out skel qt;</span>
+</pre></div>
+</td></tr></table>
+
+<p>Exportar el resultado como GeoJSON y guardarlo en un fichero llamado <em>buildings.geojson</em></p>
+<h2 id="cargar-los-datos-en-postgis">Cargar los datos en Postgis</h2>
+<p>Para cargar los datos utilizaremos la librería de GDAL/OGR con el siguiente comando</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ogr2ogr -s_srs EPSG:4326 -t_srs EPSG:3857 -overwrite -f <span class="s2">&quot;PostgreSQL&quot;</span> -nln public.building PG:<span class="s2">&quot;host=127.0.0.1 user=postgres password=postgres dbname=postgres&quot;</span> buildings.geojson -lco <span class="nv">GEOMETRY_NAME</span><span class="o">=</span>geom  -skipfailures
+</pre></div>
+</td></tr></table>
                 
                   
                 
