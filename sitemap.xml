@@ -4,7 +4,11 @@
     
     <url>
      <loc>/</loc>
+<<<<<<< HEAD
      <lastmod>2018-05-21</lastmod>
+=======
+     <lastmod>2018-05-18</lastmod>
+>>>>>>> e5ee004b9b99ae9d730257cf3fb10bd610e076d9
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +16,11 @@
     
     <url>
      <loc>/1_teoria/</loc>
+<<<<<<< HEAD
      <lastmod>2018-05-21</lastmod>
+=======
+     <lastmod>2018-05-18</lastmod>
+>>>>>>> e5ee004b9b99ae9d730257cf3fb10bd610e076d9
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +28,11 @@
     
     <url>
      <loc>/2_visor_simple/</loc>
+<<<<<<< HEAD
      <lastmod>2018-05-21</lastmod>
+=======
+     <lastmod>2018-05-18</lastmod>
+>>>>>>> e5ee004b9b99ae9d730257cf3fb10bd610e076d9
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +40,11 @@
     
     <url>
      <loc>/3_tileserver_gl/</loc>
+<<<<<<< HEAD
      <lastmod>2018-05-21</lastmod>
+=======
+     <lastmod>2018-05-18</lastmod>
+>>>>>>> e5ee004b9b99ae9d730257cf3fb10bd610e076d9
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +52,11 @@
     
     <url>
      <loc>/4_tippecanoe/</loc>
+<<<<<<< HEAD
      <lastmod>2018-05-21</lastmod>
+=======
+     <lastmod>2018-05-18</lastmod>
+>>>>>>> e5ee004b9b99ae9d730257cf3fb10bd610e076d9
      <changefreq>daily</changefreq>
     </url>
     
@@ -44,7 +64,11 @@
     
     <url>
      <loc>/5_estilos/</loc>
+<<<<<<< HEAD
      <lastmod>2018-05-21</lastmod>
+=======
+     <lastmod>2018-05-18</lastmod>
+>>>>>>> e5ee004b9b99ae9d730257cf3fb10bd610e076d9
      <changefreq>daily</changefreq>
     </url>
     
@@ -52,6 +76,7 @@
     
     <url>
      <loc>/6_servidor_dinamico/</loc>
+<<<<<<< HEAD
      <lastmod>2018-05-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -61,6 +86,9 @@
     <url>
      <loc>/7_sprites_glyphs/</loc>
      <lastmod>2018-05-21</lastmod>
+=======
+     <lastmod>2018-05-18</lastmod>
+>>>>>>> e5ee004b9b99ae9d730257cf3fb10bd610e076d9
      <changefreq>daily</changefreq>
     </url>
     
@@ -68,7 +96,11 @@
     
     <url>
      <loc>/x_markdown/</loc>
+<<<<<<< HEAD
      <lastmod>2018-05-21</lastmod>
+=======
+     <lastmod>2018-05-18</lastmod>
+>>>>>>> e5ee004b9b99ae9d730257cf3fb10bd610e076d9
      <changefreq>daily</changefreq>
     </url>
     
