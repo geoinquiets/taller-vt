@@ -25,4 +25,3 @@ Para cargar los datos utilizaremos la librería de GDAL/OGR con el siguiente com
 ```bash
 ogr2ogr -s_srs EPSG:4326 -t_srs EPSG:3857 -overwrite -f "PostgreSQL" -nln public.building PG:"host=127.0.0.1 user=postgres password=postgres dbname=postgres" buildings.geojson -lco GEOMETRY_NAME=geom  -skipfailures
 ```
-
