@@ -1,0 +1,746 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copiar al portapapeles">
+      
+        <meta name="lang:clipboard.copied" content="Copiado al portapapeles">
+      
+        <meta name="lang:search.language" content="es">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No se encontraron documentos">
+      
+        <meta name="lang:search.result.one" content="1 documento encontrado">
+      
+        <meta name="lang:search.result.other" content="# documentos encontrados">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.2">
+    
+    
+      
+        <title>7. Sprites y Glyphs - Trabajando con VT</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#sprites-y-glyphs" tabindex="1" class="md-skip">
+        Saltar a contenido
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Trabajando con VT" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Trabajando con VT
+              </span>
+              <span class="md-header-nav__topic">
+                7. Sprites y Glyphs
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Teclee para comenzar búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/geoinquiets/taller-vt/" title="Ir al repositorio" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Trabajando con VT
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/geoinquiets/taller-vt/" title="Ir al repositorio" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../1_teoria/" title="1. Qué son" class="md-nav__link">
+      1. Qué son
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../2_visor_simple/" title="2. Cómo visualizarlas" class="md-nav__link">
+      2. Cómo visualizarlas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../3_tileserver_gl/" title="3. Cómo servirlas" class="md-nav__link">
+      3. Cómo servirlas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../4_tippecanoe/" title="4. Cómo crearlas" class="md-nav__link">
+      4. Cómo crearlas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../5_estilos/" title="5. Cómo simbolizarlas" class="md-nav__link">
+      5. Cómo simbolizarlas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../6_servidor_dinamico/" title="6. Cómo servir datos dinámicos" class="md-nav__link">
+      6. Cómo servir datos dinámicos
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        7. Sprites y Glyphs
+      </label>
+    
+    <a href="./" title="7. Sprites y Glyphs" class="md-nav__link md-nav__link--active">
+      7. Sprites y Glyphs
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprites" title="Sprites" class="md-nav__link">
+    Sprites
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-tus-propios-sprites" title="Cómo crear tus propios sprites" class="md-nav__link">
+    Cómo crear tus propios sprites
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glyphs" title="Glyphs" class="md-nav__link">
+    Glyphs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-tus-propios-glyphs" title="Cómo crear tus propios glyphs" class="md-nav__link">
+    Cómo crear tus propios glyphs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../x_markdown/" title="(chuleta markdown)" class="md-nav__link">
+      (chuleta markdown)
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprites" title="Sprites" class="md-nav__link">
+    Sprites
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-tus-propios-sprites" title="Cómo crear tus propios sprites" class="md-nav__link">
+    Cómo crear tus propios sprites
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glyphs" title="Glyphs" class="md-nav__link">
+    Glyphs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-tus-propios-glyphs" title="Cómo crear tus propios glyphs" class="md-nav__link">
+    Cómo crear tus propios glyphs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/geoinquiets/taller-vt/edit/master/docs/7_sprites_glyphs.md" title="Editar esta página" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="sprites-y-glyphs">Sprites y Glyphs</h1>
+<h2 id="sprites">Sprites</h2>
+<div class="admonition quote">
+<p class="admonition-title">Definición</p>
+<p>Un <strong>sprite</strong> es una imagen individual que contiene todos los iconos incluidos en un estilo. Los Sprites se utilizan a menudo en el desarrollo web e incluso en videojuegos para mejorar el rendimiento. Al combinar muchas imágenes pequeñas en una sola imagen (sprite), puede reducir el número de solicitudes necesarias para recuperar todas las imágenes, mejorar el rendimiento y hacer que su mapa sea más rápido.</p>
+<p>Los Sprites pueden tener un tamaño máximo de 1024x1024 píxeles (2048x2048 para pantallas con alta DPI), lo que significa que el sprite completo que contiene todos los iconos debe tener un tamaño inferior a 1024x1024 píxeles. Cada sprite tiene un archivo JSON complementario que define cada icono, incluido el tamaño y la posición del icono dentro del sprite, como indicaciones para cada icono</p>
+<p>Más información en <a href="https://www.mapbox.com/help/define-sprite/">https://www.mapbox.com/help/define-sprite/</a></p>
+</div>
+<p>La propiedad de <strong>sprite</strong> de un estilo proporciona una URL para cargar imágenes pequeñas para usar en la representación de las propiedades de estilo de fondo, patrón de relleno, patrón de línea e imagen de icono.</p>
+<p>Una fuente de sprites válida debe suministrar dos tipos de archivos:</p>
+<ul>
+<li><em>Indice</em> es un fichero JSON que contiene una descripción de cada imagen contenida en el sprite. El contenido de este archivo debe ser un objeto JSON cuyas claves forman identificadores para usar como valores de las propiedades de estilo anteriores, y cuyos valores son objetos que describen las dimensiones (ancho y propiedades de altura) y la proporción de píxeles (pixelRatio) de la imagen y su ubicación dentro del sprite (x e y). Por ejemplo:</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span><span class="s2">&quot;aerialway-15&quot;</span><span class="o">:</span><span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="o">:</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;height&quot;</span><span class="o">:</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;pixelRatio&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">},</span>
+<span class="s2">&quot;airfield-15&quot;</span><span class="o">:</span><span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="o">:</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;height&quot;</span><span class="o">:</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="o">:</span><span class="mi">15</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;pixelRatio&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">}}</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li><em>Imagen</em> fichero PNG que contiene los datos del sprite. Por ejemplo:</li>
+</ul>
+<p><img alt="Sprite" src="../img/sprite.png" /></p>
+<h3 id="como-crear-tus-propios-sprites">Cómo crear tus propios sprites</h3>
+<p>Para crear los sprites hay que crear ambos archivo el JSON de indice y el PNG que contiene todas las imágenes, esto de se puede hacer manualmente con un editor de texto y en editor de imágenes, pero el proceso es lento y laborioso. </p>
+<p>Lo mejor es buscar algún generador de sprites, en la web se pueden encontrar múltiples generadores de sprites para usar en la web que generar el archivo PNG y un archivo CSS que cumple la función del archivo de indice. Para los mapas con mapbox gl el archivo css no sirve ya que necesitamos el archivo JSON.</p>
+<p>Para generar sprites basados en ficheros SVG podemos utilizar <a href="https://github.com/gencat/ICGC-createsprites">https://github.com/gencat/ICGC-createsprites</a> un script de Nodejs basado en la librería de Mapbox <a href="https://github.com/mapbox/spritezero">spritezero</a> que permite generar sprites en @2x y de mayor resolución para usar en pantallas retina, etc.</p>
+<h2 id="glyphs">Glyphs</h2>
+<p>La propiedad de <strong>glyphs</strong> de un estilo proporciona una plantilla de URL para cargar conjuntos de glifos en formato PBF. Sirve para cargar las diferentes fuentes que se utilizar en el mapa. Ejemplo</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf
+</pre></div>
+</td></tr></table>
+
+<p>Esta plantilla de URL debe incluir dos tokens:</p>
+<ul>
+<li>
+<p><em>{fontstack}</em> Cuando se solicitan glifos, este token se reemplaza con una lista de fuentes separadas por comas de una pila de fuentes especificada en la propiedad de fuente de texto de una capa de símbolo.</p>
+</li>
+<li>
+<p><em>{rango}</em> Cuando se solicitan glifos, este token se reemplaza con un rango de 256 puntos de código Unicode. Los rangos reales que se cargan se determinan en tiempo de ejecución según el texto que se debe mostrar.</p>
+</li>
+</ul>
+<h3 id="como-crear-tus-propios-glyphs">Cómo crear tus propios glyphs</h3>
+<h1 id="todo">TODO</h1>
+<p>Puede ser una combinación de <a href="https://github.com/openmaptiles/fonts">https://github.com/openmaptiles/fonts</a> para crear los pbf y de <a href="https://github.com/gencat/ICGC-fonticon-generator">https://github.com/gencat/ICGC-fonticon-generator</a> para generar la fuente desde SVGs</p>
+<h3 id="como-utilizar-los-sprites-y-glyphs-en-el-estilo">Cómo utilizar los sprites y glyphs en el estilo</h3>
+<p>En el fichero de estilo indicar la URL tanto de los sprites como de los glyphs.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>25
+26</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;sprite&quot;</span><span class="o">:</span> <span class="s2">&quot;https://openmaptiles.github.io/osm-bright-gl-style/sprite&quot;</span><span class="p">,</span>
+<span class="s2">&quot;glyphs&quot;</span><span class="o">:</span> <span class="s2">&quot;https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo&quot;</span><span class="p">,</span>
+</pre></div>
+</td></tr></table>
+
+<h4 id="utilizar-sprites-propios">Utilizar sprites propios</h4>
+<p>Para descargar los archivos de sprites escribiremos lo siguiente en nuestro terminal</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir sprites
+<span class="nb">cd</span> sprites
+wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%401.json
+wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%401.png
+wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%402.json
+wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%402.png
+wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%404.json
+wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%404.png
+</pre></div>
+</td></tr></table>
+
+<p>Ir a la carpeta de data </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ..
+</pre></div>
+</td></tr></table>
+
+<p>Modificar el fichero <strong>config.json</strong> del tileserver-gl para agregar la ruta donde se encuentran los sprites</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+<span class="hll">  <span class="s2">&quot;options&quot;</span><span class="o">:</span><span class="p">{</span>
+</span><span class="hll">    <span class="s2">&quot;paths&quot;</span><span class="o">:</span><span class="p">{</span>
+</span><span class="hll">      <span class="s2">&quot;sprites&quot;</span><span class="o">:</span> <span class="s2">&quot;sprites&quot;</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="hll">  <span class="p">},</span>
+</span>  <span class="s2">&quot;styles&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;natural-earth&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;natural_earth.json&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;tilejson&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;overlay&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;natural-earth-2&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;natural_earth_2.json&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;tilejson&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;overlay&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;natural_earth&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;mbtiles&quot;</span><span class="o">:</span> <span class="s2">&quot;natural_earth.mbtiles&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Modificar el fichero <strong>natural_earth_2.json</strong> para cargar los sprites propios. En este caso cargaremos los sprites con resolución para retina.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">.....</span>
+<span class="s2">&quot;sources&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;local&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8181/data/natural_earth.json&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="hll">  <span class="s2">&quot;sprite&quot;</span><span class="o">:</span> <span class="s2">&quot;sprite@2&quot;</span><span class="p">,</span>
+</span>  <span class="s2">&quot;glyphs&quot;</span><span class="o">:</span> <span class="s2">&quot;https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;layers&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+ <span class="p">.....</span>
+</pre></div>
+</td></tr></table>
+
+<p>Reiniciar el tileserver-gl Ctrl+c</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tileserver-gl-light config.json -p <span class="m">8181</span>
+</pre></div>
+</td></tr></table>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../6_servidor_dinamico/" title="6. Cómo servir datos dinámicos" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                6. Cómo servir datos dinámicos
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../x_markdown/" title="(chuleta markdown)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                (chuleta markdown)
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.b438e6c5.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.es.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
