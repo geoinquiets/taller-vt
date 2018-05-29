@@ -4,6 +4,7 @@ Bienvenidos al taller de teselas vectoriales. Este manual está publicado aquí:
 
 # https://geoinquiets.github.io/taller-vt/
 
+
 ## Esenciales para moverse por OSGeo Live
 
 * Usuario: "user"
@@ -11,30 +12,36 @@ Bienvenidos al taller de teselas vectoriales. Este manual está publicado aquí:
 * `Alt + F2` Para lanzar un programa de forma rápida
 * `Shift + Ctrl + V` para pegar un texto del portapapeles en el terminal
 
-## Comprobación del software preinstalado
-
-* [ ] `Alt + F2` => "terminator" debería abrir un terminal.
-* [ ] `google-chrome http://tileserver.fonts.cat/styles/dark-matter/style.json` debería abrir Chrome y mostrar un JSON formateado y coloreado.
-* [ ] `google-chrome http://tileserver.fonts.cat/styles/dark-matter-3d/?vector#16.09/41.3861/2.19226/-47.2/60` debería mostrar un mapa de Barcelona con edificios en 3D, y moverse con soltura.
-* [ ] `node -v` Debería ser 6.x.x (NO mayor que 6, si aparece 8.x.x o 10.x.x, hay que cambiar de versión)
-* [ ] `npm -v`
-* [ ] `code -v`
-* [ ] `tippecanoe -v`
-* [ ] `t_rex -V`
-
-En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.
 
 ## Descarga de los materiales para el taller
 
 ```bash
 cd Desktop
-wget https://geoinquiets.github.io/taller-vt/downolads/taller-vt.zip
+wget https://geoinquiets.github.io/taller-vt/downloads/taller-vt.zip
 unzip taller-vt.zip
 cd taller-vt
 ll
 ```
 
 Así pues, la ruta `~/Desktop/taller-vt` será nuestro directorio base, donde iremos creando los recursos necesarios.
+De momento tenemos los subdirectorios:
+
+* `datos`
+* `maputnik`
+
+
+## Comprobación del software preinstalado
+
+* `Alt + F2` => "terminator" debería abrir un terminal.
+* `google-chrome http://tileserver.fonts.cat/styles/dark-matter/style.json` debería abrir Chrome y mostrar un JSON formateado y coloreado.
+* `google-chrome http://tileserver.fonts.cat/styles/dark-matter-3d/?vector#16.09/41.3861/2.19226/-47.2/60` debería mostrar un mapa de Barcelona con edificios en 3D, y moverse con soltura.
+* `node -v` Debería ser 6.x.x (NO mayor que 6, si aparece 8.x.x o 10.x.x, hay que cambiar de versión)
+* `npm -v`
+* `code -v`
+* `tippecanoe -v`
+* `t_rex -V`
+
+En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.
 
 
 ## Extra: Instalación de requisitos de software
