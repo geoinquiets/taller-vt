@@ -48,9 +48,39 @@ Esta plantilla de URL debe incluir dos tokens:
 
 ### Cómo crear tus propios glyphs
 
-# TODO
+Descargar el proyecto de github `openmaptiles/fonts`
 
-Puede ser una combinación de https://github.com/openmaptiles/fonts para crear los pbf y de https://github.com/gencat/ICGC-fonticon-generator para generar la fuente desde SVGs
+```bash
+wget https://github.com/openmaptiles/fonts/archive/master.zip
+unzip master.zip
+cd fonts-master
+npm install
+node generate.js
+```
+
+Al cabo de un rato, podemos ver los resultados en el directorio `_output`.
+
+Si no queremos generar una tipografía determinada, basta con borrar el directorio que la contiene.
+Del mismo modo podemos añadir tipografías añadiendo directorios. Por ejemplo, para generar "Comic Sans": 
+
+
+```bash
+rm -rf metropolis noto-sans open-sans pt-sans roboto
+cp -r ../datos/comic-sans-ms .
+node generate.js
+```
+
+El directorio `_output` no se borra entre ejecuciones, con lo que habremos conservado todas las fuentes anteriores,
+además de la recién generada "Comic Sans".
+
+Finalmente, copiaremos el contenido de `_output` al directorio `tileserver/fonts`:
+
+```bash
+cp -r _output/* ../tileserver/fonts
+```
+
+Habrá que reiniciar el tileserver para que cargue las nuevas tipografías.
+
 
 ### Cómo utilizar los sprites y glyphs en el estilo
 
@@ -61,8 +91,7 @@ En el fichero de estilo indicar la URL tanto de los sprites como de los glyphs.
 "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo",
 ```
 
-#### Utilizar sprites propios
-
+     
 Para descargar los archivos de sprites escribiremos lo siguiente en nuestro terminal
 
 ``` bash
