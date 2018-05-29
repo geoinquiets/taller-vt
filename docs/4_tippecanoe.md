@@ -12,43 +12,6 @@ Algunos ejemplos:
 
 - Si le das todas las huellas de edificios en Los Ángeles y alejas la vista lo suficiente como para que la mayoría de los edificios individuales ya no sean perceptibles, aún deberías poder ver la extensión y variedad del desarrollo en cada vecindario, no solo en los edificios más grandes del centro.
 
-### Instalación
-
-Para instalar Tippecanoe en Ubuntu lo más fácil es compilarlo desde el repositorio fuente. Abrimos un terminal y escribimos
-
-```bash
-git clone git@github.com:mapbox/tippecanoe.git
-cd tippecanoe
-``` 
-
-Tippecanoe require las librerías sqlite3 y zlib. Para instalar las dependencias escribimos lo siguiente 
-
-```bash
-sudo apt install build-essential libsqlite3-dev zlib1g-dev
-```
-
-Una vez instaladas las dependencias vamos a compliar el programa, para ello escribiremos
-
-```bash
-make -j
-sudo make install
-```
-
-Para probar que la instalación ha sido correcta escribimos:
-
-```bash
-tippecanoe -v
-```
-
-y nos debe retornar la versión de tippecanoe instalada.
-
-Una vez está instalado el ejecutable, podemos borrar el proyecto:
-
-```bash
-cd ..
-rm -rf tippecanoe
-```
-
 
 ## Datos 
 
