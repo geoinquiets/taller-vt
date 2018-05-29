@@ -311,19 +311,6 @@
     Tippecanoe
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instalacion" title="Instalación" class="md-nav__link">
-    Instalación
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -394,18 +381,6 @@
   </li>
 
     
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../x_markdown/" title="(chuleta markdown)" class="md-nav__link">
-      (chuleta markdown)
-    </a>
-  </li>
-
-    
   </ul>
 </nav>
                   </div>
@@ -430,19 +405,6 @@
   <a href="#tippecanoe" title="Tippecanoe" class="md-nav__link">
     Tippecanoe
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instalacion" title="Instalación" class="md-nav__link">
-    Instalación
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -499,39 +461,6 @@
 <p>Si le das todas las huellas de edificios en Los Ángeles y alejas la vista lo suficiente como para que la mayoría de los edificios individuales ya no sean perceptibles, aún deberías poder ver la extensión y variedad del desarrollo en cada vecindario, no solo en los edificios más grandes del centro.</p>
 </li>
 </ul>
-<h3 id="instalacion">Instalación</h3>
-<p>Para instalar Tippecanoe en Ubuntu lo más fácil es compilarlo desde el repositorio fuente. Abrimos un terminal y escribimos</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git clone git@github.com:mapbox/tippecanoe.git
-<span class="nb">cd</span> tippecanoe
-</pre></div>
-</td></tr></table>
-
-<p>Tippecanoe require las librerías sqlite3 y zlib. Para instalar las dependencias escribimos lo siguiente </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>sudo apt install build-essential libsqlite3-dev zlib1g-dev
-</pre></div>
-</td></tr></table>
-
-<p>Una vez instaladas las dependencias vamos a compliar el programa, para ello escribiremos</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>make -j
-sudo make install
-</pre></div>
-</td></tr></table>
-
-<p>Para probar que la instalación ha sido correcta escribimos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tippecanoe -v
-</pre></div>
-</td></tr></table>
-
-<p>y nos debe retornar la versión de tippecanoe instalada.</p>
-<p>Una vez está instalado el ejecutable, podemos borrar el proyecto:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ..
-rm -rf tippecanoe
-</pre></div>
-</td></tr></table>
-
 <h2 id="datos">Datos</h2>
 <p>Descageremos algunos datos de <a href="http://www.naturalearthdata.com/">Natural Earth</a> en nuestra carpeta de datos. En el apartado de descargas de Natural Earth hay varios conjuntos de datos (en formato Shapefile) según la escala. </p>
 <p>En el taller trabajaremos con un subconjunto de los datos de la escala 1:10m (1:10.000.000). Para ahorrarnos la transformación de Shapefile a GeoJSON utilizaremos los datos procedentes de <a href="https://github.com/nvkelso/natural-earth-vector/tree/master/geojson"><a href="https://github.com/nvkelso/natural-earth-vector/">https://github.com/nvkelso/natural-earth-vector/</a></a></p>

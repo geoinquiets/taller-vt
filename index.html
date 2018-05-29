@@ -331,18 +331,6 @@
   </li>
 
     
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="x_markdown/" title="(chuleta markdown)" class="md-nav__link">
-      (chuleta markdown)
-    </a>
-  </li>
-
-    
   </ul>
 </nav>
                   </div>
@@ -376,7 +364,42 @@
                 <h1 id="trabajando-con-teselas-vectoriales">Trabajando con teselas vectoriales</h1>
 <p>Bienvenidos al taller de teselas vectoriales. Este manual está publicado aquí:</p>
 <h1 id="httpsgeoinquietsgithubiotaller-vt"><a href="https://geoinquiets.github.io/taller-vt/">https://geoinquiets.github.io/taller-vt/</a></h1>
-<h2 id="preinstalacion-de-software">Preinstalación de software</h2>
+<h2 id="esenciales-para-moverse-por-osgeo-live">Esenciales para moverse por OSGeo Live</h2>
+<ul>
+<li>Usuario: "user"</li>
+<li>Password: "user"</li>
+<li><code>Alt + F2</code> Para lanzar un programa de forma rápida</li>
+<li><code>Shift + Ctrl + V</code> para pegar un texto del portapapeles en el terminal</li>
+</ul>
+<h2 id="comprobacion-del-software-preinstalado">Comprobación del software preinstalado</h2>
+<ul>
+<li>[ ] <code>Alt + F2</code> =&gt; "terminator" debería abrir un terminal.</li>
+<li>[ ] <code>google-chrome http://tileserver.fonts.cat/styles/dark-matter/style.json</code> debería abrir Chrome y mostrar un JSON formateado y coloreado.</li>
+<li>[ ] <code>google-chrome http://tileserver.fonts.cat/styles/dark-matter-3d/?vector#16.09/41.3861/2.19226/-47.2/60</code> debería mostrar un mapa de Barcelona con edificios en 3D, y moverse con soltura.</li>
+<li>[ ] <code>node -v</code> Debería ser 6.x.x (NO mayor que 6, si aparece 8.x.x o 10.x.x, hay que cambiar de versión)</li>
+<li>[ ] <code>npm -v</code></li>
+<li>[ ] <code>code -v</code></li>
+<li>[ ] <code>tippecanoe -v</code></li>
+<li>[ ] <code>t_rex -V</code></li>
+</ul>
+<p>En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.</p>
+<h2 id="descarga-de-los-materiales-para-el-taller">Descarga de los materiales para el taller</h2>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> Desktop
+wget https://geoinquiets.github.io/taller-vt/downolads/taller-vt.zip
+unzip taller-vt.zip
+<span class="nb">cd</span> taller-vt
+ll
+</pre></div>
+</td></tr></table>
+
+<p>Así pues, la ruta <code>~/Desktop/taller-vt</code> será nuestro directorio base, donde iremos creando los recursos necesarios.</p>
+<h2 id="extra-instalacion-de-requisitos-de-software">Extra: Instalación de requisitos de software</h2>
+<p>El software de base para el taller ya está instalado en los ordenadores del aula, pero indicamos aquí cómo instalarlo
+tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).</p>
 <ol>
 <li><a href="https://www.google.com/chrome/">Google Chrome</a></li>
 <li>La extensión <a href="https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh">json-viewer</a> en Chrome</li>
@@ -405,8 +428,41 @@ Luego, instalar node 6 y npm:</p>
   npm -v # Debería ser 6.x.x o mayor
 </pre></div>
 </td></tr></table>
-6. t-rex:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>curl -O -L https://github.com/t-rex-tileserver/t-rex/releases/download/v0.8.2/t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb <span class="o">&amp;&amp;</span> sudo dpkg -i t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb
+6. tippecanoe:</p>
+<p>Instalar dependencias (librerías sqlite3 y zlib):</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>sudo apt install build-essential libsqlite3-dev zlib1g-dev
+</pre></div>
+</td></tr></table>
+
+<p>Bajarse el código fuente:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git clone https://github.com/mapbox/tippecanoe.git
+<span class="nb">cd</span> tippecanoe
+</pre></div>
+</td></tr></table>
+
+<p>Compilar:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>make -j
+sudo make install
+</pre></div>
+</td></tr></table>
+
+<p>Comprobar la instalación:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tippecanoe -v <span class="c1"># Devolverá, por ejemplo, v1.29.0</span>
+</pre></div>
+</td></tr></table>
+
+<p>Una vez instalado el ejecutable, podemos borrar el código fuente:</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ..
+rm -rf tippecanoe
+</pre></div>
+</td></tr></table>
+7. t-rex:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>curl -O -L https://github.com/t-rex-tileserver/t-rex/releases/download/v0.8.2/t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb <span class="o">&amp;&amp;</span> sudo dpkg -i t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb
+t_rex -V
 </pre></div>
 </td></tr></table>
 
@@ -417,8 +473,8 @@ Luego, instalar node 6 y npm:</p>
 <p>Todo el taller se basa en tener un navegador con capacidades WebGL, que debería
  poder moverse RÁPIDO.</p>
 <ol>
-<li>Comprobar que al abrirse esta página, se ve un mapa de Girona:
-<a href="http://tileserver.fonts.cat/styles/klokantech-basic/?vector#14.37/41.9703/2.815">http://tileserver.fonts.cat/styles/klokantech-basic/?vector#14.37/41.9703/2.815</a></li>
+<li>Comprobar que al abrirse esta página, se ve un mapa de Barcelona con edificios:
+<a href="http://tileserver.fonts.cat/styles/dark-matter-3d/?vector#16.09/41.3861/2.19226/-47.2/60">http://tileserver.fonts.cat/styles/dark-matter-3d/?vector#16.09/41.3861/2.19226/-47.2/60</a></li>
 <li>Comprobar que el mapa se mueve con soltura.</li>
 <li>Si no se puede correr el SO nativo (sería lo ideal), ajustar la configuración
 de VirtualBox para tener activadas las opciones:<ul>
@@ -430,8 +486,8 @@ de VirtualBox para tener activadas las opciones:<ul>
 </li>
 </ol>
 </div>
-<h2 id="recursos-extra">Recursos extra</h2>
-<p>Mayormente vía <a href="https://twitter.com/fakeraf">Raf</a>, nuestra fuente diaria de vitaminas. </p>
+<h2 id="recursos-adicionales">Recursos adicionales</h2>
+<p>Mayormente de <a href="https://twitter.com/fakeraf">Raf</a>, nuestra fuente diaria de vitaminas, vía <a href="https://twitter.com/geoinquiets">Geoinquiets</a>. </p>
 <ul>
 <li><a href="https://github.com/mapbox/awesome-vector-tiles">Awesome Vector Tiles</a> </li>
 <li><a href="https://github.com/lukasmartinelli/naturalearthtiles">Natural Earth Vector Tiles by Lukas Martinelli</a></li>
