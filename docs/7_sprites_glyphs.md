@@ -61,8 +61,7 @@ node generate.js
 Al cabo de un rato, podemos ver los resultados en el directorio `_output`.
 
 Si no queremos generar una tipografía determinada, basta con borrar el directorio que la contiene.
-Del mismo modo podemos añadir tipografías añadiendo directorios. Por ejemplo, para generar "Comic Sans": 
-
+Del mismo modo podemos añadir tipografías añadiendo directorios. Por ejemplo, para generar "Comic Sans":
 
 ```bash
 rm -rf metropolis noto-sans open-sans pt-sans roboto
@@ -81,7 +80,6 @@ cp -r _output/* ../tileserver/fonts
 
 Habrá que reiniciar el tileserver para que cargue las nuevas tipografías.
 
-
 ### Cómo utilizar los sprites y glyphs en el estilo
 
 En el fichero de estilo indicar la URL tanto de los sprites como de los glyphs.
@@ -91,7 +89,6 @@ En el fichero de estilo indicar la URL tanto de los sprites como de los glyphs.
 "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo",
 ```
 
-     
 Para descargar los archivos de sprites escribiremos lo siguiente en nuestro terminal
 
 ``` bash
@@ -111,13 +108,14 @@ Ir a la carpeta de data
 cd ..
 ```
 
-Modificar el fichero **config.json** del tileserver-gl para agregar la ruta donde se encuentran los sprites
+Modificar el fichero **config.json** del tileserver-gl para agregar la ruta donde se encuentran los sprites y los glyphs
 
-``` js hl_lines="2 3 4 5 6"
+``` js hl_lines="2 3 4 5 6 7"
 {
   "options":{
     "paths":{
-      "sprites": "sprites"
+      "sprites": "sprites",
+      "fonts": "fonts"
     }
   },
   "styles": {
@@ -144,7 +142,7 @@ Modificar el fichero **config.json** del tileserver-gl para agregar la ruta dond
 
 Modificar el fichero **natural_earth_2.json** para cargar los sprites propios. En este caso cargaremos los sprites con resolución para retina.
 
-``` js hl_lines="8" linenums="18"
+``` js hl_lines="8 9" linenums="18"
 .....
 "sources": {
     "local": {
@@ -153,14 +151,69 @@ Modificar el fichero **natural_earth_2.json** para cargar los sprites propios. E
     }
   },
   "sprite": "sprite@2",
-  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo",
+  "glyphs": "fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
  .....
 ```
 
-Reiniciar el tileserver-gl Ctrl+c
+Reiniciar el tileserver (*Ctrl+c*)
 
 ``` bash
 tileserver-gl-light config.json -p 8181
 ```
+
+!!! tip "Bonus"
+    ## Generar una fuente de glyphs a partir de un conjunto de iconos de SVG.
+
+    Para transformar un conjunto de iconos SVG en una fuente se pueden utilizar diferentes programas. Aqui un listado de algunas webs que permiten generar fuentes:
+
+    * https://icomoon.io
+    * http://fontello.com/
+    * https://glyphter.com/
+    * http://fontastic.me/
+
+    También podemos generar una fuente propia utilizando el programa https://github.com/gencat/ICGC-fonticon-generator
+
+    Una vez generada la fuente proceder con los pasos indicados en **Cómo crear tus propios glyphs**
+
+    ### Ejemplo
+
+    Generar la fuente por defecto del ICGC-fonticon-generator. Se genera una fuente llamada Geostart-Regular. 
+    
+    Generar los glyphs para esta fuente. Se genera una carpeta llamada Geostart Regular.
+    
+    Copiar la carpeta Geostart Regular en el directorio fonts del tileserver.
+
+    Reiniciar el tileserver
+
+    En nuestro estilo podemos modificar la capa de *aeropuertos* para que en lugar de mostrar un icono de una imagen del sprite, nuestre un icono procedente de nuestra fuente.
+
+    ``` js hl_lines="8 11 12 13 14 15 16 17" linenums="76"
+    ...
+    {
+      "id": "aeropuertos",
+      "type": "symbol",
+      "source": "local",
+      "source-layer": "airports",
+      "paint": {
+        "text-color": "#fabada"
+      },
+      "layout": {
+        "icon-image": "",
+        "text-field": ",",
+        "symbol-placement": "point",
+        "text-font": [
+          "Geostart Regular"
+        ],
+        "text-size": 25
+      },
+      "minzoom": 0
+    }
+    ....
+    ```
+    Como resultado se deben ver los aeropuertos con el icono correspondiente
+
+    ![Aeropuerto](img/aeropuerto_icon.png)
+
+    Una ventaja de utilizar iconos procedentes de glyphs sobre sprites es que funcionan como una fuente y se pueden cambiar de tamaño y color.
