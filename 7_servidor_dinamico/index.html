@@ -343,6 +343,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#instalando-tegola" title="Instalando Tegola" class="md-nav__link">
+    Instalando Tegola
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configurando-tegola" title="Configurando Tegola" class="md-nav__link">
     Configurando Tegola
   </a>
@@ -440,6 +447,13 @@
   
     <label class="md-nav__title" for="toc">Tabla de contenidos</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalando-tegola" title="Instalando Tegola" class="md-nav__link">
+    Instalando Tegola
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#configurando-tegola" title="Configurando Tegola" class="md-nav__link">
@@ -546,6 +560,24 @@ Para el taller los hemos convertido de GeoJSON a PostGIS.</p>
 Se puede acceder a esta BDD con el usuario <code>user</code>, password <code>user</code>.</p>
 <p>Una vez con los datos cargados en PostGIS, usaremos <a href="http://tegola.io/"><code>tegola</code></a> para levantar un servidor de teselas
 vectoriales partir de una BDD PostGIS.</p>
+<h2 id="instalando-tegola">Instalando Tegola</h2>
+<p>Tegola consiste en un solo fichero ejecutable. La instalación consiste en descargarse un zip, descomprimirlo, y copiar
+el fichero ejecutable resultante en una ruta localizable:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>wget https://github.com/go-spatial/tegola/releases/download/v0.6.3/tegola_linux_amd64.zip
+unzip tegola_linux_amd64.zip
+sudo mv tegola_linux_amd64 /usr/local/bin/tegola
+</pre></div>
+</td></tr></table>
+
+<p>Comprobar que puede ejecutarse tegola correctamente, y borrar el zip:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tegola -h <span class="c1"># comprobar instalacion</span>
+rm tegola_linux_amd64.zip
+</pre></div>
+</td></tr></table>
+
 <h2 id="configurando-tegola">Configurando Tegola</h2>
 <p>Tegola necesita de un <a href="http://tegola.io/documentation/configuration">fichero de configuración en formato toml</a> para funcionar.
 En él estableceremos los parámetros de conexión con la BDD y las características de las capas que queremos servir.</p>
@@ -670,7 +702,7 @@ tegola serve
 <p>Activando "Inspect Features" podremos ver los atributos de cada elemento.</p>
 <p>Las teselas están disponibles en: <a href="http://localhost:8083/maps/bcn_geodata/{z}/{x}/{y}.pbf">http://localhost:8083/maps/bcn_geodata/{z}/{x}/{y}.pbf</a></p>
 <h2 id="incorporando-los-datos-en-el-visor-de-barcelona">Incorporando los datos en el visor de Barcelona</h2>
-<p>Añadiremos el siguiente código javascript para incorporar el nuevo origen de datos, y una simbolización básica para mostrar las secciones censales:</p>
+<p>Añadiremos el siguiente código javascript a <code>barcelona.html</code> para incorporar el nuevo origen de datos, y una simbolización básica para mostrar las secciones censales:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -800,6 +832,28 @@ Las definiciones del manual sin un ejemplo concreto son algo difíciles de leer:
 </pre></div>
 </td></tr></table>
 
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Los valores de corte para los diferentes colore se han obtenido calculando los cuantiles con PostgreSQL:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">SELECT</span>
+<span class="n">ntile</span><span class="p">,</span>
+<span class="k">CAST</span><span class="p">(</span><span class="n">min</span><span class="p">(</span><span class="n">densitat</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">INTEGER</span><span class="p">)</span>  <span class="k">AS</span> <span class="n">minAmount</span><span class="p">,</span>
+<span class="k">CAST</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">densitat</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">INTEGER</span><span class="p">)</span>  <span class="k">AS</span> <span class="n">maxAmount</span>
+<span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="p">(</span><span class="n">homes</span><span class="o">+</span><span class="n">dones</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">area</span><span class="o">/</span><span class="mf">1000000</span><span class="p">)</span> <span class="k">as</span> <span class="n">densitat</span><span class="p">,</span> <span class="n">ntile</span><span class="p">(</span><span class="mf">7</span><span class="p">)</span> <span class="k">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="p">(</span><span class="n">homes</span><span class="o">+</span><span class="n">dones</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">area</span><span class="o">/</span><span class="mf">1000000</span><span class="p">))</span> <span class="k">AS</span> <span class="n">ntile</span> <span class="k">FROM</span> <span class="n">seccion_censal</span><span class="p">)</span> <span class="n">x</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">ntile</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">ntile</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
+<p>Y la rampa de color y sus valores RGB de cada color se han obtenido de <a href="https://carto.com/carto-colors/">carto-colors</a>,
+que a su vez están inspirados en ColorBrewer. </p>
+</div>
 <p>Aplicada a la propiedad <code>fill-color</code> del estilo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2

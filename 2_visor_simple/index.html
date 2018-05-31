@@ -310,6 +310,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#contenido-de-un-fichero-de-estilo" title="Contenido de un fichero de estilo" class="md-nav__link">
+    Contenido de un fichero de estilo
+  </a>
+  
+</li>
+      
       
       
       
@@ -429,6 +436,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#contenido-de-un-fichero-de-estilo" title="Contenido de un fichero de estilo" class="md-nav__link">
+    Contenido de un fichero de estilo
+  </a>
+  
+</li>
+      
       
       
       
@@ -471,14 +485,14 @@ live-server
 y se mostrará el contenido del directorio para poder navegar por él.</p>
 <p>Deja la ventana del terminal abierta, y usa la combinación de teclas <code>Ctrl</code> + <code>C</code> para parar el servidor.</p>
 <h2 id="hola-mundo">Hola Mundo</h2>
-<p>Vamos a crear un fichero <code>index.html</code>.</p>
+<p>Vamos a crear un fichero <code>barcelona.html</code>.</p>
 <p>Abre una nueva ventana de terminal (recuerda dejar el servidor activo) y ejecuta Visual Studio Code
 (o el editor que prefieras):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>code .
 </pre></div>
 </td></tr></table>
 
-<p>Crea un fichero <code>index.html</code>:</p>
+<p>Crea un fichero <code>barcelona.html</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -508,7 +522,7 @@ y se mostrará el contenido del directorio para poder navegar por él.</p>
 <p>En este primer ejemplo crearemos un visor de mapas utilizando la librería de Mapbox GL JS.
 Tanto los datos procedente de teselas vectoriales ó vector tiles (VT) como el estilo para
 simbolizar los mismos se encuentran en la red.</p>
-<p>Modificar el archivo <code>index.html</code> para que contenga el siguiente código:</p>
+<p>Modificar el archivo <code>barcelona.html</code> para que contenga el siguiente código:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -656,6 +670,68 @@ de un VT y también permite pasar el cursor sobre los elementos para ver sus pro
 <p>Se recargará la página en el navegador con un nuevo botón que permite la "visión de rayos X" sobre los datos.</p>
 <p><img alt="Resultado visor simple" src="../img/visor_inspect.png" />
 Resultado visor simple</p>
+<h2 id="contenido-de-un-fichero-de-estilo">Contenido de un fichero de estilo</h2>
+<p>Como vemos, el visor es muy sencillo, y parece que toda la "magia" se esconde en el fichero de estilo tras la URL
+<code>https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json</code>.</p>
+<p>Si lo abrimos, es un objeto JSON bastante complejo, pero si nos fijamos en las propiedades de primer nivel, son pocas.
+Las principales: </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OSM Bright&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sprite&quot;</span><span class="p">:</span> <span class="s2">&quot;https://openmaptiles.github.io/osm-bright-gl-style/sprite&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;glyphs&quot;</span><span class="p">:</span> <span class="s2">&quot;https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sources&quot;</span><span class="p">:</span> <span class="p">{</span><span class="err">...</span><span class="p">},</span>
+  <span class="nt">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="err">...</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li><code>version</code> es obligatoria y siempre es 8.</li>
+<li><code>name</code> es opcional pero conveniente, es una etiqueta para mostrar el nombre del estilo. </li>
+<li><code>sprite</code> indica de dónde obtener el conjunto de <strong>iconos</strong> necesarios para simbolizar.</li>
+<li><code>glyphs</code>: indica de dónde obtener el conjunto de <strong>tipografías</strong> necesarios para simbolizar.</li>
+<li><code>sources</code>: los orígenes de datos.</li>
+<li><code>layers</code>: las reglas de simbolización. El orden es importante: Se van dibujando de la primera (que queda por debajo)
+a la última (que queda por encima). Así, la primera regla suele ser el color de fondo del mapa, y las últimas suelen
+ser la toponimia o los PoIs.</li>
+</ul>
+<p>En los próximos capítulos veremos en detalle cómo usar <code>sources</code>, <code>layers</code>, <code>sprites</code> y <code>glyphs</code>.</p>
+<p>Habitualmente también se usan otras propiedades para indicar la vista inicial del mapa. Por ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="err">...</span>
+  <span class="nt">&quot;center&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.15</span><span class="p">,</span> <span class="mf">41.39</span><span class="p">],</span>
+  <span class="nt">&quot;zoom&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+  <span class="nt">&quot;bearing&quot;</span><span class="p">:</span> <span class="mi">-45</span><span class="p">,</span>
+  <span class="nt">&quot;pitch&quot;</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li><code>center</code>: Coordenadas iniciales donde centrar el mapa [lon, lat]</li>
+<li><code>zoom</code>: Zoom inicial del mapa</li>
+<li><code>bearing</code>: Rotación inicial del mapa (en grados)</li>
+<li><code>pitch</code>: Inclinación inicial del mapa para verlo en perspectiva (de 0 a 60 grados)</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>La especificación completa del fichero de estilo es parte de la <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/">documentación on-line de Mapbox GL
+JS</a>.</p>
+</div>
                 
                   
                 

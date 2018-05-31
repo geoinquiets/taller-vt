@@ -295,30 +295,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tileserver-gl" title="TileServer GL" class="md-nav__link">
-    TileServer GL
+  <a href="#instalacion-de-tileserver-gl" title="Instalación de TileServer GL" class="md-nav__link">
+    Instalación de TileServer GL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arranque-con-la-configuracion-por-defecto" title="Arranque con la configuración por defecto" class="md-nav__link">
+    Arranque con la configuración por defecto
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#instalacion" title="Instalación" class="md-nav__link">
-    Instalación
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#obtencion-de-datos" title="Obtención de datos" class="md-nav__link">
-    Obtención de datos
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#arrancar-el-servidor" title="Arrancar el servidor" class="md-nav__link">
-    Arrancar el servidor
+  <a href="#obtener-datos-de-barcelona" title="Obtener datos de Barcelona" class="md-nav__link">
+    Obtener datos de Barcelona
   </a>
   
 </li>
@@ -332,6 +325,27 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-completa" title="Configuración completa" class="md-nav__link">
+    Configuración completa
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anadiendo-datos-de-edificios" title="Añadiendo datos de edificios" class="md-nav__link">
+    Añadiendo datos de edificios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anadiendo-los-nuevos-datos-al-visor" title="Añadiendo los nuevos datos al visor" class="md-nav__link">
+    Añadiendo los nuevos datos al visor
+  </a>
   
 </li>
       
@@ -415,30 +429,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tileserver-gl" title="TileServer GL" class="md-nav__link">
-    TileServer GL
+  <a href="#instalacion-de-tileserver-gl" title="Instalación de TileServer GL" class="md-nav__link">
+    Instalación de TileServer GL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arranque-con-la-configuracion-por-defecto" title="Arranque con la configuración por defecto" class="md-nav__link">
+    Arranque con la configuración por defecto
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#instalacion" title="Instalación" class="md-nav__link">
-    Instalación
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#obtencion-de-datos" title="Obtención de datos" class="md-nav__link">
-    Obtención de datos
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#arrancar-el-servidor" title="Arrancar el servidor" class="md-nav__link">
-    Arrancar el servidor
+  <a href="#obtener-datos-de-barcelona" title="Obtener datos de Barcelona" class="md-nav__link">
+    Obtener datos de Barcelona
   </a>
   
 </li>
@@ -452,6 +459,27 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-completa" title="Configuración completa" class="md-nav__link">
+    Configuración completa
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anadiendo-datos-de-edificios" title="Añadiendo datos de edificios" class="md-nav__link">
+    Añadiendo datos de edificios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anadiendo-los-nuevos-datos-al-visor" title="Añadiendo los nuevos datos al visor" class="md-nav__link">
+    Añadiendo los nuevos datos al visor
+  </a>
   
 </li>
       
@@ -475,14 +503,15 @@
                 
                 
                 <h1 id="como-servir-teselas-vectoriales">Cómo servir teselas vectoriales</h1>
-<h2 id="tileserver-gl">TileServer GL</h2>
-<p>El <a href="http://tileserver.org/">TileServer GL</a> es un servidor de mapas de código abierto creado para teselas vectoriales, y
+<h2 id="instalacion-de-tileserver-gl">Instalación de TileServer GL</h2>
+<p><a href="http://tileserver.org/">TileServer GL</a> es un servidor de mapas de código abierto creado para teselas vectoriales, y
 capaz de renderizar en teselas raster con MapBox GL Native engine en el lado del servidor.</p>
 <p>Proporciona mapas para aplicaciones web y móviles. Es compatibles con Mapbox GL JS, Android SDK, iOS SDK, Leaflet,
 OpenLayers, HighDPI/Retina, SIG a través de WMTS, etc.</p>
 <p>Si se quiere servir teselas raster lo mejor es utilizar la versión de Docker ya que son necesarias algunas librerías
-nativas que pueden variar dependiendo de la plataforma, estas librerías sirven para renderizar las teselas vectoriales en teselas raster. Si únicamente se quiere servir teselas vectoriales se puede utilizar el TileServer GL Light que no tiene ninguna dependencia nativa ya que está desarrollado en javascript.</p>
-<h3 id="instalacion">Instalación</h3>
+nativas que pueden variar dependiendo de la plataforma, estas librerías sirven para renderizar las teselas vectoriales
+en teselas raster. Si únicamente se quiere servir teselas vectoriales se puede utilizar el TileServer GL Light,
+que no tiene ninguna dependencia nativa ya que está desarrollado en javascript.</p>
 <p>Para este taller utilizaremos la versión Light ya que serviremos sólo teselas vectoriales.</p>
 <p>Es necesario tener instalado <a href="https://nodejs.org/es/">Node.js</a> versión 6.</p>
 <div class="admonition warning">
@@ -503,28 +532,29 @@ tileserver-gl-light -v <span class="c1"># Deberia devolver: v2.3.1 </span>
 </pre></div>
 </td></tr></table>
 
-<h3 id="obtencion-de-datos">Obtención de datos</h3>
-<p>Crear una carpeta llamada <code>tileserver/data</code> y copiar en ella el fichero <a href="../data/barcelona.mbtiles">barcelona.mbtiles</a>:</p>
+<h2 id="arranque-con-la-configuracion-por-defecto">Arranque con la configuración por defecto</h2>
+<h3 id="obtener-datos-de-barcelona">Obtener datos de Barcelona</h3>
+<p>Crear una carpeta llamada <code>tileserver/data</code> y copiar en ella el fichero `datos/barcelona.mbtiles:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir -p tileserver/data
-<span class="nb">cd</span> tileserver/data
-wget https://geoinquiets.github.io/taller-vt/data/barcelona.mbtiles
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir -p tileserver/data
+cp datos/barcelona.mbtiles tileserver/data
 </pre></div>
 </td></tr></table>
 
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>En la web de <a href="https://openmaptiles.com/downloads">OpenMapTiles</a> se pueden descargar datos de muchas
-otras ciudades, países, e incluso el planeta entero. Es gratuíto, aunque hay que registrarse.</p>
+otras ciudades, países, e incluso el planeta entero. Es gratuíto, aunque hay que registrarse y los datos
+no están del todo actualizados. </p>
 </div>
-<h3 id="arrancar-el-servidor">Arrancar el servidor</h3>
-<p>Ahora arrancaremos el servidor en el puerto <code>8181</code> (parámetro <code>-p</code>):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tileserver-gl-light barcelona.mbtiles -p <span class="m">8181</span>
+<p>Ahora arrancaremos el servidor en el puerto <code>8081</code> (parámetro <code>-p</code>):</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> tileserver
+tileserver-gl-light data/barcelona.mbtiles -p <span class="m">8081</span>
 </pre></div>
 </td></tr></table>
 
-<p>Abrir el navegador y escribir <a href="http://localhost:8181">http://localhost:8181</a>. Aparecerá la página del TileServer.</p>
+<p>Abrir el navegador y escribir <a href="http://localhost:8081">http://localhost:8081</a>. Aparecerá la página del TileServer.</p>
 <p>Dejar el terminal abierto con el servidor arrancado.</p>
 <p><img alt="TileServer GL Light" src="../img/tileServerGL.png" />
 <em>TileServer GL Light</em></p>
@@ -587,7 +617,7 @@ otras ciudades, países, e incluso el planeta entero. Es gratuíto, aunque hay q
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
         <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="c1">// id del elemento HTML que contendrá el mapa</span>
-<span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8181/styles/osm-bright/style.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
+<span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8081/styles/osm-bright/style.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
 </span>        <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">2.175</span><span class="p">,</span> <span class="mf">41.39</span><span class="p">],</span> <span class="c1">// Ubicación inicial</span>
         <span class="nx">zoom</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span> <span class="c1">// Zoom inicial</span>
         <span class="nx">bearing</span><span class="o">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="c1">// Ángulo de rotación inicial</span>
@@ -604,6 +634,416 @@ otras ciudades, países, e incluso el planeta entero. Es gratuíto, aunque hay q
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </td></tr></table>
+
+<h2 id="configuracion-completa">Configuración completa</h2>
+<p>Paremos el servidor y volvamos a arrancarlo, pero esta vez con la opción <code>-V</code> (verbose):</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> tileserver
+tileserver-gl-light data/barcelona.mbtiles -p <span class="m">8081</span> -V
+</pre></div>
+</td></tr></table>
+
+<p>Observaremos que nos dice "Automatically creating config file for barcelona.mbtiles", y a continuación nos muestra
+el fichero de configuración que ha autogenerado, y que aproximadamente tendrá este aspecto:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;root&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fonts&quot;</span><span class="p">:</span> <span class="s2">&quot;fonts&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="s2">&quot;styles&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mbtiles&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/user/Desktop/taller-vt/tileserver/data&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;klokantech-basic&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;klokantech-basic/style.json&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;tilejson&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">-180</span><span class="p">,</span> <span class="mf">-85.0511</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mf">85.0511</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;osm-bright&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;osm-bright/style.json&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;tilejson&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">-180</span><span class="p">,</span> <span class="mf">-85.0511</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mf">85.0511</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;v3&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mbtiles&quot;</span><span class="p">:</span> <span class="s2">&quot;barcelona.mbtiles&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>La configuración se divide en estos tres elementos:</p>
+<ul>
+<li><code>options.paths</code>: Rutas de donde obtener los diferentes recursos: <code>mbtiles</code> (datos), <code>fonts</code> (también llamados <code>glyphs</code>), y <code>styles</code>.</li>
+<li><code>styles</code>: Ficheros de estilos y alguna información adicional para generar el fichero auxiliar TileJSON.</li>
+<li><code>data</code>: Origenes de datos. Apunta a los diferentes ficheros <code>.mbtiles</code> que queramos servir.</li>
+</ul>
+<p>Copiemos la configuración que nos ha devuelto <code>tileserver-gl-light</code> en el fichero de configuración <code>tileserver/config.json</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Atención a la ruta de <code>options.paths</code>, que puede variar ligeramente entre estos apuntes y la ruta en vuestra máquina,
+dependiendo de la versión exacta de node que tengáis instalada. Tened en cuenta esta discrepancia en la ruta para las
+próximas instrucciones. El resto de la configuración debería ser la misma. </p>
+</div>
+<p>Por defecto <code>Tileserver GL</code> viene con dos estilos incorporados (<code>klokantech-basic</code> y <code>osm-bright</code>) y cuatro tipografías
+(<code>Open Sans</code> en sus varintes <code>Regular</code>, <code>Italic</code>, <code>Bold</code> y <code>Semibold</code>), que se esconden en la ruta profunda indicada en
+<code>options.paths.root</code>.</p>
+<p>Vamos a copiar estos recursos en nuestro directorio de trabajo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir styles
+mkdir fonts
+cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/styles styles
+cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/fonts fonts
+</pre></div>
+</td></tr></table>
+
+<p>Comprobemos que en <code>~/Desktop/taller-vt/tileserver</code> tenemos tres directorios <code>data</code>, <code>fonts</code> y <code>styles</code>, y el fichero <code>config.json</code>.</p>
+<p>Modifiquemos ahora el fichero <code>config.json</code> para apuntar a nuestros recursos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">      <span class="nt">&quot;root&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="nt">&quot;fonts&quot;</span><span class="p">:</span> <span class="s2">&quot;fonts&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="s2">&quot;styles&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="nt">&quot;mbtiles&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+</span>    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;klokantech-basic&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;klokantech-basic/style.json&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;tilejson&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">        <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.898</span><span class="p">,</span> <span class="mf">41.246</span><span class="p">,</span> <span class="mf">2.312</span><span class="p">,</span> <span class="mf">41.533</span><span class="p">]</span>
+</span>      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;osm-bright&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;osm-bright/style.json&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;tilejson&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">        <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.898</span><span class="p">,</span> <span class="mf">41.246</span><span class="p">,</span> <span class="mf">2.312</span><span class="p">,</span> <span class="mf">41.533</span><span class="p">]</span>
+</span>      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;v3&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mbtiles&quot;</span><span class="p">:</span> <span class="s2">&quot;barcelona.mbtiles&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>De paso hemos modificado el BBOX de los datos de Barcelona, que no estaba bien ajustado.</p>
+<p>Arrancamos tileserver de nuevo, sin indicar el fichero de datos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tileserver-gl-light -p <span class="m">8081</span>
+</pre></div>
+</td></tr></table>
+
+<p>Tileserver deberá decir "Using specified config file from config.json". Si vamos a <a href="http://localhost:8081">http://localhost:8081</a> deberíamos
+ver lo mismo que antes, pero ahora podremos ir añadiendo nuestros propios datasets, estilos, tipografías e iconos al
+servidor.</p>
+<h2 id="anadiendo-datos-de-edificios">Añadiendo datos de edificios</h2>
+<p>Vamos a copiar un nuevo <code>.mbtiles</code> con información de edificios:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>cp ../datos/buildings.mbtiles data/
+</pre></div>
+</td></tr></table>
+
+<p>Y lo vamos a añadir al fichero <code>config.json</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;root&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fonts&quot;</span><span class="p">:</span> <span class="s2">&quot;fonts&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="s2">&quot;styles&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mbtiles&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;klokantech-basic&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;klokantech-basic/style.json&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;tilejson&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.898</span><span class="p">,</span> <span class="mf">41.246</span><span class="p">,</span> <span class="mf">2.312</span><span class="p">,</span> <span class="mf">41.533</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;osm-bright&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;osm-bright/style.json&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;tilejson&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.898</span><span class="p">,</span> <span class="mf">41.246</span><span class="p">,</span> <span class="mf">2.312</span><span class="p">,</span> <span class="mf">41.533</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;v3&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mbtiles&quot;</span><span class="p">:</span> <span class="s2">&quot;barcelona.mbtiles&quot;</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;buildings&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">      <span class="nt">&quot;mbtiles&quot;</span><span class="p">:</span> <span class="s2">&quot;buildings.mbtiles&quot;</span>
+</span><span class="hll">    <span class="p">}</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Paramos el servidor y arrancamos de nuevo. Recargando la página <a href="http://localhost:8081">http://localhost:8081</a> veremos el nuevo dataset:</p>
+<p><img alt="Tileserver Buildings Datasource" src="../img/tileserver-buildings-source.png" /></p>
+<p>Haciendo click en "Preview":</p>
+<p><img alt="Tileserver Buildings Inspect" src="../img/tileserver-buildings-preview.png" /></p>
+<p>Efectivamente, se trata de una capa con más de 500.000 construcciones de catastro, con la referencia de la parcela
+catastral a la que pertenece cada construcción, y el número de plantas para cada construcción. </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>¿Para qué sirve el "TileJSON" de un dataset?</p>
+<p>En última instancia, las teselas vectoriales se sirven en un servicio HTTP con una URL que acaba en <code>/{z}/{x}/{y}.pbf</code>.</p>
+<p>De hecho, en el estilo de mapbox podemos indicar esta url directamente, así:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;sources&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="err">...</span>
+    <span class="nt">&quot;buildings&quot;</span><span class="p">,</span> <span class="err">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tiles&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;http://localhost:8081/data/buildings/{z}/{x}/{y}.pbf&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Aunque el método preferido es apuntar a un TileJSON. Esta configuración sería equivalente a la anterior, pero más correcta:
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;sources&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="err">...</span>
+    <span class="nt">&quot;buildings&quot;</span><span class="p">,</span> <span class="err">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8081/data/buildings.json&quot;</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+</td></tr></table></p>
+<p>El fichero TileJSON acaba teniendo una propiedad "tiles" que apunta al servicio XYZ, pero además contiene otros
+metadatos útiles para quien consume el dataset. Por ejemplo, el rango de niveles de zoom válidos para el dataset
+(<code>minzoom</code>, <code>maxzoom</code>) y el bbox válido (<code>bounds</code>), lo que evita hacer peticiones fuera de rango al servidor, y
+otros metadatos como las "capas" contenidas en cada Vector Tile, y los atributos de cada capa. Esto ayuda a funcionar
+al <code>InspectorPlugin</code>, y también nos da información a la hora de simbolizar la capa, ya que nos describe el esquema
+de los datos.</p>
+</div>
+<h2 id="anadiendo-los-nuevos-datos-al-visor">Añadiendo los nuevos datos al visor</h2>
+<p>Para visualizar los datos de edificios en <code>barcelona.html</code>, usar el siguiente código javascript:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
+        <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="c1">// id del elemento HTML que contendrá el mapa</span>
+<span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8081/styles/klokantech-basic/style.json&#39;</span><span class="p">,</span>
+</span><span class="hll">        <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">2.19224</span><span class="p">,</span> <span class="mf">41.38585</span><span class="p">],</span>
+</span><span class="hll">        <span class="nx">zoom</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+</span><span class="hll">        <span class="nx">bearing</span><span class="o">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span>
+</span><span class="hll">        <span class="nx">pitch</span><span class="o">:</span> <span class="mi">60</span><span class="p">,</span>
+</span>        <span class="nx">hash</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Agrega controles de navegación (zoom, rotación) al mapa:</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
+
+    <span class="c1">// Agregar el control de inspección</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">MapboxInspect</span><span class="p">());</span>
+
+<span class="hll">    <span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s2">&quot;buildings&quot;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class="hll">            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8081/data/buildings.json&quot;</span>
+</span><span class="hll">        <span class="p">});</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">({</span>
+</span><span class="hll">            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;source-layer&quot;</span><span class="o">:</span> <span class="s2">&quot;buildingpart&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;paint&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">                <span class="s2">&quot;fill-opacity&quot;</span><span class="o">:</span> <span class="mf">0.75</span><span class="p">,</span>
+</span><span class="hll">                <span class="s2">&quot;fill-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#E9DFCD&quot;</span><span class="p">,</span>
+</span><span class="hll">                <span class="s2">&quot;fill-outline-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#000&quot;</span>
+</span><span class="hll">            <span class="p">}</span>
+</span><span class="hll">        <span class="p">});</span>
+</span>    <span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table>
+
+<p><img alt="Buildings 2d" src="../img/buildings-2d.png" /></p>
+<p>Incluso podemos usar una regla de simbolización de extrusión para verlos en 3D:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s2">&quot;buildings&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8081/data/buildings.json&quot;</span>
+    <span class="p">});</span>
+
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">({</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source-layer&quot;</span><span class="o">:</span> <span class="s2">&quot;buildingpart&quot;</span><span class="p">,</span>
+<span class="hll">        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fill-extrusion&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="s2">&quot;paint&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="hll">            <span class="s2">&quot;fill-extrusion-opacity&quot;</span><span class="o">:</span> <span class="mf">0.75</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;fill-extrusion-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#E9DFCD&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;fill-extrusion-height&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;floors&quot;</span><span class="p">]]</span>
+</span><span class="hll">        <span class="p">}</span>
+</span>    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table>
+
+<p>En la regla de simbolización hemos utilizado como altura de la extrusión el número de plantas multiplicado por 3.</p>
+<p><img alt="Buildings 2d" src="../img/buildings-3d.png" /></p>
                 
                   
                 
