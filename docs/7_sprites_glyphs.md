@@ -179,10 +179,10 @@ tileserver-gl-light config.json -p 8181
 
     ### Ejemplo
 
-    Generar la fuente por defecto del ICGC-fonticon-generator. Se genera una fuente llamada Geostart-Regular. 
-    
+    Generar la fuente por defecto del ICGC-fonticon-generator. Se genera una fuente llamada Geostart-Regular.
+
     Generar los glyphs para esta fuente. Se genera una carpeta llamada Geostart Regular.
-    
+
     Copiar la carpeta Geostart Regular en el directorio fonts del tileserver.
 
     Reiniciar el tileserver
