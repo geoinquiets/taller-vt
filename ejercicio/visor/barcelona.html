@@ -19,11 +19,12 @@
 <script>
     var map = new mapboxgl.Map({
         container: 'map', // id del elemento HTML que contendrá el mapa
-        style: 'http://tileserver.fonts.cat/styles/positron/style.json', //'http://localhost:8181/styles/osm-bright/style.json', // Ubicación del estilo
-        center: [2.175, 41.39], // Ubicación inicial
-        zoom: 13, // Zoom inicial
-        bearing: -45, // Ángulo de rotación inicial
-        hash: true // Permite ir guardando la posición del mapa en la URL
+        style: 'http://localhost:8081/styles/klokantech-basic/style.json', // Ubicación del estilo
+        center: [2.19224, 41.38585],
+        zoom: 15,
+        bearing: -45,
+        pitch: 60,
+        hash: true
     });
 
     // Agrega controles de navegación (zoom, rotación) al mapa:
@@ -33,34 +34,36 @@
     map.addControl(new MapboxInspect());
 
     map.on('load', function() {
-        map.addSource('bcn_geodata', {
+        map.addSource("buildings", {
             "type": "vector",
-            "tiles": ["http://localhost:8083/maps/bcn_geodata/{z}/{x}/{y}.pbf"]
+            "url": "http://localhost:8081/data/buildings.json"
         });
 
         map.addLayer({
-            "id": "seccion_censal",
-            "source": "bcn_geodata",
-            "source-layer": "seccion_censal",
+            "id": "buildings",
+            "source": "buildings",
+            "source-layer": "buildingpart",
             "type": "fill",
             "paint": {
                 "fill-opacity": 0.75,
-                "fill-color": ["step",
-                    ["/",
-                        ["+", ["get", "homes"], ["get", "dones"]],
-                        ["/", ["get", "area"], 1000000]
-                    ],
-                    "#3d5941",
-                    17703, "#778868",
-                    29678, "#b5b991",
-                    37617, "#f6edbd",
-                    46016, "#edbb8a",
-                    54401, "#de8a5a",
-                    66570, "#ca562c"
-                ],
+                "fill-color": "#E9DFCD",
                 "fill-outline-color": "#000"
             }
         });
+
+        /*
+        map.addLayer({
+            "id": "buildings-3d",
+            "source": "buildings",
+            "source-layer": "buildingpart",
+            "type": "fill-extrusion",
+            "paint": {
+                "fill-extrusion-opacity": 0.75,
+                "fill-extrusion-color": "#E9DFCD",
+                "fill-extrusion-height": ["*", 3, ["get", "floors"]]
+            }
+        });
+*/
     });
 </script>
 </body>
