@@ -313,8 +313,8 @@
 
 
   <li class="md-nav__item">
-    <a href="6_servidor_dinamico/" title="6. Cómo servir datos dinámicos" class="md-nav__link">
-      6. Cómo servir datos dinámicos
+    <a href="6_sprites_glyphs/" title="6. Sprites y Glyphs" class="md-nav__link">
+      6. Sprites y Glyphs
     </a>
   </li>
 
@@ -325,8 +325,8 @@
 
 
   <li class="md-nav__item">
-    <a href="7_sprites_glyphs/" title="7. Sprites y Glyphs" class="md-nav__link">
-      7. Sprites y Glyphs
+    <a href="7_servidor_dinamico/" title="7. Cómo servir datos dinámicos" class="md-nav__link">
+      7. Cómo servir datos dinámicos
     </a>
   </li>
 
@@ -371,32 +371,37 @@
 <li><code>Alt + F2</code> Para lanzar un programa de forma rápida</li>
 <li><code>Shift + Ctrl + V</code> para pegar un texto del portapapeles en el terminal</li>
 </ul>
-<h2 id="comprobacion-del-software-preinstalado">Comprobación del software preinstalado</h2>
-<ul>
-<li>[ ] <code>Alt + F2</code> =&gt; "terminator" debería abrir un terminal.</li>
-<li>[ ] <code>google-chrome http://tileserver.fonts.cat/styles/dark-matter/style.json</code> debería abrir Chrome y mostrar un JSON formateado y coloreado.</li>
-<li>[ ] <code>google-chrome http://tileserver.fonts.cat/styles/dark-matter-3d/?vector#16.09/41.3861/2.19226/-47.2/60</code> debería mostrar un mapa de Barcelona con edificios en 3D, y moverse con soltura.</li>
-<li>[ ] <code>node -v</code> Debería ser 6.x.x (NO mayor que 6, si aparece 8.x.x o 10.x.x, hay que cambiar de versión)</li>
-<li>[ ] <code>npm -v</code></li>
-<li>[ ] <code>code -v</code></li>
-<li>[ ] <code>tippecanoe -v</code></li>
-<li>[ ] <code>t_rex -V</code></li>
-</ul>
-<p>En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.</p>
 <h2 id="descarga-de-los-materiales-para-el-taller">Descarga de los materiales para el taller</h2>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
 5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> Desktop
-wget https://geoinquiets.github.io/taller-vt/downolads/taller-vt.zip
+wget https://geoinquiets.github.io/taller-vt/downloads/taller-vt.zip
 unzip taller-vt.zip
 <span class="nb">cd</span> taller-vt
 ll
 </pre></div>
 </td></tr></table>
 
-<p>Así pues, la ruta <code>~/Desktop/taller-vt</code> será nuestro directorio base, donde iremos creando los recursos necesarios.</p>
+<p>Así pues, la ruta <code>~/Desktop/taller-vt</code> será nuestro directorio base, donde iremos creando los recursos necesarios.
+De momento tenemos los subdirectorios:</p>
+<ul>
+<li><code>datos</code></li>
+<li><code>maputnik</code></li>
+</ul>
+<h2 id="comprobacion-del-software-preinstalado">Comprobación del software preinstalado</h2>
+<ul>
+<li><code>Alt + F2</code> =&gt; "terminator" debería abrir un terminal.</li>
+<li><code>google-chrome http://tileserver.fonts.cat/styles/dark-matter/style.json</code> debería abrir Chrome y mostrar un JSON formateado y coloreado.</li>
+<li><code>google-chrome http://tileserver.fonts.cat/styles/dark-matter-3d/?vector#16.09/41.3861/2.19226/-47.2/60</code> debería mostrar un mapa de Barcelona con edificios en 3D, y moverse con soltura.</li>
+<li><code>node -v</code> Debería ser 6.x.x (NO mayor que 6, si aparece 8.x.x o 10.x.x, hay que cambiar de versión)</li>
+<li><code>npm -v</code></li>
+<li><code>code -v</code></li>
+<li><code>tippecanoe -v</code></li>
+<li><code>tegola -h</code></li>
+</ul>
+<p>En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.</p>
 <h2 id="extra-instalacion-de-requisitos-de-software">Extra: Instalación de requisitos de software</h2>
 <p>El software de base para el taller ya está instalado en los ordenadores del aula, pero indicamos aquí cómo instalarlo
 tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).</p>
@@ -459,10 +464,16 @@ sudo make install
 rm -rf tippecanoe
 </pre></div>
 </td></tr></table>
-7. t-rex:</p>
+7. tegola:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>curl -O -L https://github.com/t-rex-tileserver/t-rex/releases/download/v0.8.2/t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb <span class="o">&amp;&amp;</span> sudo dpkg -i t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb
-t_rex -V
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>wget https://github.com/go-spatial/tegola/releases/download/v0.6.3/tegola_linux_amd64.zip
+unzip tegola_linux_amd64.zip
+sudo mv tegola_linux_amd64 /usr/local/bin/tegola
+rm tegola_linux_amd64.zip
+tegola -h <span class="c1"># comprobar instalacion</span>
 </pre></div>
 </td></tr></table>
 
