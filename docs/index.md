@@ -39,7 +39,7 @@ De momento tenemos los subdirectorios:
 * `npm -v`
 * `code -v`
 * `tippecanoe -v`
-* `t_rex -V`
+* `tegola -h`
 
 En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.
 
@@ -108,11 +108,14 @@ tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).
     cd ..
     rm -rf tippecanoe
     ```
-7. t-rex:
+7. tegola:
 
     ```bash
-    curl -O -L https://github.com/t-rex-tileserver/t-rex/releases/download/v0.8.2/t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb && sudo dpkg -i t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb
-    t_rex -V
+    wget https://github.com/go-spatial/tegola/releases/download/v0.6.3/tegola_linux_amd64.zip
+    unzip tegola_linux_amd64.zip
+    sudo mv tegola_linux_amd64 /usr/local/bin/tegola
+    rm tegola_linux_amd64.zip
+    tegola -h # comprobar instalacion
     ```
 
 !!! danger
