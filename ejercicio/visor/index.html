@@ -19,7 +19,7 @@
 <script>
     var map = new mapboxgl.Map({
         container: 'map', // id del elemento HTML que contendrá el mapa
-        style: 'http://localhost:8181/styles/osm-bright/style.json', // Ubicación del estilo
+        style: 'http://tileserver.fonts.cat/styles/positron/style.json', //'http://localhost:8181/styles/osm-bright/style.json', // Ubicación del estilo
         center: [2.175, 41.39], // Ubicación inicial
         zoom: 13, // Zoom inicial
         bearing: -45, // Ángulo de rotación inicial
@@ -31,6 +31,37 @@
 
     // Agregar el control de inspección
     map.addControl(new MapboxInspect());
+
+    map.on('load', function() {
+        map.addSource('bcn_geodata', {
+            "type": "vector",
+            "tiles": ["http://localhost:8083/maps/bcn_geodata/{z}/{x}/{y}.pbf"]
+        });
+
+        map.addLayer({
+            "id": "seccion_censal",
+            "source": "bcn_geodata",
+            "source-layer": "seccion_censal",
+            "type": "fill",
+            "paint": {
+                "fill-opacity": 0.75,
+                "fill-color": ["step",
+                    ["/",
+                        ["+", ["get", "homes"], ["get", "dones"]],
+                        ["/", ["get", "area"], 1000000]
+                    ],
+                    "#3d5941",
+                    17703, "#778868",
+                    29678, "#b5b991",
+                    37617, "#f6edbd",
+                    46016, "#edbb8a",
+                    54401, "#de8a5a",
+                    66570, "#ca562c"
+                ],
+                "fill-outline-color": "#000"
+            }
+        });
+    });
 </script>
 </body>
 </html>
