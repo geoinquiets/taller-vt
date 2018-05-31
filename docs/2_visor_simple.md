@@ -169,7 +169,7 @@ Las principales:
   "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
   "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo",
   "sources": {...},
-  "layers": [....]
+  "layers": [...]
 }
 ```
 
@@ -200,3 +200,7 @@ Habitualmente también se usan otras propiedades para indicar la vista inicial d
 * `zoom`: Zoom inicial del mapa
 * `bearing`: Rotación inicial del mapa (en grados)
 * `pitch`: Inclinación inicial del mapa para verlo en perspectiva (de 0 a 60 grados)
+
+!!! tip
+    La especificación completa del fichero de estilo es parte de la [documentación on-line de Mapbox GL
+    JS](https://www.mapbox.com/mapbox-gl-js/style-spec/).
