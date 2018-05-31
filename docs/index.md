@@ -74,6 +74,7 @@ tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).
       node -v # Debería ser 6.x.x
       npm -v # Debería ser 6.x.x o mayor
     ```
+
 6. tippecanoe:
 
     Instalar dependencias (librerías sqlite3 y zlib):
@@ -108,6 +109,7 @@ tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).
     cd ..
     rm -rf tippecanoe
     ```
+
 7. tegola:
 
     ```bash
