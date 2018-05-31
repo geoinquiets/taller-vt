@@ -28,7 +28,7 @@ Deja la ventana del terminal abierta, y usa la combinación de teclas `Ctrl` + `
 
 ## Hola Mundo
 
-Vamos a crear un fichero `index.html`.
+Vamos a crear un fichero `barcelona.html`.
 
 Abre una nueva ventana de terminal (recuerda dejar el servidor activo) y ejecuta Visual Studio Code
 (o el editor que prefieras):
@@ -37,7 +37,7 @@ Abre una nueva ventana de terminal (recuerda dejar el servidor activo) y ejecuta
 code .
 ```
 
-Crea un fichero `index.html`:
+Crea un fichero `barcelona.html`:
 
 ```html
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ En este primer ejemplo crearemos un visor de mapas utilizando la librería de Ma
 Tanto los datos procedente de teselas vectoriales ó vector tiles (VT) como el estilo para
 simbolizar los mismos se encuentran en la red.
 
-Modificar el archivo `index.html` para que contenga el siguiente código:
+Modificar el archivo `barcelona.html` para que contenga el siguiente código:
 
 ```html hl_lines="7 8 9 10 11 12 13 14 17 18 19 20 21 22 23 24 25 26 27 28 29"
 <!DOCTYPE html>
@@ -152,3 +152,55 @@ Se recargará la página en el navegador con un nuevo botón que permite la "vis
 
 ![Resultado visor simple](img/visor_inspect.png)
 Resultado visor simple
+
+
+## Contenido de un fichero de estilo
+
+Como vemos, el visor es muy sencillo, y parece que toda la "magia" se esconde en el fichero de estilo tras la URL
+`https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json`.
+
+Si lo abrimos, es un objeto JSON bastante complejo, pero si nos fijamos en las propiedades de primer nivel, son pocas.
+Las principales: 
+
+```json
+{
+  "version": 8,
+  "name": "OSM Bright",
+  "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
+  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo",
+  "sources": {...},
+  "layers": [...]
+}
+```
+
+* `version` es obligatoria y siempre es 8.
+* `name` es opcional pero conveniente, es una etiqueta para mostrar el nombre del estilo. 
+* `sprite` indica de dónde obtener el conjunto de **iconos** necesarios para simbolizar.
+* `glyphs`: indica de dónde obtener el conjunto de **tipografías** necesarios para simbolizar.
+* `sources`: los orígenes de datos.
+* `layers`: las reglas de simbolización. El orden es importante: Se van dibujando de la primera (que queda por debajo)
+a la última (que queda por encima). Así, la primera regla suele ser el color de fondo del mapa, y las últimas suelen
+ser la toponimia o los PoIs.
+
+En los próximos capítulos veremos en detalle cómo usar `sources`, `layers`, `sprites` y `glyphs`.
+
+Habitualmente también se usan otras propiedades para indicar la vista inicial del mapa. Por ejemplo:
+
+```json
+{
+  ...
+  "center": [2.15, 41.39],
+  "zoom": 12,
+  "bearing": -45,
+  "pitch": 0
+}
+```
+
+* `center`: Coordenadas iniciales donde centrar el mapa [lon, lat]
+* `zoom`: Zoom inicial del mapa
+* `bearing`: Rotación inicial del mapa (en grados)
+* `pitch`: Inclinación inicial del mapa para verlo en perspectiva (de 0 a 60 grados)
+
+!!! tip
+    La especificación completa del fichero de estilo es parte de la [documentación on-line de Mapbox GL
+    JS](https://www.mapbox.com/mapbox-gl-js/style-spec/).

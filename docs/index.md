@@ -39,7 +39,6 @@ De momento tenemos los subdirectorios:
 * `npm -v`
 * `code -v`
 * `tippecanoe -v`
-* `t_rex -V`
 
 En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.
 
@@ -74,6 +73,7 @@ tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).
       node -v # Debería ser 6.x.x
       npm -v # Debería ser 6.x.x o mayor
     ```
+
 6. tippecanoe:
 
     Instalar dependencias (librerías sqlite3 y zlib):
@@ -107,12 +107,6 @@ tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).
     ```bash
     cd ..
     rm -rf tippecanoe
-    ```
-7. t-rex:
-
-    ```bash
-    curl -O -L https://github.com/t-rex-tileserver/t-rex/releases/download/v0.8.2/t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb && sudo dpkg -i t-rex-v0.8.2-x86_64-unknown-linux-gnu.deb
-    t_rex -V
     ```
 
 !!! danger
