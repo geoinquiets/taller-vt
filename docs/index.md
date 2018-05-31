@@ -39,7 +39,6 @@ De momento tenemos los subdirectorios:
 * `npm -v`
 * `code -v`
 * `tippecanoe -v`
-* `tegola -h`
 
 En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.
 
@@ -108,16 +107,6 @@ tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).
     ```bash
     cd ..
     rm -rf tippecanoe
-    ```
-
-7. tegola:
-
-    ```bash
-    wget https://github.com/go-spatial/tegola/releases/download/v0.6.3/tegola_linux_amd64.zip
-    unzip tegola_linux_amd64.zip
-    sudo mv tegola_linux_amd64 /usr/local/bin/tegola
-    rm tegola_linux_amd64.zip
-    tegola -h # comprobar instalacion
     ```
 
 !!! danger

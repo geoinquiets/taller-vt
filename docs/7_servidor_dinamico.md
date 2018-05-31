@@ -20,6 +20,25 @@ Se puede acceder a esta BDD con el usuario `user`, password `user`.
 Una vez con los datos cargados en PostGIS, usaremos [`tegola`](http://tegola.io/) para levantar un servidor de teselas
 vectoriales partir de una BDD PostGIS.
 
+## Instalando Tegola
+
+Tegola consiste en un solo fichero ejecutable. La instalación consiste en descargarse un zip, descomprimirlo, y copiar
+el fichero ejecutable resultante en una ruta localizable:
+
+```bash
+wget https://github.com/go-spatial/tegola/releases/download/v0.6.3/tegola_linux_amd64.zip
+unzip tegola_linux_amd64.zip
+sudo mv tegola_linux_amd64 /usr/local/bin/tegola
+```
+
+Comprobar que puede ejecutarse tegola correctamente, y borrar el zip:
+
+```bash
+tegola -h # comprobar instalacion
+rm tegola_linux_amd64.zip
+```
+
+
 ## Configurando Tegola
 
 Tegola necesita de un [fichero de configuración en formato toml](http://tegola.io/documentation/configuration) para funcionar.
@@ -119,7 +138,7 @@ Las teselas están disponibles en: http://localhost:8083/maps/bcn_geodata/{z}/{x
 
 ## Incorporando los datos en el visor de Barcelona
 
-Añadiremos el siguiente código javascript para incorporar el nuevo origen de datos, y una simbolización básica para mostrar las secciones censales:
+Añadiremos el siguiente código javascript a `barcelona.html` para incorporar el nuevo origen de datos, y una simbolización básica para mostrar las secciones censales:
 
 ```javascript
     map.on('load', function() {
@@ -218,6 +237,22 @@ Podemos combinar ambas expresiones: "calcula la densidad y luego asigna un color
     66570, "#ca562c"
 ]
 ```
+
+!!! tip
+    Los valores de corte para los diferentes colore se han obtenido calculando los cuantiles con PostgreSQL:
+    
+    ```postgresql
+    SELECT
+    ntile,
+    CAST(min(densitat) AS INTEGER)  AS minAmount,
+    CAST(max(densitat) AS INTEGER)  AS maxAmount
+    FROM (SELECT (homes+dones)/(area/1000000) as densitat, ntile(7) OVER (ORDER BY (homes+dones)/(area/1000000)) AS ntile FROM seccion_censal) x
+    GROUP BY ntile
+    ORDER BY ntile;
+    ```
+    
+    Y la rampa de color y sus valores RGB de cada color se han obtenido de [carto-colors](https://carto.com/carto-colors/),
+    que a su vez están inspirados en ColorBrewer. 
  
 Aplicada a la propiedad `fill-color` del estilo:
 
