@@ -287,7 +287,7 @@ Obtendremos:
 ![Sección Censal 3D](img/tegola-tematico-2.png)
 
 
-## Reto: Añadir extrusión 3D
+## Ejercicio extra: Añadir extrusión 3D
 
 Aplicar una extrusión a cada sección censal de altura proporcional a su densidad de población:
 

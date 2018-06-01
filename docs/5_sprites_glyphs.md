@@ -3,54 +3,121 @@
 ## Sprites
 
 !!! quote "Definición"
-    Un **sprite** es una imagen individual que contiene todos los iconos incluidos en un estilo. Los Sprites se utilizan a menudo en el desarrollo web e incluso en videojuegos para mejorar el rendimiento. Al combinar muchas imágenes pequeñas en una sola imagen (sprite), puede reducir el número de solicitudes necesarias para recuperar todas las imágenes, mejorar el rendimiento y hacer que su mapa sea más rápido.
+    Un **sprite** es una imagen individual que contiene todos los iconos incluidos en un estilo. Al combinar muchas
+    imágenes pequeñas en una sola imagen (sprite), se puede reducir el número de solicitudes necesarias para recuperar
+    todas las imágenes, mejorar el rendimiento y hacer que el mapa sea más rápido.
 
-    Los Sprites pueden tener un tamaño máximo de 1024x1024 píxeles (2048x2048 para pantallas con alta DPI), lo que significa que el sprite completo que contiene todos los iconos debe tener un tamaño inferior a 1024x1024 píxeles. Cada sprite tiene un archivo JSON complementario que define cada icono, incluido el tamaño y la posición del icono dentro del sprite, como indicaciones para cada icono
+    Los Sprites pueden tener un tamaño máximo de 1024x1024 píxeles (o 2048x2048 para pantallas con alta DPI).
+    Cada sprite viene acompañado de un archivo JSON donde se define el nombre de cada icono, y su posición y tamaño
+    para saber cómo "recortarlo" de la imagen común.
+    
+    Más información en sobre sprites https://www.mapbox.com/help/define-sprite/
 
-    Más información en https://www.mapbox.com/help/define-sprite/
 
-La propiedad de **sprite** de un estilo proporciona una URL para cargar imágenes pequeñas para usar en la representación de las propiedades de estilo de fondo, patrón de relleno, patrón de línea e imagen de icono.
+Cada uno de los iconos contenidos en un sprite se puede usar como textura para el fondo del mapa, patrón de relleno para
+un polígono, patrón de dibujo para una línea, o una imagen de icono (símbolo puntual).
 
-Una fuente de sprites válida debe suministrar dos tipos de archivos:
+La propiedad `sprite` de un estilo apunta a una URL **incompleta**, a partir de la cual se pueden encontrar los diferentes
+ficheros (sprites y json complementario).
 
-* *Indice* es un fichero JSON que contiene una descripción de cada imagen contenida en el sprite. El contenido de este archivo debe ser un objeto JSON cuyas claves forman identificadores para usar como valores de las propiedades de estilo anteriores, y cuyos valores son objetos que describen las dimensiones (ancho y propiedades de altura) y la proporción de píxeles (pixelRatio) de la imagen y su ubicación dentro del sprite (x e y). Por ejemplo:
+Por ejemplo, si en el `style.json` se indica:
 
-``` js
-{"aerialway-15":{"width":15,"height":15,"x":0,"y":0,"pixelRatio":1},
-"airfield-15":{"width":15,"height":15,"x":15,"y":0,"pixelRatio":1}}
+```json
+{
+    ...
+    "sprite": "http://localhost:8081/styles/osm-bright/sprite"
+}
 ```
 
-* *Imagen* fichero PNG que contiene los datos del sprite. Por ejemplo:
+En realidad dicha URL no existe. Pero sí existen los siguientes recursos (añadiendo `.png`, `.json`, `@2x.png` y `@2x.json` respectivamente):
+
+* http://localhost:8081/styles/osm-bright/sprite.png Sprite a resolución convencional
+* http://localhost:8081/styles/osm-bright/sprite.json JSON que define cada icono dentro del sprite
+* http://localhost:8081/styles/osm-bright/sprite@2x.png Sprite a resolución doble (para pantallas Retina)
+* http://localhost:8081/styles/osm-bright/sprite@2x.json JSON que define cada icono dentro del sprite de resolución doble
+
+Ejemplo de sprite:
 
 ![Sprite](img/sprite.png)
 
+
+Uno de los elementos definidos en el JSON:
+
+```json
+{
+    ...
+    "airport_11": {
+        "height": 17,
+        "width": 17,
+        "x": 17,
+        "y": 0,
+        "pixelRatio": 1
+    },
+    ....
+}
+```
+
 ### Cómo crear tus propios sprites
 
-Para crear los sprites hay que crear ambos archivo el JSON de indice y el PNG que contiene todas las imágenes, esto de se puede hacer manualmente con un editor de texto y en editor de imágenes, pero el proceso es lento y laborioso. 
+Para generar los sprites a partir de imágenes individuales hay que crear los cuatro archivos. Esto se podría hacer
+manualmente con un editor de texto, un editor de imágenes y mucha paciencia, pero afortunadamente existen herramientas
+que lo automatizan. 
 
-Lo mejor es buscar algún generador de sprites, en la web se pueden encontrar múltiples generadores de sprites para usar en la web que generar el archivo PNG y un archivo CSS que cumple la función del archivo de indice. Para los mapas con mapbox gl el archivo css no sirve ya que necesitamos el archivo JSON.
+Los sprites convencionales para la web difieren de los de Mapbox, ya que utilizan una imagen compuesta `png` y un archivo
+`css` con las reglas de simbolización para su aprovechamiento en páginas web. Mapbox GL, en cambio, necesita el fichero
+`json`, no un CSS. 
 
-Para generar sprites basados en ficheros SVG podemos utilizar https://github.com/gencat/ICGC-createsprites un script de Nodejs basado en la librería de Mapbox [spritezero](https://github.com/mapbox/spritezero) que permite generar sprites en @2x y de mayor resolución para usar en pantallas retina, etc.
+Para generar los sprites y sus json a partir de una colección de imágenes en formato SVG, se recomienda el uso de la
+librería de Mapbox [spritezero-cli](https://github.com/mapbox/spritezero-cli), de la siguiente manera:
+
+```bash
+cd datos
+npm install -g @mapbox/spritezero-cli
+spritezero sprites iconos-maki-svg
+spritezero --retina sprites@2x iconos-maki-svg
+```
+
+Una vez generados, los movemos al directorio donde residirá el estilo que los use (en nuestro caso, `natural-earth`):
+
+```bash
+mkdir ../tileserver/styles/natural-earth
+mv sprites* ../tileserver/styles/natural-earth
+```
+
 
 ## Glyphs
 
-La propiedad de **glyphs** de un estilo proporciona una plantilla de URL para cargar conjuntos de glifos en formato PBF. Sirve para cargar las diferentes fuentes que se utilizar en el mapa. Ejemplo
+En la propiedad `glyphs` se indica una plantilla de URL para cargar tipografías en formato PBF, que se usarán para
+dibujar etiquetas en el mapa. Por ejemplo:
 
-``` 
-https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf
+```json
+{
+    ...
+    "glyphs": "http://localhost:8081/fonts/{fontstack}/{range}.pbf"
+}
 ```
 
 Esta plantilla de URL debe incluir dos tokens:
 
-* *{fontstack}* Cuando se solicitan glifos, este token se reemplaza con una lista de fuentes separadas por comas de una pila de fuentes especificada en la propiedad de fuente de texto de una capa de símbolo.
+* `{fontstack}` es el nombre de la tipografía. Por ejemplo `Open Sans Bold`.
+* `{range}` es un rango de 256 puntos de código Unicode (es decir, un subconjunto de letras o símbolos). En función del texto a mostrar, el visor solicitará los rangos necesarios. El primero es `0-255`.
 
-* *{rango}* Cuando se solicitan glifos, este token se reemplaza con un rango de 256 puntos de código Unicode. Los rangos reales que se cargan se determinan en tiempo de ejecución según el texto que se debe mostrar.
+Una petición real tendría la forma:
+
+* http://localhost:8081/fonts/Open%20Sans%20Bold/0-255.pbf
+
+Un glyph contiene una derivada de la tipografía binaria que permite escalarla sin el pixelado, y sería una imagen en
+ escala de grises con este aspecto:
+
+![Signed Distance Field Glyph](img/signed_distance_field.png)
+
 
 ### Cómo crear tus propios glyphs
 
 Descargar el proyecto de github `openmaptiles/fonts`
 
 ```bash
+cd ~/Desktop/taller-vt/
 wget https://github.com/openmaptiles/fonts/archive/master.zip
 unzip master.zip
 cd fonts-master
@@ -61,7 +128,8 @@ node generate.js
 Al cabo de un rato, podemos ver los resultados en el directorio `_output`.
 
 Si no queremos generar una tipografía determinada, basta con borrar el directorio que la contiene.
-Del mismo modo podemos añadir tipografías añadiendo directorios. Por ejemplo, para generar "Comic Sans":
+Del mismo modo podemos añadir tipografías añadiendo nuevos directorios y copiando dentro las tipografías en
+formato TTF. Por ejemplo, para generar "Comic Sans":
 
 ```bash
 rm -rf metropolis noto-sans open-sans pt-sans roboto
@@ -80,140 +148,34 @@ cp -r _output/* ../tileserver/fonts
 
 Habrá que reiniciar el tileserver para que cargue las nuevas tipografías.
 
-### Cómo utilizar los sprites y glyphs en el estilo
+Podemos ver una lista de las tipografías disponibles en el servidor en la dirección http://localhost:8081/fonts.json
 
-En el fichero de estilo indicar la URL tanto de los sprites como de los glyphs.
 
-``` js linenums="25"
-"sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
-"glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo",
-```
+## Ejercicio extra: Generar una tipografía a partir de un conjunto de iconos en SVG
 
-Para descargar los archivos de sprites escribiremos lo siguiente en nuestro terminal
+Si queremos disponer de una colección de iconos monocromáticos de forma más flexible que usando
+sprites, los podemos convertir en una tipografía. Esto permitirá aplicar las técnicas de las etiquetas de texto a
+nuestros símbolos, como escalarlos sin apreciar pixelado, cambiar su color de base, añadir un halo, etc. 
 
-``` bash
-mkdir sprites
-cd sprites
-wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%401.json
-wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%401.png
-wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%402.json
-wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%402.png
-wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%404.json
-wget https://raw.githubusercontent.com/gencat/ICGC-createsprites/master/output/sprite%404.png
-```
+Para transformar un conjunto de iconos SVG en una fuente se pueden utilizar diferentes programas.
+Aqui un listado de algunas webs que permiten generar fuentes:
 
-Ir a la carpeta de data 
+* https://icomoon.io
+* http://fontello.com/
+* https://glyphter.com/
+* http://fontastic.me/
+
+También podemos generar una fuente propia utilizando el repositorio https://github.com/gencat/ICGC-fonticon-generator,
+de la siguiente manera:
+
 
 ```bash
-cd ..
+git clone https://github.com/gencat/ICGC-fonticon-generator
+npm i -g gulp
+cd ICGC-fonticon-generator/
+npm install
+gulp iconfont
 ```
 
-Modificar el fichero **config.json** del tileserver-gl para agregar la ruta donde se encuentran los sprites y los glyphs
-
-``` js hl_lines="2 3 4 5 6 7"
-{
-  "options":{
-    "paths":{
-      "sprites": "sprites",
-      "fonts": "fonts"
-    }
-  },
-  "styles": {
-    "natural-earth": {
-      "style": "natural_earth.json",
-      "tilejson": {
-        "type": "overlay"
-      }
-    },
-    "natural-earth-2": {
-      "style": "natural_earth_2.json",
-      "tilejson": {
-        "type": "overlay"
-      }
-    }
-  },
-  "data": {
-    "natural_earth": {
-      "mbtiles": "natural_earth.mbtiles"
-    }
-  }
-}
-```
-
-Modificar el fichero **natural_earth_2.json** para cargar los sprites propios. En este caso cargaremos los sprites con resolución para retina.
-
-``` js hl_lines="8 9" linenums="18"
-.....
-"sources": {
-    "local": {
-      "type": "vector",
-      "url": "http://localhost:8181/data/natural_earth.json"
-    }
-  },
-  "sprite": "sprite@2",
-  "glyphs": "fonts/{fontstack}/{range}.pbf",
-  "layers": [
-    {
- .....
-```
-
-Reiniciar el tileserver (*Ctrl+c*)
-
-``` bash
-tileserver-gl-light config.json -p 8181
-```
-
-!!! tip "Bonus"
-    ## Generar una fuente de glyphs a partir de un conjunto de iconos de SVG.
-
-    Para transformar un conjunto de iconos SVG en una fuente se pueden utilizar diferentes programas. Aqui un listado de algunas webs que permiten generar fuentes:
-
-    * https://icomoon.io
-    * http://fontello.com/
-    * https://glyphter.com/
-    * http://fontastic.me/
-
-    También podemos generar una fuente propia utilizando el programa https://github.com/gencat/ICGC-fonticon-generator
-
-    Una vez generada la fuente proceder con los pasos indicados en **Cómo crear tus propios glyphs**
-
-    ### Ejemplo
-
-    Generar la fuente por defecto del ICGC-fonticon-generator. Se genera una fuente llamada Geostart-Regular.
-
-    Generar los glyphs para esta fuente. Se genera una carpeta llamada Geostart Regular.
-
-    Copiar la carpeta Geostart Regular en el directorio fonts del tileserver.
-
-    Reiniciar el tileserver
-
-    En nuestro estilo podemos modificar la capa de *aeropuertos* para que en lugar de mostrar un icono de una imagen del sprite, nuestre un icono procedente de nuestra fuente.
-
-    ``` js hl_lines="8 11 12 13 14 15 16 17" linenums="76"
-    ...
-    {
-      "id": "aeropuertos",
-      "type": "symbol",
-      "source": "local",
-      "source-layer": "airports",
-      "paint": {
-        "text-color": "#fabada"
-      },
-      "layout": {
-        "icon-image": "",
-        "text-field": ",",
-        "symbol-placement": "point",
-        "text-font": [
-          "Geostart Regular"
-        ],
-        "text-size": 25
-      },
-      "minzoom": 0
-    }
-    ....
-    ```
-    Como resultado se deben ver los aeropuertos con el icono correspondiente
-
-    ![Aeropuerto](img/aeropuerto_icon.png)
-
-    Una ventaja de utilizar iconos procedentes de glyphs sobre sprites es que funcionan como una fuente y se pueden cambiar de tamaño y color.
+Una vez generada la fuente, que encontraremos en `iconfont/Geostart-Regular.ttf`, podemos generar los glyphs como se ha
+explicado en el apartado anterior, y añadirlos al tileserver.

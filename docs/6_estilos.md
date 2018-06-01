@@ -481,3 +481,40 @@ Modificar el archivo *index.html* para que el visor de mapa para cargue los dato
 </body>
 </html>
 ```
+
+
+### Ejercicio extra: uso de una tipografía con iconos para simbolizar un punto
+
+Si se ha hecho el ejercicio extra del apartado anterior (Sprites y Glyphs), ahora veremos cómo utilizar la tipografía
+generada a partir de iconos SVG propios:
+
+
+```json hl_lines="8 9 10 11 14"
+{
+  "id": "aeropuertos",
+  "type": "symbol",
+  "source": "local",
+  "source-layer": "airports",
+  "layout": {
+    "symbol-placement": "point",
+    "icon-image": "",
+    "text-font": ["Geostart Regular"],
+    "text-size": 25,
+    "text-field": ","
+  },
+  "paint": {
+    "text-color": "#fabada"
+  },
+  "minzoom": 0
+}
+....
+```
+
+En las líneas destacadas se observa cómo no se usa una `icon-image`, sino una etiqueta de texto (`text-font`, `text-size`
+y `text-field`). En `text-field` se indica una coma `","`, que corresponde al icono que queremos mostrar. Además de poder
+indicar el tamaño que queramos sin miedo a obtener una imagen pixelada, con la propiedad `text-color` también podemos
+escoger el color a voluntad.
+
+Como resultado del estilo indicado se simbolizarían los aeropuertos así:
+
+![Aeropuerto](img/aeropuerto_icon.png)
