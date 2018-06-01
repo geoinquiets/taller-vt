@@ -15,6 +15,6 @@ pages:
 - 2. Cómo visualizarlas: 2_visor_simple.md
 - 3. Cómo servirlas: 3_tileserver_gl.md
 - 4. Cómo crearlas: 4_tippecanoe.md
-- 5. Cómo simbolizarlas: 5_estilos.md
-- 6. Sprites y Glyphs: 6_sprites_glyphs.md
+- 5. Sprites y Glyphs: 5_sprites_glyphs.md
+- 6. Cómo simbolizarlas: 6_estilos.md
 - 7. Cómo servir datos dinámicos: 7_servidor_dinamico.md
