@@ -1,0 +1,57 @@
+{
+  "options": {
+    "paths": {
+      "root": "",
+      "fonts": "fonts",
+      "styles": "styles",
+      "mbtiles": "data"
+    }
+  },
+  "styles": {
+    "klokantech-basic": {
+      "style": "klokantech-basic/style.json",
+      "tilejson": {
+        "bounds": [
+          1.898,
+          41.246,
+          2.312,
+          41.533
+        ]
+      }
+    },
+    "osm-bright": {
+      "style": "osm-bright/style.json",
+      "tilejson": {
+        "bounds": [
+          1.898,
+          41.246,
+          2.312,
+          41.533
+        ]
+      }
+    },
+    "natural-earth": {
+      "style": "natural-earth/style.json",
+      "tilejson": {
+        "bounds": [
+          -180,
+          -85.051129,
+          180,
+          85.051129
+        ]
+      }
+    }
+  },
+  "data": {
+    "v3": {
+      "mbtiles": "barcelona.mbtiles"
+    },
+    "buildings": {
+      "mbtiles": "buildings.mbtiles"
+    },
+    "natural_earth": {
+      "mbtiles": "natural_earth.mbtiles"
+    }
+  }
+}
+

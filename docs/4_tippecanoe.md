@@ -22,21 +22,13 @@ En concreto usaremos las siguientes capas:
     * Rivers + lake centerlines (Rios en única línea que incluyen líneas centrales de lagos)
     * Lakes + Reservoirs (Lagos naturales y artificiales)
 
-Las capas ya descargadas se encuentran en `taller-vt/datos/naturalearth`:
+Nosotros descargaremos las 10 capas de un zip y las descomprimiremos en `taller-vt/datos/naturalearth`:
 
 ```bash
-ne_10m_admin_0_countries.geojson
-ne_10m_populated_places.geojson
-ne_10m_roads.geojson
-ne_10m_railroads.geojson
-ne_10m_airports.geojson
-ne_10m_coastline.geojson
-ne_10m_land.geojson
-ne_10m_ocean.geojson
-ne_10m_rivers_lake_centerlines.geojson
-ne_10m_lakes.geojson
+cd datos
+wget https://geoinquiets.github.io/taller-vt/downloads/naturalearth.zip
+unzip naturalearth.zip 
 ```
-
 
 ## Tippecanoe
 
@@ -76,7 +68,7 @@ Para crear el mbtiles utilizaremos las siguientes [opciones del Tippecanoe](http
 Para generar el archivo mbtiles escribiremos lo siguiente en el terminal:
 
 ```bash
-cd datos
+cd naturalearth
 tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed \
   -L ocean:ne_10m_ocean.geojson \
   -L land:ne_10m_land.geojson \
@@ -95,8 +87,8 @@ tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed \
 Añadiremos el mbtiles a `Tileserver GL` igual que hicimos con los edificios de Barcelona:
 
 ```
-mv natural_earth.mbtiles ../tileserver/data
-cd ../tileserver
+mv natural_earth.mbtiles ../../tileserver/data
+cd ../../tileserver
 ``` 
 
 Editamos `config.json` y añadimos la nueva capa:
