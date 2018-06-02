@@ -441,6 +441,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edicion-manual-del-estilo" title="Edición manual del estilo" class="md-nav__link">
+    Edición manual del estilo
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#crear-un-visor-para-el-nuevo-estilo" title="Crear un visor para el nuevo estilo" class="md-nav__link">
     Crear un visor para el nuevo estilo
@@ -448,22 +461,9 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#estilo-basado-en-datos-data-driven-style" title="Estilo basado en datos (data-driven style)" class="md-nav__link">
-    Estilo basado en datos (data-driven style)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#crear-un-estilo-basado-en-datos" title="Crear un estilo basado en datos" class="md-nav__link">
-    Crear un estilo basado en datos
+  <a href="#estilo-avanzado-basado-en-expresiones" title="Estilo avanzado basado en expresiones" class="md-nav__link">
+    Estilo avanzado basado en expresiones
   </a>
   
     <nav class="md-nav">
@@ -494,6 +494,19 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-de-fuentes-de-datos-externas" title="Uso de fuentes de datos externas" class="md-nav__link">
+    Uso de fuentes de datos externas
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ejercicio-extra-uso-de-una-fuente-con-iconos-para-simbolizar-un-punto" title="Ejercicio extra: uso de una fuente con iconos para simbolizar un punto" class="md-nav__link">
@@ -661,6 +674,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edicion-manual-del-estilo" title="Edición manual del estilo" class="md-nav__link">
+    Edición manual del estilo
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#crear-un-visor-para-el-nuevo-estilo" title="Crear un visor para el nuevo estilo" class="md-nav__link">
     Crear un visor para el nuevo estilo
@@ -668,22 +694,9 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#estilo-basado-en-datos-data-driven-style" title="Estilo basado en datos (data-driven style)" class="md-nav__link">
-    Estilo basado en datos (data-driven style)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#crear-un-estilo-basado-en-datos" title="Crear un estilo basado en datos" class="md-nav__link">
-    Crear un estilo basado en datos
+  <a href="#estilo-avanzado-basado-en-expresiones" title="Estilo avanzado basado en expresiones" class="md-nav__link">
+    Estilo avanzado basado en expresiones
   </a>
   
     <nav class="md-nav">
@@ -714,6 +727,19 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-de-fuentes-de-datos-externas" title="Uso de fuentes de datos externas" class="md-nav__link">
+    Uso de fuentes de datos externas
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ejercicio-extra-uso-de-una-fuente-con-iconos-para-simbolizar-un-punto" title="Ejercicio extra: uso de una fuente con iconos para simbolizar un punto" class="md-nav__link">
@@ -996,13 +1022,17 @@ donde ya habíamos copiado los sprites generados en el apartado anterior.</p>
 </td></tr></table>
 
 <p>Reiniciar tileserver y comprobar que ofrece el nuevo estilo de visualización.</p>
+<h2 id="edicion-manual-del-estilo">Edición manual del estilo</h2>
+<p>Vamos a dejar Maputnik a un lado y vamos a editar el estilo json a mano.</p>
 <h3 id="crear-un-visor-para-el-nuevo-estilo">Crear un visor para el nuevo estilo</h3>
-<p>Vamos a crear un visor para nuestro nuevo estilo:</p>
+<p>Lo primero será crear un visor para los datos y estilo de Natural Earth partiendo del visor de Barcelona.
+También usaremos una copia local del estilo porque será más fácil ir viendo los cambios. Cada vez que guardemos en disco una
+modificación del fichero de estilo, podremos recargar directamente la página en el navegador para reflejar los cambios.</p>
 <ul>
 <li>Copiar el archivo <code>visor/barcelona.html</code> en <code>visor/naturalearth.html</code></li>
 <li>Además, hacer una copia de <code>tileserver/styles/natural-earth/style.json</code> en <code>visor/natural-earth-style.json</code>.</li>
 </ul>
-<p>Por último, editaremos <code>visor/naturalearth.html</code> y en la parte de <code>&lt;script&gt;</code> dejaremos este código:</p>
+<p>Editaremos <code>visor/naturalearth.html</code> y en la parte de <code>&lt;script&gt;</code> dejaremos sólo este código:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1012,10 +1042,8 @@ donde ya habíamos copiado los sprites generados en el apartado anterior.</p>
  7
  8
  9
-10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
     <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span>
-     <span class="c1">// style: &#39;http://localhost:8081/styles/natural-earth/style.json&#39;,</span>
     <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;natural-earth-style.json&#39;</span><span class="p">,</span>
     <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">41</span><span class="p">],</span>
     <span class="nx">zoom</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
@@ -1029,26 +1057,36 @@ donde ya habíamos copiado los sprites generados en el apartado anterior.</p>
 
 <p>Abriendo en el navegador <a href="http://127.0.0.1:8080/naturalearth.html">http://127.0.0.1:8080/naturalearth.html</a> debería verse:</p>
 <p><img alt="Natural Earth Viewer" src="../img/natural_earth_viewer.png" /></p>
-<h2 id="estilo-basado-en-datos-data-driven-style">Estilo basado en datos (data-driven style)</h2>
-<p>El estilo basado en datos le permite estilizar los datos en función de sus propiedades.
-Por ejemplo, cambiar el radio de un círculo en función de la cantidad de clientes,
-cambiar el color de un polígono de estado según la población o usar la lógica condicional
-para crear etiquetas bilingües.</p>
-<p>Para crear estilos basados en datos debemos usar las Mapbox GL JS expressions. En la
-especificación de estilo de Mapbox, el valor de cualquier propiedad de diseño, 
-de estilo o filtro se puede especificar como una expresión. Las expresiones 
-cómo se combinan uno o más valores de propiedad y / o el nivel de zoom actual utilizando
-operaciones lógicas, matemáticas, de cadena o de color para producir el valor de
-propiedad de estilo apropiado o la decisión de filtro.</p>
-<p>Para más información y ejemplos
-<a href="https://www.mapbox.com/help/how-map-design-works/#data-driven-styles">https://www.mapbox.com/help/how-map-design-works/#data-driven-styles</a></p>
-<h3 id="crear-un-estilo-basado-en-datos">Crear un estilo basado en datos</h3>
-<p>Copiar el estilo <strong>natural_earth.json</strong> en un fichero llamado <em>natural_earth_2.json</em></p>
+<h3 id="estilo-avanzado-basado-en-expresiones">Estilo avanzado basado en expresiones</h3>
+<p>El estilo basado en datos permite estilizar los datos en función del valor de sus propiedades.
+Por ejemplo, cambiar el radio de un círculo o el color de un polígono en función de un valor
+numérico, o usar lógica condicional para crear etiquetas multilingües.</p>
+<p>Las <a href="https://www.mapbox.com/mapbox-gl-js/style-spec#expressions">expresiones de Mapbox GL</a> se
+pueden usar en cualquier propiedad de tipo <code>layout</code>, <code>paint</code> o <code>filter</code> de una <code>layer</code>.</p>
+<p>Gracias a las expresiones, una regla de simbolización determinada puede calcularse como el resultado de
+un cálculo donde intervienen los valores de una o más propiedades de una <em>feature</em>. Pueden
+usarse operaciones lógicas, matemáticas, de generación de color, interpolaciones, etc.</p>
 <h4 id="estilo-basado-en-valores-concretos-de-una-propiedad">Estilo basado en valores concretos de una propiedad</h4>
-<p>Editar el fichero <em>natural_earth_2.json</em> y eliminar las capas con id <strong>secundarias</strong>,
-<strong>principales</strong> y <strong>ferrys</strong></p>
-<p>Entre la capa con id <em>land</em> y la capa con id <em>aeropuertos</em> crear una capa con id <strong>roads</strong>.
-El color de las líneas de esta capa varia dependiendo del valor de la propiedad <em>type</em>.</p>
+<p>Abrir el fichero <code>natural-earth-style.json</code> y localizar el layer con id <code>carreteras</code>.</p>
+<p>Vamos a asignar un color distinto en función del valor de la propiedad <code>type</code>.
+Para ello usaremos la expresión <a href="https://www.mapbox.com/mapbox-gl-js/style-spec#expressions-match">Match</a>,
+que asigna a cada valor de entrada un valor de salida distinto (en nuestro caso, un color para
+cada tipo de carretera):</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>[&quot;match&quot;, &lt;propiedad&gt;,
+    &lt;valorentrada_1&gt;, &lt;salida_1&gt;,
+    &lt;entrada_2&gt;, &lt;salida_2&gt;,
+    ...,
+    &lt;salida_por_defecto&gt;
+]
+</pre></div>
+</td></tr></table>
+
+<p>Para obtener el valor de la propiedad de una feature se usa la expresión Get: <code>["get", &lt;nombre_propiedad&gt;]</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1065,38 +1103,20 @@ El color de las líneas de esta capa varia dependiendo del valor de la propiedad
 14
 15
 16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;roads&quot;</span><span class="p">,</span>
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;carreteras&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;line&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;naturalearth&quot;</span><span class="p">,</span>
     <span class="nt">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;roads&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;layout&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;visibility&quot;</span><span class="p">:</span> <span class="s2">&quot;visible&quot;</span>
-    <span class="p">},</span>
+    <span class="nt">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="s2">&quot;featurecla&quot;</span><span class="p">,</span> <span class="s2">&quot;Road&quot;</span><span class="p">]],</span>
     <span class="nt">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;line-color&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;match&quot;</span><span class="p">,</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;get&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;type&quot;</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;Secondary Highway&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;rgba(206, 32, 79, 1)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Ferry Route&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;rgba(138, 154, 241, 1)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Major Highway&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;rgba(20, 52, 232, 1)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;#000000&quot;</span>
-        <span class="p">],</span>
+<span class="hll">            <span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">],</span>
+</span><span class="hll">            <span class="s2">&quot;Major Highway&quot;</span><span class="p">,</span>     <span class="s2">&quot;rgba(20, 52, 232, 1)&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;Secondary Highway&quot;</span><span class="p">,</span> <span class="s2">&quot;rgba(206, 32, 79, 1)&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;Road&quot;</span><span class="p">,</span>              <span class="s2">&quot;rgba(49, 137, 52, 1)&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="s2">&quot;rgba(255, 204, 0, 1)&quot;</span>
+</span>        <span class="p">],</span>
         <span class="nt">&quot;line-width&quot;</span><span class="p">:</span> <span class="mi">2</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -1104,9 +1124,83 @@ El color de las líneas de esta capa varia dependiendo del valor de la propiedad
 </td></tr></table>
 
 <h4 id="estilo-basado-en-el-nivel-del-zoom">Estilo basado en el nivel del zoom</h4>
-<p>Editar el fichero <em>natural_earth_2.json</em> modificar la capa <strong>ciudades_etiquetas</strong> para
-cambiar el tamaño del texto basado en el nivel de zoom del mapa y en la propiedad
-<em>SCALERANK</em></p>
+<p>Localizar el layer con id <code>ciudades</code>.</p>
+<p>Vamos a cambiar el tamaño del texto según el nivel de zoom del mapa, y de la propiedad <code>SCALERANK</code> del dato.</p>
+<p>Usaremos la expresión <a href="https://www.mapbox.com/mapbox-gl-js/style-spec#expressions-case">Case</a>, que tiene
+esta forma:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>[&quot;case&quot;,
+    &lt;condicion_1&gt;, &lt;salida_1&gt;,
+    &lt;condicion_2&gt;, &lt;salida_2&gt;,
+    ...,
+    &lt;salida_por_defecto&gt;
+]
+</pre></div>
+</td></tr></table>
+
+<p>En nuestro caso la usaremos para decir cosas como:</p>
+<ul>
+<li>Si "SCALERANK" es menor que 2, aplica un tamaño de letra 20,</li>
+<li>Si "SCALERANK" está entre 3 y 5, aplica un tamaño de letra 14,</li>
+<li>En cualquier otro caso, aplica un tamaño de letra 10</li>
+</ul>
+<p>Que quedaría expresado así:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">[</span>
+  <span class="s2">&quot;case&quot;</span><span class="p">,</span>
+  <span class="p">[</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]],</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="p">[</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]],</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">14</span><span class="p">,</span>
+  <span class="mi">10</span>
+<span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<p>El operador <code>"number"</code> se usa para convertir el valor <code>SCALERANK</code> a un tipo numérico.</p>
+<p>Y la combinaremos con la expresión <a href="https://www.mapbox.com/mapbox-gl-js/style-spec#expressions-step">Step</a>, que tiene
+esta forma:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>[&quot;step&quot;,
+    &lt;entrada&gt;, &lt;salida_inicial&gt;,
+    &lt;umbral_1&gt;, &lt;salida_1&gt;,
+    &lt;umbral_2&gt;, &lt;salida_2&gt;,
+    ...
+]
+</pre></div>
+</td></tr></table>
+
+<p>En nuestro caso la podemos usar para decir cosas como:</p>
+<ul>
+<li>Usa un tamaño de letra 18 para zooms por debajo de 5.</li>
+<li>Usa un tamaño de letra 20 entre el zoom 5 y 8.</li>
+<li>Usa un tamaño de letra 24 para zooms mayores que 8.</li>
+</ul>
+<p>Que quedaría:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">,</span> <span class="mi">24</span>
+<span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<p>Obviamente podemos combinar ambas expresiones, de forma que la salida para cada nivel de zoom no sea un tamaño de
+ letra concreto, sino que dependa de "SCALERANK". Y nos queda el siguiente monstruo para el Layer:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1140,143 +1234,53 @@ cambiar el tamaño del texto basado en el nivel de zoom del mapa y en la propied
 31
 32
 33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ciudades_etiquetas&quot;</span><span class="p">,</span>
+34</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ciudades&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;symbol&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;naturalearth&quot;</span><span class="p">,</span>
     <span class="nt">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;cities&quot;</span><span class="p">,</span>
     <span class="nt">&quot;layout&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;symbol-placement&quot;</span><span class="p">:</span> <span class="s2">&quot;point&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;text-field&quot;</span><span class="p">:</span> <span class="s2">&quot;{NAME}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;visibility&quot;</span><span class="p">:</span> <span class="s2">&quot;visible&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;text-anchor&quot;</span><span class="p">:</span> <span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;text-offset&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">-1</span><span class="p">],</span>
-    <span class="nt">&quot;text-size&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;step&quot;</span><span class="p">,</span>
-        <span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
-        <span class="p">[</span>
-        <span class="s2">&quot;case&quot;</span><span class="p">,</span>
-        <span class="p">[</span>
-            <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;text-field&quot;</span><span class="p">:</span> <span class="s2">&quot;{NAME}&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;text-anchor&quot;</span><span class="p">:</span> <span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;text-offset&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">-1</span><span class="p">],</span>
+        <span class="nt">&quot;text-size&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
             <span class="p">[</span>
-            <span class="s2">&quot;number&quot;</span><span class="p">,</span>
-            <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]</span>
+              <span class="s2">&quot;case&quot;</span><span class="p">,</span>
+              <span class="p">[</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]],</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">18</span><span class="p">,</span>
+              <span class="mi">0</span>
             <span class="p">],</span>
-            <span class="mi">3</span>
-        <span class="p">],</span>
-        <span class="mi">18</span><span class="p">,</span>
-        <span class="mi">0</span>
-        <span class="p">],</span>
-        <span class="mi">5</span><span class="p">,</span>
-        <span class="p">[</span>
-        <span class="s2">&quot;case&quot;</span><span class="p">,</span>
-        <span class="p">[</span>
-            <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
-            <span class="p">[</span>
-            <span class="s2">&quot;number&quot;</span><span class="p">,</span>
-            <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]</span>
-            <span class="p">],</span>
-            <span class="mi">2</span>
-        <span class="p">],</span>
-        <span class="mi">20</span><span class="p">,</span>
-        <span class="p">[</span>
-            <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
-            <span class="p">[</span>
-            <span class="s2">&quot;number&quot;</span><span class="p">,</span>
-            <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]</span>
-            <span class="p">],</span>
-            <span class="mi">5</span>
-        <span class="p">],</span>
-        <span class="mi">14</span><span class="p">,</span>
-        <span class="mi">10</span>
-        <span class="p">],</span>
-        <span class="mi">8</span><span class="p">,</span>
-        <span class="p">[</span>
-        <span class="s2">&quot;case&quot;</span><span class="p">,</span>
-        <span class="p">[</span>
-            <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
-            <span class="p">[</span>
-            <span class="s2">&quot;number&quot;</span><span class="p">,</span>
-            <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]</span>
-            <span class="p">],</span>
-            <span class="mi">2</span>
-        <span class="p">],</span>
-        <span class="mi">24</span><span class="p">,</span>
-        <span class="p">[</span>
-            <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span>
-            <span class="p">[</span>
-            <span class="s2">&quot;number&quot;</span><span class="p">,</span>
-            <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]</span>
-            <span class="p">],</span>
-            <span class="mi">5</span>
-        <span class="p">],</span>
-        <span class="mi">18</span><span class="p">,</span>
-        <span class="mi">14</span>
+            <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;case&quot;</span><span class="p">,</span>
+                  <span class="p">[</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]],</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">20</span><span class="p">,</span>
+                  <span class="p">[</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]],</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">14</span><span class="p">,</span>
+                  <span class="mi">10</span>
+               <span class="p">],</span>
+            <span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;case&quot;</span><span class="p">,</span>
+                  <span class="p">[</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]],</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">24</span><span class="p">,</span>
+                  <span class="p">[</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]],</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">18</span><span class="p">,</span>
+                  <span class="mi">14</span>
+               <span class="p">]</span>
         <span class="p">]</span>
-    <span class="p">]</span>
     <span class="p">},</span>
     <span class="nt">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;text-halo-color&quot;</span><span class="p">:</span> <span class="s2">&quot;rgba(253, 253, 253, 1)&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;text-halo-width&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="nt">&quot;text-color&quot;</span><span class="p">:</span> <span class="s2">&quot;rgba(16, 16, 16, 1)&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;text-halo-blur&quot;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="nt">&quot;text-halo-color&quot;</span><span class="p">:</span> <span class="s2">&quot;rgba(253, 253, 253, 1)&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;text-color&quot;</span><span class="p">:</span> <span class="s2">&quot;rgba(16, 16, 16, 1)&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;text-halo-width&quot;</span><span class="p">:</span> <span class="mf">1.5</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
+<p>Como se puede observar, las expresiones son tan potentes como difíciles de escribir bien a la primera.</p>
 <h4 id="estilo-basado-en-una-propiedad">Estilo basado en una propiedad</h4>
-<p>Crear una capa con id <strong>ciudades</strong> y de tipo <em>circle</em> entre las capas <em>aeropuertos</em> y
-la capa <em>ciudades_etiquetas</em>. En esta nueva capa el tamaño del circulo utilizará
-directamente el valor de la propiedad <em>SCALERANK</em></p>
+<p>Vamos a crear un nuevo <code>layer</code> llamado <code>ciudades-circle</code>, y la vamos a definir a continuación de <code>ciudades</code>
+y justo antes de <code>aeropuertos</code>. Dibujaremos un círculo cuyo tamaño será inversamente proporcional a la
+propiedad <code>SCALERANK</code>.</p>
+<p>Además, las capitales estatales se simbolizarán como un círculo blanco con un borde grueso, y el resto de
+ciudades con un círculo gris con borde más fino.</p>
+<p>Usaremos la misma expresión Match que hemos visto anteriormente, aplicada a un color y a un grueso de línea.</p>
+<p>Además, aplicaremos una expresión matemática <code>["-"]</code>, que resta dos valores, de manera que el tamaño del círculo
+será <code>10 - SCALERANK</code>: </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1296,153 +1300,70 @@ directamente el valor de la propiedad <em>SCALERANK</em></p>
 17
 18
 19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ciudades&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ciudades-circle&quot;</span><span class="p">,</span>
     <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;circle&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;naturalearth&quot;</span><span class="p">,</span>
     <span class="nt">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;cities&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;layout&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;visibility&quot;</span><span class="p">:</span> <span class="s2">&quot;visible&quot;</span>
-    <span class="p">},</span>
     <span class="nt">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;circle-color&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;match&quot;</span><span class="p">,</span>
-        <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM0CAP&quot;</span><span class="p">],</span>
-        <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;hsl(285, 75%, 68%)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;hsl(0, 96%, 48%)&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;circle-radius&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;SCALERANK&quot;</span><span class="p">]]</span>
+        <span class="nt">&quot;circle-color&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM0CAP&quot;</span><span class="p">],</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;#888&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;#FFF&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;circle-stroke-width&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;ADM0CAP&quot;</span><span class="p">],</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="mi">2</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;circle-radius&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;SCALERANK&quot;</span><span class="p">]]</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p>Agregar el nuevo estilo al fichero de configuración <em>config.json</em> del tileserver-gl</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;styles&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;natural-earth&quot;</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;natural_earth.json&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;tilejson&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;overlay&quot;</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-<span class="hll">    <span class="s2">&quot;natural-earth-2&quot;</span><span class="o">:</span> <span class="p">{</span>
-</span><span class="hll">      <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;natural_earth_2.json&quot;</span><span class="p">,</span>
-</span><span class="hll">      <span class="s2">&quot;tilejson&quot;</span><span class="o">:</span> <span class="p">{</span>
-</span><span class="hll">        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;overlay&quot;</span>
-</span><span class="hll">      <span class="p">}</span>
-</span><span class="hll">    <span class="p">}</span>
-</span>  <span class="p">},</span>
-  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;natural_earth&quot;</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&quot;mbtiles&quot;</span><span class="o">:</span> <span class="s2">&quot;natural_earth.mbtiles&quot;</span>
+<h2 id="uso-de-fuentes-de-datos-externas">Uso de fuentes de datos externas</h2>
+<p>Por último, vamos a añadir un fondo raster al mapa, procedente de otro tileserver.</p>
+<ul>
+<li>Añadiremos un nuevo <code>source</code> de tipo <code>raster</code>, a continuación del source <code>naturalearth</code>:</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="err">...</span>
+    <span class="nt">&quot;relief&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;raster&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tiles&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;tileSize&quot;</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
+        <span class="nt">&quot;maxzoom&quot;</span><span class="p">:</span> <span class="mi">6</span>
     <span class="p">}</span>
-  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p>Parar <em>Ctrl+c</em> y arrancar el tileserver utilizando el archivo de configuración creado</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tileserver-gl-light -c config.test.json -p <span class="m">8181</span>
+<ul>
+<li>Borraremos el <code>layer</code> llamado <code>tierra</code>.</li>
+<li>Añadiremos un nuevo <code>layer</code> justo después del <code>fondo</code> que se llamará <code>terreno</code>:</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;terreno&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;raster&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;relief&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p>Modificar el archivo <em>index.html</em> para que el visor de mapa para cargue los datos de
-Natural Earth con el nuevo estilo creado</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mapa VT<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#39;stylesheet&#39;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css&#39;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#39;https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.css&#39;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#39;stylesheet&#39;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.min.js&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-        <span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
-            <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span> <span class="na">id</span><span class="o">=</span><span class="s">&#39;map&#39;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
-        <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="c1">// id del elemento HTML que contendrá el mapa</span>
-<span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8181/styles/natural-earth-2/style.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
-</span>        <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">2.175</span><span class="p">,</span> <span class="mf">41.39</span><span class="p">],</span> <span class="c1">// Ubicación inicial</span>
-        <span class="nx">zoom</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span> <span class="c1">// Zoom inicial</span>
-        <span class="nx">bearing</span><span class="o">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="c1">// Ángulo de rotación inicial</span>
-        <span class="nx">hash</span><span class="o">:</span> <span class="kc">true</span> <span class="c1">// Permite ir guardando la posición del mapa en la URL</span>
-    <span class="p">});</span>
-
-    <span class="c1">// Agrega controles de navegación (zoom, rotación) al mapa:</span>
-    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
-
-    <span class="c1">// Agregar el control de inspección</span>
-    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">MapboxInspect</span><span class="p">());</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</pre></div>
-</td></tr></table>
-
+<p>El resultado final de aplicar todos estos estilos tendrá este aspecto:</p>
+<p><img alt="Natural Earth Final" src="../img/natural_earth_final.png" /></p>
 <h3 id="ejercicio-extra-uso-de-una-fuente-con-iconos-para-simbolizar-un-punto">Ejercicio extra: uso de una fuente con iconos para simbolizar un punto</h3>
 <p>Si se ha hecho el ejercicio extra del apartado anterior, en el que creábamos una fuente
 a partir de una colección de iconos, ahora veremos cómo utilizarla en el Layer de
