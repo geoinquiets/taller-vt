@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa VT</title>
+    <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.css' rel='stylesheet' />
+    <script src='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.min.js'></script>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id='map'>
+<script>
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'natural-earth-style.json', // ídem que 'http://localhost:8081/styles/natural-earth/style.json',
+        center: [1.5, 41],
+        zoom: 5,
+        hash: true
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new MapboxInspect());
+</script>
+</body>
+</html>

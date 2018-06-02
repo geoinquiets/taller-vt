@@ -1,270 +1,278 @@
 # Cómo simbolizar teselas vectoriales
 
+
 ## Maputnik
 
-Es un editor visual gratuito y abierto para estilos Mapbox GL dirigidos tanto a desarrolladores como a diseñadores de mapas.
+Es un editor visual gratuito y abierto para estilos Mapbox GL dirigidos tanto a desarrolladores
+como a diseñadores de mapas.
 
-Se puede utilizar en línea en [*Maputnik editor*](https://maputnik.github.io/editor/) (todo se guarda en el almacenamiento local) ó se puede hacer una instalación local.
+Se puede utilizar en línea en [*Maputnik editor*](https://maputnik.github.io/editor/) o se puede
+hacer una instalación local.
+
 
 ### Instalación
 
-Si vamos a la página de [*Releases*](https://github.com/maputnik/editor/releases) de Maputnik aparece que la última versión es la v1.0.2. Realmente existe una versión v1.1.0 que está en la página de releases pero que no está marcada como la última versión.
+Se puede descargar la última versión de la [*página de releases*](https://github.com/maputnik/editor/releases).
+En nuestro caso, la tenemos ya descargada en `~/Desktop/taller-vt/maputnik`.
 
-Descagaremos la versión v1.1.0 que es la última versión disponible para la fecha de este taller. 
-
-```bash
-wget https://github.com/maputnik/editor/archive/v1.1.0.tar.gz
-tar -xzvf archivo.tar.gz
-```
-
-Vamos a la carpeta *editor-1.1.0* creada al descomprimir el archivo descargado he instalamos las dependencias del Maputnik
+Para arrancar la versión local:
 
 ```bash
-cd editor-1.1.0
-npm install
+cd ~/Desktop/taller-vt/maputnik
+live-server --port=8082
 ```
 
-Al finalizar la instalación comprobamos que no aparezca ningún error (pueden aparecer algunos WARN) y arrancamos el servidor de Maputnik
-
-```bash
-npm start
-```
-
-Abrir el navegador y escribir http://localhost:8888 y comprobar que aparece la página del Maputnik
+Abrir Maputnik en http://localhost:8082
 
 ![Maputnik](img/maputnik.png)
-*Maputnik*
 
-## Estilizar el mbtiles
 
-Por defecto Maputnik nos
+### Comenzar un estilo nuevo 
+
+En la barra de menú seleccionamos la opción **Open**.
+Del apartado **Gallery Styles**, seleccionamos **Empty Style**.
+
 
 ### Agregar un origen de datos (Source)
 
-En el editor del Maputnik en la barra de menú seleccionamos la opción de **Source** para desplegar el diálogo de gestionar fuentes de datos. En la parte inferior del diálogo esta el apartado para agregar una fuente nueva de datos *Add New Source*. Para agregar nuestra fuente de datos mbtiles tenemos dos opciones.
+En la barra de menú seleccionamos la opción **Source**.
+En la parte inferior del diálogo está la sección: **Add New Source**.
 
 ![Maputnik Add Source](img/maputnik_add_source.png)
 
-*Maputnik agregar origen de datos*
+* Como `Source ID` ponemos `naturalearth`.
+* Como `Source Type` seleccionamos `Vector (TileJSON URL)`.
+* Como `TileJSON URL` seleccionamos `http://localhost:8081/data/natural_earth.json`
 
-1. Vector (TileJSON URL)
+También se podría usar como `Source Type` un `Vector (XYZ URL)`, en cuyo caso también hay que
+indicar el rango de zooms en que los datos son válidos.
 
-*Source ID*: identificador único de la capa: es el nombre que utilizaremos como referencia en las capas. En nuestro caso pondremos *natural_earth*
 
-*Source Type*: tipo de la fuente de datos. Seleccionar la opción de *Vector (TileJSON URL)*
+### Agregar sprite y glyphs
 
-*TileJSON URL*: url del archivo JSON de descripción de la fuente. Pondremos la url de nuestro TileServerGL http://localhost:8181/data/natural_earth.json
-
-2. Vector (XYZ URL)
-
-*Source ID*: identificador único de la capa: es el nombre que utilizaremos como referencia en las capas. En nuestro caso pondremos *natural_earth_1*
-
-*Source Type*: tipo de la fuente de datos. Seleccionar la opción de *Vector (XYZ URL)*
-
-*TileJSON URL*: url del servicio de teselas. Pondremos la url de nuestro TileServerGL http://localhost:8181/data/natural_earth/{z}/{x}/{y}.pbf
-
-*Min Zoom*: 0
-
-*Max Zoom*: 5
-
-### Agregar sprite y glyph
-
-En el editor de Maputnik en la barra de menú seleccionamos la opción de **Style Settings** para desplegar el diálogo de gestionar la configuración del estilo.
+En la barra de menú seleccionamos **Style Settings**:
 
 ![Maputnik Style Settings](img/maputnik_style_settings.png)
 
-*Maputnik configuración de estilo*
+* `Name`: Nombre del estilo. En nuestro caso pondremos `Natural Earth`.
+* `Sprite URL`: Usaremos el sprite de uno de los estilos que tenemos publicados en tileserver `http://localhost:8081/styles/osm-bright/sprite`
+* `Glyphs URL`: Accederemos a las tipografías publicadas en nuestro Tileserver `http://localhost:8081/fonts/{fontstack}/{range}.pbf`
 
-*Name*: nombre del estilo. En nuestro caso pondremos **natural earth**
 
-*Sprite URL*: proporciona una plantilla para cargar imágenes pequeñas para usar en la representación de estilo del fondo, patrones de relleno, patrones de líneas e imagenes de iconos. En nuestro caso pondremos "https://openmaptiles.github.io/osm-bright-gl-style/sprite"
+### Simbolización básica
 
-*Glyphs URL*: proporciona una plantilla para cargar conjuntos de glifos formato PBF. Aquí es donde se cargan las diferentes fuentes. En nuestro caso pondremos "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo"
-
-### Agregar una capa
-
-En el editor de Maputnik presionamos el botón de **Add Layer** para desplegar el diálogo de agregar capa al mapa. 
+Presionamos el botón de **Add Layer**: 
 
 ![Maputnik Add Layer](img/maputnik_add_layer.png)
 
-*Maputnik agregar capa*
+#### Fondo
 
-*ID*: identificador único de la capa. Pondremos *oceanos*
+Añadimos una primera capa de fondo:
 
-*Type*: tipo de capa. Seleccionar la opción de *Fill* ya que la capa es de tipo polígono
+* `ID`: identificador único de la capa. Pondremos `fondo`.
+* `Type`: tipo de capa. Seleccionar la opción de `Background`.
 
-*Source*: identificador del origen de datos. En nuestro caso pondremos *natural_earth*
+Seleccionamos el color en **Paint properties** => **Color**: "#50A8E7".
 
-*Source Layer*: identificador de la capa dentro del origen de datos. Pondremos *ocean* para agregar la capa de los océanos.
+El fondo del mapa pasa a un gris claro.
 
-### Estilizar una capa según un campo
+#### Océanos
 
-En esta versión de maputnik (v1.1.0) no está implemantado el estilo [basado en expressiones](https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions). Se pueden utilizar los [stops](https://blog.mapbox.com/introducing-data-driven-styling-in-mapbox-gl-js-f273121143c3) que actualmente estan *deprecated* para aplicar estilos según el nivel de zoom. En nuestro caso tendremos que utilizar filtros para poder estilizar una capa según un valor de un campo de texto.
+Añadimos ahora los océanos: 
 
-1. Agregar la capa de lineas de Ferry. Presionar el botón de **Add Layer** y rellenar el formulario con la siguiente información:
+* `ID`: identificador único de la capa. Pondremos `oceanos`.
+* `Type`: tipo de capa. Seleccionar la opción de `Fill` ya que la capa es de tipo polígono.
+* `Source`: identificador del origen de datos. En nuestro caso pondremos `naturalearth`.
+* `Source Layer`: identificador de la capa dentro del origen de datos. Pondremos `ocean`.
 
-    *ID*: *ferrys*
+Aparecerán los océanos de color negro.
 
-    *Type*: *Line* ya que la capa es de tipo línea
+Simbolizamos la capa seleccionando un color RGB en **Paint properties** => **Color**: "#50A8E7".
 
-    *Source*: *natural_earth*
+En el apartado inferior del panel de propiedades de la capa, vamos viendo la definición tal
+como se guardará en el fichero json de estilo:
 
-    *Source Layer*: *roads* para agregar la capa de carreteras que también contiena las lineas de ferry.
+```json
+{
+  "id": "oceanos",
+  "type": "fill",
+  "source": "naturalearth",
+  "source-layer": "ocean",
+  "paint": {
+    "fill-color": "#50A8E7"
+  }
+}
+``` 
 
-2. Vemos que aparecen todas las carreteras en el mapa.
+Maputnik no es más que un asistente gráfico para generar el fichero `style.json`. 
 
-3. Filtar la información. Selección la capa de *ferrys* y en el apartado de Filter presionar el botón de **Add filter**. En registro que aparece poner la siguiente información:
+#### Resto de capas básicas
+
+El resto de capas se puede simbolizar procediendo de la misma manera: 
+
+| id | type | source-layer | color | otras propiedades "paint" |
+|----|------|--------------|-------|-------------------|
+| fondo | Background | -- | #F8F4F0 | -- |
+| oceanos | Fill | ocean | #A0C8F0 | -- |
+| tierra | Fill | land | #E6C7C7 | -- |
+| costa | Line | coastline | #4793E8 | -- |
+| rios | Line | rivers | #4793E8 | -- |
+| lagos | Fill | lakes | #A0C8F0 | "stroke-color": "#4793E8" |
+| ferrocarril | Line | rail | #707070 | -- | 
+| carreteras | Line | roads | #BF5757 | -- |
+
+![Maputnik Add Filter](img/maputnik_mapa_base.png)
+
+### Filtrar los datos a mostrar en una capa
+
+Vamos a eliminar las rutas de ferry que se muestran como carreteras.
+
+Hay dos maneras de definir un filtro en un estilo MapboxGL:
+1. **Filters**: La forma clásica, que implementa Maputnik: https://www.mapbox.com/mapbox-gl-js/style-spec/#other-filter
+2. **Decision Expressions**: La nueva forma, más potente, pero que Maputnik no implementa: https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-decision
+
+En Maputnik, seleccionando la capa `carreteras`, apartado **Filter**: Presionamos el botón **Add filter**.
+La condición será:
+
+        featurecla == Road
 
 ![Maputnik Add Filter](img/maputnik_add_filter.png)
 
-*Maputnik agregar filtro a una capa*
+Comprobar que desaparecen las líneas de Ferry en el mapa.
 
-    * Cambiar donde dice name por *type*
+!!! tip
+    Usa el **Inspect Mode** integrado en Maputnik para explorar los diferentes campos de una capa y sus posibles valores.
 
-    * Dejar el selector de comparación en *==*
+#### Ejercicio extra
 
-    * Escribir en el campo de valor (que está vacio) *Ferry Route*
+Crea una nueva capa "ferrys" y aplica el filtro contrario para mostrar sólo las rutas de ferry.
+Investiga la propiedad `Dasharray` para darle un aspecto de línea discontinua a las rutas.
 
-Comprobar que sólo aparacen las líneas de Ferry en el mapa.
+![Maputnik Ferries](img/maputnik_ferries.png)
 
-!!! question
-    Hacer lo mismo para agregar la capa de carreteras principales(Major Highway) y secundarias(Secondary Highway).
 
 ### Etiquetar una capa
 
-1. Agregar la capa de ciudades. Presionar el botón de **Add Layer** y rellenar el formulario con la siguiente información:
+1. Agregar la capa de ciudades. Presionar el botón de **Add Layer** y rellenar el formulario con
+la siguiente información:
 
-    *ID*: *ciudades_etiquetas*
+    * `ID`: `ciudades`
+    * `Type`: `Symbol`, utilizado para mostrar entidades puntuales (iconos y etiquetas)
+    * `Source`: `naturalearth`
+    * `Source Layer`: `cities`
 
-    *Type*: *Symbol* ya que queremos que sea de tipo texto
+2. En el apartado **Text layout properties**:
 
-    *Source*: *natural_earth*
+    * En la propiedad `Field` escribir `{NAME}` (el nombre del campo a mostrar, entre llaves).
+    * En la propiedad `Font`, escribir `Comic Sans`, tipografía que hemos generado y publicado en el apartado anterior (nota: el taller sobre cómo evitar hacer mapas feos es esta tarde).
 
-    *Source Layer*: *cities* para agregar la capa de ciudades.
+3. Estilizar las etiquetas. En el apartado de **Text paint properties**:
+ Para los textos podemos definir un Halo para que el teto destaque mejor en nuestro mapa.
 
-2. Agregar el campo por el que se quiere etiquetar. Seleccionar la capa de *ciudades* y en el apartado de **Text layout properties** en el campo *Field* escribir **{nombre del campo}**. En nuestro caso debemos escribir *{NAME}*.
-
-3. Estilizar las etiquetas. En el apartado de **Text paint properties** podemos definir el estilo de las etiquetas. Para los textos podemos definir un Halo para que el teto destaque mejor en nuestro mapa.
 
 ### Utilizar un icono para simbolizar nuestra capa
 
-1. Agregar la capa de aeropuertos. Presionar el botón de **Add Layer** y rellenar el formulario con la siguiente información:
+1. Agregar la capa de aeropuertos. Presionar el botón de **Add Layer** y rellenar el formulario con
+la siguiente información:
 
-    *ID*: *aeropuertos*
+    * `ID`: `aeropuertos`
+    * `Type`: `Symbol`, utilizado para mostrar entidades puntuales (iconos y etiquetas)
+    * `Source`: `naturalearth`
+    * `Source Layer`: `airports`
 
-    *Type*: *Symbol* ya que queremos que sea de tipo texto
+2. En el apartado de **Icon layout properties**:
 
-    *Source*: *natural_earth*
+    * En la propiedad `Image`, escribir `airport_11`. Este nombre debe coincidir con alguna imagen definida en el sprite.
 
-    *Source Layer*: *airports* para agregar la capa de aeropuertos.
-
-2. Agregar el icono. Selecccionar la capa de *aeropuertos* y en el apartado de **Icon layout properties** escribir en el campo *Image* **airport_11**. Este nombre debe coincidir con alguna imagen definida en el sprite.
-
-3. Comprobar que aparecen los aeropuertos en el mapa
+3. Comprobar que aparecen los aeropuertos en el mapa.
 
 !!! tip
-    Aqui puede ver la lista de los nombres de las imágenes del sprite que estamos utilizando https://github.com/openmaptiles/osm-bright-gl-style/tree/master/icons.
+    Estos son los iconos del sprite del estilo (`osm-bright`) que estamos utilizando:
+    https://github.com/openmaptiles/osm-bright-gl-style/tree/master/icons
 
-## Ejercicio
-
- Agregar y aplicar estilo al resto de capas del **natural_earth.mbtiles**
 
 ### Exportar el estilo creado
 
-En el editor de Maputnik en la barra de menú seleccionamos la opción de **Export** para desplegar el diálogo de exportación del estilo.
+Seleccionar la opción **Export**, y luego el boton de **Download** para descargar el estilo en nuestro ordenador.
+Descargamos el archivo, lo renombramos a `style.json` y lo movemos a la carpeta `tileserver/styles/natural-earth/`,
+donde ya habíamos copiado los sprites generados en el apartado anterior.
 
-En el dialogo presionamos el boton de **Download** para descargar el estilo en nuestro ordenador.
+Habrá que editar el fichero de configuración de tileserver `tileserver/config.json` para añadir el estilo: 
 
-Descargamos el archivo y lo renombramos a **natural_earth.json**. Luego lo movemos a la carpeta *data*
 
-Dentro de la carpeta *data* crear un fichero **config.json**. Para más detalles http://tileserver.readthedocs.io/en/latest/config.html#
-
-```js
+```json
 {
   "styles": {
     "natural-earth": {
-      "style": "natural_earth.json",
-      "tilejson": {
-        "type": "overlay"
-      }
-    }
-  },
-  "data": {
-    "natural_earth": {
-      "mbtiles": "natural_earth.mbtiles"
+      "style": "natural-earth/style.json"
     }
   }
 }
 ```
 
-Ejecutar el tileserver utilizando el archivo de configuración creado
+Reiniciar tileserver y comprobar que ofrece el nuevo estilo de visualización.
 
-```bash
-tileserver-gl-light -c config.test.json -p 8181
-```
 
-Abrir el navegador y escribir http://localhost:8181. Aparecerá la página del TileServer donde podemos comprobar nuestro estilo presionando el botón de *Vector*
+### Crear un visor para el nuevo estilo
 
-Modificar el archivo *index.html* para que el visor de mapa para cargue los datos de Natural Earth con el estilo creado en Maputnik
+Vamos a crear un visor para nuestro nuevo estilo:
 
-```html hl_lines="22"
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mapa VT</title>
-    <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
-    <link href='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.css' rel='stylesheet' />
-    <script src='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.min.js'></script>
-    <style>
-        html, body {
-            margin: 0;
-            height: 100%;
-        }
-    </style>
-</head>
-<body id='map'>
-<script>
-    var map = new mapboxgl.Map({
-        container: 'map', // id del elemento HTML que contendrá el mapa
-        style: 'http://localhost:8181/styles/natural-earth/style.json', // Ubicación del estilo
-        center: [2.175, 41.39], // Ubicación inicial
-        zoom: 13, // Zoom inicial
-        bearing: -45, // Ángulo de rotación inicial
-        hash: true // Permite ir guardando la posición del mapa en la URL
-    });
+* Copiar el archivo `visor/barcelona.html` en `visor/naturalearth.html`
+* Además, hacer una copia de `tileserver/styles/natural-earth/style.json` en `visor/natural-earth-style.json`.
 
-    // Agrega controles de navegación (zoom, rotación) al mapa:
-    map.addControl(new mapboxgl.NavigationControl());
+Por último, editaremos `visor/naturalearth.html` y en la parte de `<script>` dejaremos este código:
 
-    // Agregar el control de inspección
-    map.addControl(new MapboxInspect());
-</script>
-</body>
-</html>
-```
+```javascript
+var map = new mapboxgl.Map({
+    container: 'map',
+     // style: 'http://localhost:8081/styles/natural-earth/style.json',
+    style: 'natural-earth-style.json',
+    center: [1.5, 41],
+    zoom: 5,
+    hash: true
+});
+
+map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new MapboxInspect());
+```  
+
+Abriendo en el navegador http://127.0.0.1:8080/naturalearth.html debería verse:
+
+![Natural Earth Viewer](img/natural_earth_viewer.png)
+
 
 ## Estilo basado en datos (data-driven style)
 
-El estilo basado en datos le permite estilizar los datos en función de sus propiedades. Por ejemplo, cambiar el radio de un círculo en función de la cantidad de clientes, cambiar el color de un polígono de estado según la población o usar la lógica condicional para crear etiquetas bilingües.
+El estilo basado en datos le permite estilizar los datos en función de sus propiedades.
+Por ejemplo, cambiar el radio de un círculo en función de la cantidad de clientes,
+cambiar el color de un polígono de estado según la población o usar la lógica condicional
+para crear etiquetas bilingües.
 
-Para crear estilos basados en datos debemos usar las Mapbox GL JS expressions. En la especificación de estilo de Mapbox, el valor de cualquier propiedad de diseño, propiedad de estilo o filtro se puede especificar como una expresión. Las expresiones definen cómo se combinan uno o más valores de propiedad y / o el nivel de zoom actual utilizando operaciones lógicas, matemáticas, de cadena o de color para producir el valor de propiedad de estilo apropiado o la decisión de filtro.
+Para crear estilos basados en datos debemos usar las Mapbox GL JS expressions. En la
+especificación de estilo de Mapbox, el valor de cualquier propiedad de diseño, 
+de estilo o filtro se puede especificar como una expresión. Las expresiones 
+cómo se combinan uno o más valores de propiedad y / o el nivel de zoom actual utilizando
+operaciones lógicas, matemáticas, de cadena o de color para producir el valor de
+propiedad de estilo apropiado o la decisión de filtro.
 
-Para más información y ejemplos https://www.mapbox.com/help/how-map-design-works/#data-driven-styles
+Para más información y ejemplos
+https://www.mapbox.com/help/how-map-design-works/#data-driven-styles
+
 
 ### Crear un estilo basado en datos
 
 Copiar el estilo **natural_earth.json** en un fichero llamado *natural_earth_2.json*
 
+
 #### Estilo basado en valores concretos de una propiedad
 
-Editar el fichero *natural_earth_2.json* y eliminar las capas con id **secundarias**, **principales** y **ferrys**
+Editar el fichero *natural_earth_2.json* y eliminar las capas con id **secundarias**,
+**principales** y **ferrys**
 
-Entre la capa con id *land* y la capa con id *aeropuertos* crear una capa con id **roads**. El color de las líneas de esta capa varia dependiendo del valor de la propiedad *type*.
+Entre la capa con id *land* y la capa con id *aeropuertos* crear una capa con id **roads**.
+El color de las líneas de esta capa varia dependiendo del valor de la propiedad *type*.
 
-```js
+```json
 {
     "id": "roads",
     "type": "line",
@@ -290,14 +298,16 @@ Entre la capa con id *land* y la capa con id *aeropuertos* crear una capa con id
         ],
         "line-width": 2
     }
-},
+}
 ```
 
 #### Estilo basado en el nivel del zoom
 
-Editar el fichero *natural_earth_2.json* modificar la capa **ciudades_etiquetas** para cambiar el tamaño del texto basado en el nivel de zoom del mapa y en la propiedad *SCALERANK*
+Editar el fichero *natural_earth_2.json* modificar la capa **ciudades_etiquetas** para
+cambiar el tamaño del texto basado en el nivel de zoom del mapa y en la propiedad
+*SCALERANK*
 
-```js
+```json
 {
     "id": "ciudades_etiquetas",
     "type": "symbol",
@@ -385,9 +395,11 @@ Editar el fichero *natural_earth_2.json* modificar la capa **ciudades_etiquetas*
 
 #### Estilo basado en una propiedad
 
-Crear una capa con id **ciudades** y de tipo *circle* entre las capas *aeropuertos* y la capa *ciudades_etiquetas*. En esta nueva capa el tamaño del circulo utilizará directamente el valor de la propiedad *SCALERANK*
+Crear una capa con id **ciudades** y de tipo *circle* entre las capas *aeropuertos* y
+la capa *ciudades_etiquetas*. En esta nueva capa el tamaño del circulo utilizará
+directamente el valor de la propiedad *SCALERANK*
 
-```js
+```json
 {
     "id": "ciudades",
     "type": "circle",
@@ -406,7 +418,7 @@ Crear una capa con id **ciudades** y de tipo *circle* entre las capas *aeropuert
     ],
     "circle-radius": ["-", 15, ["get","SCALERANK"]]
     }
-},
+}
 ```
 
 Agregar el nuevo estilo al fichero de configuración *config.json* del tileserver-gl
@@ -441,7 +453,8 @@ Parar *Ctrl+c* y arrancar el tileserver utilizando el archivo de configuración 
 tileserver-gl-light -c config.test.json -p 8181
 ```
 
-Modificar el archivo *index.html* para que el visor de mapa para cargue los datos de Natural Earth con el nuevo estilo creado
+Modificar el archivo *index.html* para que el visor de mapa para cargue los datos de
+Natural Earth con el nuevo estilo creado
 
 ```html hl_lines="22"
 <!DOCTYPE html>
@@ -483,17 +496,18 @@ Modificar el archivo *index.html* para que el visor de mapa para cargue los dato
 ```
 
 
-### Ejercicio extra: uso de una tipografía con iconos para simbolizar un punto
+### Ejercicio extra: uso de una fuente con iconos para simbolizar un punto
 
-Si se ha hecho el ejercicio extra del apartado anterior (Sprites y Glyphs), ahora veremos cómo utilizar la tipografía
-generada a partir de iconos SVG propios:
+Si se ha hecho el ejercicio extra del apartado anterior, en el que creábamos una fuente
+a partir de una colección de iconos, ahora veremos cómo utilizarla en el Layer de
+aeropuertos:
 
 
-```json hl_lines="8 9 10 11 14"
+```json hl_lines="8 9 10 11"
 {
   "id": "aeropuertos",
   "type": "symbol",
-  "source": "local",
+  "source": "naturalearth",
   "source-layer": "airports",
   "layout": {
     "symbol-placement": "point",
@@ -503,17 +517,17 @@ generada a partir de iconos SVG propios:
     "text-field": ","
   },
   "paint": {
-    "text-color": "#fabada"
-  },
-  "minzoom": 0
+    "text-color": "#fabada",
+    "text-halo-color": "#888",
+    "text-halo-width": 2
+  }
 }
-....
 ```
 
 En las líneas destacadas se observa cómo no se usa una `icon-image`, sino una etiqueta de texto (`text-font`, `text-size`
-y `text-field`). En `text-field` se indica una coma `","`, que corresponde al icono que queremos mostrar. Además de poder
-indicar el tamaño que queramos sin miedo a obtener una imagen pixelada, con la propiedad `text-color` también podemos
-escoger el color a voluntad.
+y `text-field`). En `text-field` se indica una coma `","`, que corresponde al icono que queremos mostrar.
+Al tratarse de una fuente, podemos indicar el tamaño que queramos sin miedo a obtener una imagen pixelada,
+y aplicar otras propiedades como escoger color, halo, etc.
 
 Como resultado del estilo indicado se simbolizarían los aeropuertos así:
 

@@ -1,58 +1,146 @@
 {
   "version": 8,
   "name": "Natural Earth",
+  "id": "natural-earth",
   "metadata": {
-    "mapbox:autocomposite": false
+    "mapbox:autocomposite": false,
+    "mapbox:type": "template",
+    "maputnik:renderer": "mbgljs",
+    "openmaptiles:version": "3.x"
   },
-  "center": [
-    0,
-    0
-  ],
-  "zoom": 1,
-  "bearing": 0,
-  "pitch": 0,
   "sources": {
     "naturalearth": {
       "type": "vector",
-      "url": "mbtiles://{natural_earth}"
+      "url": "http://localhost:8081/data/natural_earth.json"
     }
   },
-  "glyphs": "{fontstack}/{range}.pbf",
+  "sprite": "http://localhost:8081/styles/osm-bright/sprite",
+  "glyphs": "http://localhost:8081/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
-      "id": "land",
-      "type": "fill",
-      "source": "naturalearth",
-      "source-layer": "land",
+      "id": "fondo",
+      "type": "background",
       "paint": {
-        "fill-color": "hsl(82, 46%, 72%)",
-        "fill-opacity": {
-          "base": 1,
-          "stops": [
-            [
-              8,
-              0.6
-            ],
-            [
-              22,
-              1
-            ]
-          ]
-        }
+        "background-color": "#F8F4F0"
       }
     },
     {
-      "id": "water",
+      "id": "oceanos",
       "type": "fill",
       "source": "naturalearth",
       "source-layer": "ocean",
+      "paint": {
+        "fill-color": "#a0c8f0"
+      }
+    },
+    {
+      "id": "tierra",
+      "type": "fill",
+      "source": "naturalearth",
+      "source-layer": "land",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#E6C7C7"
+      }
+    },
+    {
+      "id": "costa",
+      "type": "line",
+      "source": "naturalearth",
+      "source-layer": "coastline",
+      "paint": {
+        "line-color": "#4793E8"
+      }
+    },
+    {
+      "id": "rios",
+      "type": "line",
+      "source": "naturalearth",
+      "source-layer": "rivers",
+      "paint": {
+        "line-color": "#4793E8"
+      }
+    },
+    {
+      "id": "lagos",
+      "type": "fill",
+      "source": "naturalearth",
+      "source-layer": "lakes",
+      "paint": {
+        "fill-color": "#a0c8f0",
+        "fill-outline-color": "#4793E8"
+      }
+    },
+    {
+      "id": "ferrocarril",
+      "type": "line",
+      "source": "naturalearth",
+      "source-layer": "rail",
+      "paint": {
+        "line-color": "#707070"
+      }
+    },
+    {
+      "id": "ferrys",
+      "type": "line",
+      "source": "naturalearth",
+      "source-layer": "roads",
       "filter": [
-        "==",
-        "$type",
-        "Polygon"
+        "all",
+        [
+          "!=",
+          "featurecla",
+          "Road"
+        ]
       ],
       "paint": {
-        "fill-color": "hsl(205, 56%, 73%)"
+        "line-color": "rgba(28, 53, 255, 1)",
+        "line-dasharray": [
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "carreteras",
+      "type": "line",
+      "source": "naturalearth",
+      "source-layer": "roads",
+      "filter": [
+        "all",
+        [
+          "==",
+          "featurecla",
+          "Road"
+        ]
+      ],
+      "paint": {
+        "line-color": "#BF5757"
+      }
+    },
+    {
+      "id": "ciudades",
+      "type": "symbol",
+      "source": "naturalearth",
+      "source-layer": "cities",
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{NAME}",
+        "text-font": [
+          "Comic Sans",
+          ""
+        ]
+      }
+    },
+    {
+      "id": "aeropuertos",
+      "type": "symbol",
+      "source": "naturalearth",
+      "source-layer": "airports",
+      "layout": {
+        "icon-image": "airfield-11"
       }
     }
   ]

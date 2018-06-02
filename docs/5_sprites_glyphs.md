@@ -73,15 +73,15 @@ librería de Mapbox [spritezero-cli](https://github.com/mapbox/spritezero-cli), 
 ```bash
 cd datos
 npm install -g @mapbox/spritezero-cli
-spritezero sprites iconos-maki-svg
-spritezero --retina sprites@2x iconos-maki-svg
+spritezero sprite iconos-maki-svg
+spritezero --retina sprite@2x iconos-maki-svg
 ```
 
 Una vez generados, los movemos al directorio donde residirá el estilo que los use (en nuestro caso, `natural-earth`):
 
 ```bash
 mkdir ../tileserver/styles/natural-earth
-mv sprites* ../tileserver/styles/natural-earth
+mv sprite* ../tileserver/styles/natural-earth
 ```
 
 
@@ -146,9 +146,25 @@ Finalmente, copiaremos el contenido de `_output` al directorio `tileserver/fonts
 cp -r _output/* ../tileserver/fonts
 ```
 
-Habrá que reiniciar el tileserver para que cargue las nuevas tipografías.
+Para que el tileserver publique estos recursos, hay que añadir una propiedad a `tileserver/config.json`:
 
-Podemos ver una lista de las tipografías disponibles en el servidor en la dirección http://localhost:8081/fonts.json
+```json hl_lines="9"
+{
+  "options": {
+    "paths": {
+      "root": "",
+      "fonts": "fonts",
+      "styles": "styles",
+      "mbtiles": "data"
+    },
+    "serveAllFonts": true
+  },
+  ...
+}
+``` 
+
+Reiniciando el tileserver para que cargue las nuevas tipografías, podemos ver la lista de
+las tipografías disponibles en la dirección http://localhost:8081/fonts.json
 
 
 ## Ejercicio extra: Generar una tipografía a partir de un conjunto de iconos en SVG

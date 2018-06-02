@@ -5,7 +5,8 @@
       "fonts": "fonts",
       "styles": "styles",
       "mbtiles": "data"
-    }
+    },
+    "serveAllFonts": true
   },
   "styles": {
     "klokantech-basic": {
