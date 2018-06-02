@@ -561,15 +561,15 @@ librería de Mapbox <a href="https://github.com/mapbox/spritezero-cli">spritezer
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> datos
 npm install -g @mapbox/spritezero-cli
-spritezero sprites iconos-maki-svg
-spritezero --retina sprites@2x iconos-maki-svg
+spritezero sprite iconos-maki-svg
+spritezero --retina sprite@2x iconos-maki-svg
 </pre></div>
 </td></tr></table>
 
 <p>Una vez generados, los movemos al directorio donde residirá el estilo que los use (en nuestro caso, <code>natural-earth</code>):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir ../tileserver/styles/natural-earth
-mv sprites* ../tileserver/styles/natural-earth
+mv sprite* ../tileserver/styles/natural-earth
 </pre></div>
 </td></tr></table>
 
@@ -633,8 +633,35 @@ además de la recién generada "Comic Sans".</p>
 </pre></div>
 </td></tr></table>
 
-<p>Habrá que reiniciar el tileserver para que cargue las nuevas tipografías.</p>
-<p>Podemos ver una lista de las tipografías disponibles en el servidor en la dirección <a href="http://localhost:8081/fonts.json">http://localhost:8081/fonts.json</a></p>
+<p>Para que el tileserver publique estos recursos, hay que añadir una propiedad a <code>tileserver/config.json</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;root&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;fonts&quot;</span><span class="p">:</span> <span class="s2">&quot;fonts&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="s2">&quot;styles&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mbtiles&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;serveAllFonts&quot;</span><span class="p">:</span> <span class="kc">true</span>
+</span>  <span class="p">},</span>
+  <span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Reiniciando el tileserver para que cargue las nuevas tipografías, podemos ver la lista de
+las tipografías disponibles en la dirección <a href="http://localhost:8081/fonts.json">http://localhost:8081/fonts.json</a></p>
 <h2 id="ejercicio-extra-generar-una-tipografia-a-partir-de-un-conjunto-de-iconos-en-svg">Ejercicio extra: Generar una tipografía a partir de un conjunto de iconos en SVG</h2>
 <p>Si queremos disponer de una colección de iconos monocromáticos de forma más flexible que usando
 sprites, los podemos convertir en una tipografía. Esto permitirá aplicar las técnicas de las etiquetas de texto a

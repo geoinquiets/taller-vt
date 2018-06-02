@@ -473,26 +473,12 @@ en formato Shapefile, según la escala. En el taller trabajaremos con un subconj
 </ul>
 </li>
 </ul>
-<p>Las capas ya descargadas se encuentran en <code>taller-vt/datos/naturalearth</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ne_10m_admin_0_countries.geojson
-ne_10m_populated_places.geojson
-ne_10m_roads.geojson
-ne_10m_railroads.geojson
-ne_10m_airports.geojson
-ne_10m_coastline.geojson
-ne_10m_land.geojson
-ne_10m_ocean.geojson
-ne_10m_rivers_lake_centerlines.geojson
-ne_10m_lakes.geojson
+<p>Nosotros descargaremos las 10 capas de un zip y las descomprimiremos en <code>taller-vt/datos/naturalearth</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> datos
+wget https://geoinquiets.github.io/taller-vt/downloads/naturalearth.zip
+unzip naturalearth.zip 
 </pre></div>
 </td></tr></table>
 
@@ -535,7 +521,7 @@ de simplificación más convencionales, motivo por el cual lo recomendamos en es
  9
 10
 11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> datos
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> naturalearth
 tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed <span class="se">\</span>
   -L ocean:ne_10m_ocean.geojson <span class="se">\</span>
   -L land:ne_10m_land.geojson <span class="se">\</span>
@@ -553,8 +539,8 @@ tippecanoe -o natural_earth.mbtiles -zg --drop-densest-as-needed <span class="se
 <h2 id="publicando-el-mbtiles">Publicando el mbtiles</h2>
 <p>Añadiremos el mbtiles a <code>Tileserver GL</code> igual que hicimos con los edificios de Barcelona:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mv natural_earth.mbtiles ../tileserver/data
-cd ../tileserver
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mv natural_earth.mbtiles ../../tileserver/data
+cd ../../tileserver
 </pre></div>
 </td></tr></table>
 
