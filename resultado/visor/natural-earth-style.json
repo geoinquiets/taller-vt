@@ -12,6 +12,14 @@
     "naturalearth": {
       "type": "vector",
       "url": "http://localhost:8081/data/natural_earth.json"
+    },
+    "relief": {
+        "tiles": [
+            "http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"
+        ],
+        "type": "raster",
+        "tileSize": 256,
+        "maxzoom": 6
     }
   },
   "sprite": "http://localhost:8081/styles/osm-bright/sprite",
@@ -25,24 +33,17 @@
       }
     },
     {
+      "id": "terreno",
+      "type": "raster",
+      "source": "relief"
+    },
+    {
       "id": "oceanos",
       "type": "fill",
       "source": "naturalearth",
       "source-layer": "ocean",
       "paint": {
         "fill-color": "#a0c8f0"
-      }
-    },
-    {
-      "id": "tierra",
-      "type": "fill",
-      "source": "naturalearth",
-      "source-layer": "land",
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": "#E6C7C7"
       }
     },
     {
@@ -104,35 +105,76 @@
       }
     },
     {
-      "id": "carreteras",
-      "type": "line",
-      "source": "naturalearth",
-      "source-layer": "roads",
-      "filter": [
-        "all",
-        [
-          "==",
-          "featurecla",
-          "Road"
-        ]
-      ],
-      "paint": {
-        "line-color": "#BF5757"
-      }
+        "id": "carreteras",
+        "type": "line",
+        "source": "naturalearth",
+        "source-layer": "roads",
+        "filter": ["all", ["==", "featurecla", "Road"]],
+        "paint": {
+            "line-color": [
+                "match", ["get", "type"],
+                "Major Highway",     "rgba(20, 52, 232, 1)",
+                "Secondary Highway", "rgba(206, 32, 79, 1)",
+                "Road",              "rgba(49, 137, 52, 1)",
+                "rgba(255, 204, 0, 1)"
+            ],
+            "line-width": 2
+        }
     },
     {
-      "id": "ciudades",
-      "type": "symbol",
-      "source": "naturalearth",
-      "source-layer": "cities",
-      "layout": {
-        "visibility": "visible",
-        "text-field": "{NAME}",
-        "text-font": [
-          "Comic Sans",
-          ""
-        ]
-      }
+        "id": "ciudades",
+        "type": "symbol",
+        "source": "naturalearth",
+        "source-layer": "cities",
+        "layout": {
+            "text-field": "{NAME}",
+            "text-anchor": "bottom",
+            "text-offset": [0, -1],
+            "text-size": [
+                "step", ["zoom"],
+                [
+                  "case",
+                  ["<", ["number", ["get", "SCALERANK"]], 3], 18,
+                  0
+                ], 5,
+                [
+                  "case",
+                  ["<=", ["number",["get", "SCALERANK"]], 2], 20,
+                  ["<=", ["number",["get", "SCALERANK"]], 5], 14,
+                  10
+                ], 8,
+                [
+                  "case",
+                  ["<=", ["number",["get", "SCALERANK"]], 2], 24,
+                  ["<=", ["number",["get", "SCALERANK"]], 5], 18,
+                  14
+                ]
+            ]
+        },
+        "paint": {
+            "text-halo-color": "rgba(253, 253, 253, 1)",
+            "text-color": "rgba(16, 16, 16, 1)",
+            "text-halo-width": 1.5
+        }
+    },
+    {
+        "id": "ciudades-circle",
+        "type": "circle",
+        "source": "naturalearth",
+        "source-layer": "cities",
+        "paint": {
+            "circle-color": [
+                "match", ["get", "ADM0CAP"],
+                0, "#888",
+                "#FFF"
+            ],
+            "circle-stroke-width": [
+                "match", ["get", "ADM0CAP"],
+                0, 1,
+                2
+            ],
+            "circle-radius": ["-", 10, ["get", "SCALERANK"]]
+        }
     },
     {
       "id": "aeropuertos",
@@ -141,15 +183,7 @@
       "source-layer": "airports",
       "layout": {
         "symbol-placement": "point",
-        "icon-image": "",
-        "text-font": ["Geostart Regular"],
-        "text-size": 25,
-        "text-field": ","
-      },
-      "paint": {
-        "text-color": "#fabada",
-        "text-halo-color": "#888",
-        "text-halo-width": 2
+        "icon-image": "airport_11"
       }
     }
   ]

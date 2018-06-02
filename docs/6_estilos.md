@@ -213,19 +213,25 @@ Habrá que editar el fichero de configuración de tileserver `tileserver/config.
 Reiniciar tileserver y comprobar que ofrece el nuevo estilo de visualización.
 
 
+## Edición manual del estilo
+
+Vamos a dejar Maputnik a un lado y vamos a editar el estilo json a mano.
+ 
+
 ### Crear un visor para el nuevo estilo
 
-Vamos a crear un visor para nuestro nuevo estilo:
+Lo primero será crear un visor para los datos y estilo de Natural Earth partiendo del visor de Barcelona.
+También usaremos una copia local del estilo porque será más fácil ir viendo los cambios. Cada vez que guardemos en disco una
+modificación del fichero de estilo, podremos recargar directamente la página en el navegador para reflejar los cambios.
 
 * Copiar el archivo `visor/barcelona.html` en `visor/naturalearth.html`
 * Además, hacer una copia de `tileserver/styles/natural-earth/style.json` en `visor/natural-earth-style.json`.
 
-Por último, editaremos `visor/naturalearth.html` y en la parte de `<script>` dejaremos este código:
+Editaremos `visor/naturalearth.html` y en la parte de `<script>` dejaremos sólo este código:
 
 ```javascript
 var map = new mapboxgl.Map({
     container: 'map',
-     // style: 'http://localhost:8081/styles/natural-earth/style.json',
     style: 'natural-earth-style.json',
     center: [1.5, 41],
     zoom: 5,
@@ -241,60 +247,52 @@ Abriendo en el navegador http://127.0.0.1:8080/naturalearth.html debería verse:
 ![Natural Earth Viewer](img/natural_earth_viewer.png)
 
 
-## Estilo basado en datos (data-driven style)
+### Estilo avanzado basado en expresiones
 
-El estilo basado en datos le permite estilizar los datos en función de sus propiedades.
-Por ejemplo, cambiar el radio de un círculo en función de la cantidad de clientes,
-cambiar el color de un polígono de estado según la población o usar la lógica condicional
-para crear etiquetas bilingües.
+El estilo basado en datos permite estilizar los datos en función del valor de sus propiedades.
+Por ejemplo, cambiar el radio de un círculo o el color de un polígono en función de un valor
+numérico, o usar lógica condicional para crear etiquetas multilingües.
 
-Para crear estilos basados en datos debemos usar las Mapbox GL JS expressions. En la
-especificación de estilo de Mapbox, el valor de cualquier propiedad de diseño, 
-de estilo o filtro se puede especificar como una expresión. Las expresiones 
-cómo se combinan uno o más valores de propiedad y / o el nivel de zoom actual utilizando
-operaciones lógicas, matemáticas, de cadena o de color para producir el valor de
-propiedad de estilo apropiado o la decisión de filtro.
+Las [expresiones de Mapbox GL](https://www.mapbox.com/mapbox-gl-js/style-spec#expressions) se
+pueden usar en cualquier propiedad de tipo `layout`, `paint` o `filter` de una `layer`.
 
-Para más información y ejemplos
-https://www.mapbox.com/help/how-map-design-works/#data-driven-styles
-
-
-### Crear un estilo basado en datos
-
-Copiar el estilo **natural_earth.json** en un fichero llamado *natural_earth_2.json*
+Gracias a las expresiones, una regla de simbolización determinada puede calcularse como el resultado de
+un cálculo donde intervienen los valores de una o más propiedades de una *feature*. Pueden
+usarse operaciones lógicas, matemáticas, de generación de color, interpolaciones, etc.
 
 
 #### Estilo basado en valores concretos de una propiedad
 
-Editar el fichero *natural_earth_2.json* y eliminar las capas con id **secundarias**,
-**principales** y **ferrys**
+Abrir el fichero `natural-earth-style.json` y localizar el layer con id `carreteras`.
 
-Entre la capa con id *land* y la capa con id *aeropuertos* crear una capa con id **roads**.
-El color de las líneas de esta capa varia dependiendo del valor de la propiedad *type*.
+Vamos a asignar un color distinto en función del valor de la propiedad `type`.
+Para ello usaremos la expresión [Match](https://www.mapbox.com/mapbox-gl-js/style-spec#expressions-match),
+que asigna a cada valor de entrada un valor de salida distinto (en nuestro caso, un color para
+cada tipo de carretera):
 
-```json
+    ["match", <propiedad>,
+        <valorentrada_1>, <salida_1>,
+        <entrada_2>, <salida_2>,
+        ...,
+        <salida_por_defecto>
+    ]
+
+Para obtener el valor de la propiedad de una feature se usa la expresión Get: `["get", <nombre_propiedad>]`.
+
+```json hl_lines="9 10 11 12 13"
 {
-    "id": "roads",
+    "id": "carreteras",
     "type": "line",
-    "source": "local",
+    "source": "naturalearth",
     "source-layer": "roads",
-    "layout": {
-        "visibility": "visible"
-    },
+    "filter": ["all", ["==", "featurecla", "Road"]],
     "paint": {
         "line-color": [
-            "match",
-            [
-                "get",
-                "type"
-            ],
-            "Secondary Highway",
-            "rgba(206, 32, 79, 1)",
-            "Ferry Route",
-            "rgba(138, 154, 241, 1)",
-            "Major Highway",
-            "rgba(20, 52, 232, 1)",
-            "#000000"
+            "match", ["get", "type"],
+            "Major Highway",     "rgba(20, 52, 232, 1)",
+            "Secondary Highway", "rgba(206, 32, 79, 1)",
+            "Road",              "rgba(49, 137, 52, 1)",
+            "rgba(255, 204, 0, 1)"
         ],
         "line-width": 2
     }
@@ -303,197 +301,176 @@ El color de las líneas de esta capa varia dependiendo del valor de la propiedad
 
 #### Estilo basado en el nivel del zoom
 
-Editar el fichero *natural_earth_2.json* modificar la capa **ciudades_etiquetas** para
-cambiar el tamaño del texto basado en el nivel de zoom del mapa y en la propiedad
-*SCALERANK*
+Localizar el layer con id `ciudades`.
+
+Vamos a cambiar el tamaño del texto según el nivel de zoom del mapa, y de la propiedad `SCALERANK` del dato.
+
+Usaremos la expresión [Case](https://www.mapbox.com/mapbox-gl-js/style-spec#expressions-case), que tiene
+esta forma:
+
+    ["case",
+        <condicion_1>, <salida_1>,
+        <condicion_2>, <salida_2>,
+        ...,
+        <salida_por_defecto>
+    ]
+
+En nuestro caso la usaremos para decir cosas como:
+
+* Si "SCALERANK" es menor que 2, aplica un tamaño de letra 20,
+* Si "SCALERANK" está entre 3 y 5, aplica un tamaño de letra 14,
+* En cualquier otro caso, aplica un tamaño de letra 10
+
+Que quedaría expresado así:
 
 ```json
-{
-    "id": "ciudades_etiquetas",
-    "type": "symbol",
-    "source": "local",
-    "source-layer": "cities",
-    "layout": {
-    "symbol-placement": "point",
-    "text-field": "{NAME}",
-    "visibility": "visible",
-    "text-anchor": "bottom",
-    "text-offset": [0, -1],
-    "text-size": [
-        "step",
-        ["zoom"],
-        [
-        "case",
-        [
-            "<",
-            [
-            "number",
-            ["get", "SCALERANK"]
-            ],
-            3
-        ],
-        18,
-        0
-        ],
-        5,
-        [
-        "case",
-        [
-            "<=",
-            [
-            "number",
-            ["get", "SCALERANK"]
-            ],
-            2
-        ],
-        20,
-        [
-            "<=",
-            [
-            "number",
-            ["get", "SCALERANK"]
-            ],
-            5
-        ],
-        14,
-        10
-        ],
-        8,
-        [
-        "case",
-        [
-            "<=",
-            [
-            "number",
-            ["get", "SCALERANK"]
-            ],
-            2
-        ],
-        24,
-        [
-            "<=",
-            [
-            "number",
-            ["get", "SCALERANK"]
-            ],
-            5
-        ],
-        18,
-        14
-        ]
-    ]
-    },
-    "paint": {
-    "text-halo-color": "rgba(253, 253, 253, 1)",
-    "text-halo-width": 5,
-    "text-color": "rgba(16, 16, 16, 1)",
-    "text-halo-blur": 2
-    }
-}
-
+[
+  "case",
+  ["<=", ["number",["get", "SCALERANK"]], 2], 20,
+  ["<=", ["number",["get", "SCALERANK"]], 5], 14,
+  10
+]
 ```
 
-#### Estilo basado en una propiedad
+El operador `"number"` se usa para convertir el valor `SCALERANK` a un tipo numérico.
 
-Crear una capa con id **ciudades** y de tipo *circle* entre las capas *aeropuertos* y
-la capa *ciudades_etiquetas*. En esta nueva capa el tamaño del circulo utilizará
-directamente el valor de la propiedad *SCALERANK*
+Y la combinaremos con la expresión [Step](https://www.mapbox.com/mapbox-gl-js/style-spec#expressions-step), que tiene
+esta forma:
+
+    ["step",
+        <entrada>, <salida_inicial>,
+        <umbral_1>, <salida_1>,
+        <umbral_2>, <salida_2>,
+        ...
+    ]
+    
+En nuestro caso la podemos usar para decir cosas como:
+
+* Usa un tamaño de letra 18 para zooms por debajo de 5.
+* Usa un tamaño de letra 20 entre el zoom 5 y 8.
+* Usa un tamaño de letra 24 para zooms mayores que 8.
+
+Que quedaría:
+
+```json
+["step",
+    ["zoom"], 18,
+    5, 20,
+    8, 24
+]
+```
+
+Obviamente podemos combinar ambas expresiones, de forma que la salida para cada nivel de zoom no sea un tamaño de
+ letra concreto, sino que dependa de "SCALERANK". Y nos queda el siguiente monstruo para el Layer:
 
 ```json
 {
     "id": "ciudades",
-    "type": "circle",
-    "source": "local",
+    "type": "symbol",
+    "source": "naturalearth",
     "source-layer": "cities",
     "layout": {
-    "visibility": "visible"
+        "text-field": "{NAME}",
+        "text-anchor": "bottom",
+        "text-offset": [0, -1],
+        "text-size": [
+            "step", ["zoom"],
+            [
+              "case",
+              ["<", ["number", ["get", "SCALERANK"]], 3], 18,
+              0
+            ],
+            5, ["case",
+                  ["<=", ["number",["get", "SCALERANK"]], 2], 20,
+                  ["<=", ["number",["get", "SCALERANK"]], 5], 14,
+                  10
+               ],
+            8, ["case",
+                  ["<=", ["number",["get", "SCALERANK"]], 2], 24,
+                  ["<=", ["number",["get", "SCALERANK"]], 5], 18,
+                  14
+               ]
+        ]
     },
     "paint": {
-    "circle-color": [
-        "match",
-        ["get", "ADM0CAP"],
-        0,
-        "hsl(285, 75%, 68%)",
-        "hsl(0, 96%, 48%)"
-    ],
-    "circle-radius": ["-", 15, ["get","SCALERANK"]]
+        "text-halo-color": "rgba(253, 253, 253, 1)",
+        "text-color": "rgba(16, 16, 16, 1)",
+        "text-halo-width": 1.5
     }
 }
 ```
 
-Agregar el nuevo estilo al fichero de configuración *config.json* del tileserver-gl
+Como se puede observar, las expresiones son tan potentes como difíciles de escribir bien a la primera.
 
-```js hl_lines="9 10 11 12 13 14"
+
+#### Estilo basado en una propiedad
+
+Vamos a crear un nuevo `layer` llamado `ciudades-circle`, y la vamos a definir a continuación de `ciudades`
+y justo antes de `aeropuertos`. Dibujaremos un círculo cuyo tamaño será inversamente proporcional a la
+propiedad `SCALERANK`.
+
+Además, las capitales estatales se simbolizarán como un círculo blanco con un borde grueso, y el resto de
+ciudades con un círculo gris con borde más fino.
+
+Usaremos la misma expresión Match que hemos visto anteriormente, aplicada a un color y a un grueso de línea.
+
+Además, aplicaremos una expresión matemática `["-"]`, que resta dos valores, de manera que el tamaño del círculo
+será `10 - SCALERANK`: 
+
+```json
 {
-  "styles": {
-    "natural-earth": {
-      "style": "natural_earth.json",
-      "tilejson": {
-        "type": "overlay"
-      }
-    },
-    "natural-earth-2": {
-      "style": "natural_earth_2.json",
-      "tilejson": {
-        "type": "overlay"
-      }
+    "id": "ciudades-circle",
+    "type": "circle",
+    "source": "naturalearth",
+    "source-layer": "cities",
+    "paint": {
+        "circle-color": [
+            "match", ["get", "ADM0CAP"],
+            0, "#888",
+            "#FFF"
+        ],
+        "circle-stroke-width": [
+            "match", ["get", "ADM0CAP"],
+            0, 1,
+            2
+        ],
+        "circle-radius": ["-", 10, ["get", "SCALERANK"]]
     }
-  },
-  "data": {
-    "natural_earth": {
-      "mbtiles": "natural_earth.mbtiles"
-    }
-  }
 }
 ```
 
-Parar *Ctrl+c* y arrancar el tileserver utilizando el archivo de configuración creado
+## Uso de fuentes de datos externas
 
-```bash
-tileserver-gl-light -c config.test.json -p 8181
+Por último, vamos a añadir un fondo raster al mapa, procedente de otro tileserver.
+
+* Añadiremos un nuevo `source` de tipo `raster`, a continuación del source `naturalearth`:
+
+```json
+{
+    ...
+    "relief": {
+        "type": "raster",
+        "tiles": ["http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"],
+        "tileSize": 256,
+        "maxzoom": 6
+    }
+}
 ```
 
-Modificar el archivo *index.html* para que el visor de mapa para cargue los datos de
-Natural Earth con el nuevo estilo creado
+* Borraremos el `layer` llamado `tierra`.
+* Añadiremos un nuevo `layer` justo después del `fondo` que se llamará `terreno`:
 
-```html hl_lines="22"
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mapa VT</title>
-    <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
-    <link href='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.css' rel='stylesheet' />
-    <script src='https://mapbox-gl-inspect.lukasmartinelli.ch/dist/mapbox-gl-inspect.min.js'></script>
-    <style>
-        html, body {
-            margin: 0;
-            height: 100%;
-        }
-    </style>
-</head>
-<body id='map'>
-<script>
-    var map = new mapboxgl.Map({
-        container: 'map', // id del elemento HTML que contendrá el mapa
-        style: 'http://localhost:8181/styles/natural-earth-2/style.json', // Ubicación del estilo
-        center: [2.175, 41.39], // Ubicación inicial
-        zoom: 13, // Zoom inicial
-        bearing: -45, // Ángulo de rotación inicial
-        hash: true // Permite ir guardando la posición del mapa en la URL
-    });
-
-    // Agrega controles de navegación (zoom, rotación) al mapa:
-    map.addControl(new mapboxgl.NavigationControl());
-
-    // Agregar el control de inspección
-    map.addControl(new MapboxInspect());
-</script>
-</body>
-</html>
+```json
+{
+  "id": "terreno",
+  "type": "raster",
+  "source": "relief"
+}
 ```
+
+El resultado final de aplicar todos estos estilos tendrá este aspecto:
+
+![Natural Earth Final](img/natural_earth_final.png)
 
 
 ### Ejercicio extra: uso de una fuente con iconos para simbolizar un punto
