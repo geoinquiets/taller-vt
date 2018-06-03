@@ -4,6 +4,10 @@ Las teselas vectoriales son un formato de datos liviano para almacenar datos vec
 
 Una tesela vectorial (vector tiles) contiene datos vectoriales georreferenciados (puede contener múltiples capas), recortados en teselas para facilitar su recuperación. Son equivalentes a las teselas raster tradicionales (WMTS, TMS) pero retornan datos vectoriales en lugar de una imagen.
 
+Cada conjunto de teselas vectoriales tiene su propio esquema. Un esquema consiste en nombres de capas, atributos, selección de elementos, etc.
+
+No existe un esquema que sirva para todo. Existen varios esquemas como por ejemplo: OpenMapTiles, Mapbox Streets, etc.
+
 ## Un poco de Historia
 
 Existe una larga historia de uso de teselas vectoriales en SIG. En 1966 el Sistema de Información Geográfica de Canadá (CGIS), utilizaba un esquema de almacenamiento vectorial que permitía a las computadoras de recursos limitados acceder de manera eficiente y procesar datos de mapas vectoriales. CGIS usó el término "marco" en lugar de teselas vectoriales.
@@ -34,14 +38,6 @@ Mapbox actualmente está trabajando en la versión 3.
 * El cliente tiene acceso nativo a la información actual del objeto geográfico (atributos y geometría), lo que permite un procesamiento muy sofisticado.
 * Las cache de datos vectoriales ocupa mucho menos espacio que las restar. Esto hace que sea fáctible el uso de teselas vectorials en dispositivos móviles sin conexión.
 * Las teselas vectoriales permiten *Overzoom* sin perder resolución. Con las teselas raster si queremos hacer un zoom a un nivel mayor del que está definido la imagen se verá borrosa y pixelada.
-
-Overzooming is a vector-tile specific technique that allows a specific tile to be rendered beyond its intended zoom level, so it continues to be visible on the map. If a tileset had a minzoom of 6 and a maxzoom of 12, those are the valid ranges calculated by the tile generator (more on that below). If you were to zoom your map beyond zoom level 12, the map renderer can continue to use zoom 12 by scaling the vector data upwards. This, of course, can result in gross simplifications of data if geometries are rendered too far above their actual level of detail.
-
-Overzoom is the result of a tileset being zoomed in beyond its given zoom extent.
-
-Raster tilesets will appear to lose clarity if overzoom occurs. For example, if you are displaying a raster tileset with a zoom extent between z0 and z6, if you zoom to a higher zoom level past z6, the imagery will become blurry and difficult to see.
-
-The effects of overzoom are not as noticeable with vector tilesets since vector data is not stored in a pixel-based format, but rather encoded and calculated from a series of points, lines, and polygons. Because of this, vector data can be overzoomed and visualized to zoom 22.
 
 ![Comparativa pesos teselas vector vs raster](img/vector-raster.png)
 Comparativa pesos teselas vector vs raster. Fuente https://plot.ly/~mourner/118.embed
@@ -105,7 +101,7 @@ Para que los procesadores distingan de manera apropiada qué polígonos son aguj
 
 Winding order. Fuente https://www.mapbox.com/vector-tiles/specification/#winding-order
 
-## Diferentes especificaciones: mbtiles, vt, pbf, tilejson, style, sprites, glyphs.
+## Diferentes especificaciones y conceptos relacionados con las teselas vectoriales
 
 ### pbf
 
@@ -135,30 +131,51 @@ A diferencia de Spatialite, GeoJSON y Rasterlite, MBTiles no es un almacenamient
 
 Esta especificación intenta crear un estándar para representar metadatos sobre múltiples tipos de capas, para ayudar a los clientes en la configuración y navegación.
 
+### Overzoom
+
+*Overzooming* es una técnica específica de teselas vectorial que permite que una tesela se represente más allá de su nivel de zoom previsto, por lo que continúa siendo visible en el mapa. Si un conjunto de teselas tiene un minzoom de 6 y un maxzoom de 12, esos son los rangos válidos calculados por el generador de teselas. Si ampliara el mapa más allá del nivel de zoom 12, el renderizador del mapa puede seguir utilizando los datos del zoom 12 escalando los datos del vector hacia arriba. Esto, por supuesto, puede dar lugar a grandes simplificaciones de datos si las geometrías se representan demasiado por encima de su nivel real de detalle.
+
+Las teselas ráster pierden claridad si ocurre overzoom. Por ejemplo, si está visualizando un conjunto de teselas reaster con una extensión de zoom entre z0 y z6, si hace un zoom a un nivel de zoom más alto después de z6, las imágenes se volverán borrosas y difíciles de ver.
+
+Los efectos del overzoom no son tan notables con los tilesets de vector, ya que los datos vectoriales no se almacenan en un formato basado en píxeles, sino que se codifican y calculan a partir de una serie de puntos, líneas y polígonos.
+
 ## Presentación de ejemplos visuales hechos con vt
 
-* Terreno https://openicgc.github.io/
-* Luces LA https://cityhubla.github.io/lacity_exploration_18/index.html#16.38/34.053569/-118.242875/36/55
-* https://twitter.com/jessewhazel/status/981379944440877058 código https://codepen.io/jwhazel/pen/NYzpWG
-* https://vimeo.com/263466166 blog explicativo https://medium.com/@erdag/mappox-mapmadness18-round-4-1251a8c10421
+### Terreno
 
-* para qué sirven y para qué no,
-TODO
+https://openicgc.github.io/
+[![Terreno](img/terreno-icgc.png)](https://openicgc.github.io/mapbox_map.html#13/41.3993/2.16145/-55.2/43)
+
+### Luces LA
+
+[![Luces](img/luces-la.png)](https://cityhubla.github.io/lacity_exploration_18/index.html#16.38/34.053569/-118.242875/36/55)
+
+### Edificios con música
+
+https://codepen.io/jwhazel/pen/NYzpWG
+[![Edificios](img/edificios-musica.gif)](https://twitter.com/jessewhazel/status/981379944440877058)
+
+blog explicativo https://medium.com/@erdag/mappox-mapmadness18-round-4-1251a8c10421
+
+### Temático filtro
+
+[![Temático](img/vt-ny-carto.gif)](https://carto.com/blog/using-mvt-in-carto/)
+
+### Mapa de calor
+
+[![Temático](img/heatmap.png)](https://blog.mapbox.com/heatmaps-at-scale-for-business-intelligence-285dbbc3d7b3)
 
 ## Exponer esquema general de lo que se va a hacer en el taller.
 
+![Esquema taller](img/esquema-vt.png)
+
+Esquema taller
+
+
+
 TODO
 
-
-
-
-* cómo se almacenan y distribuyen,
-
-TODO
-
-Cada conjunto de teselas vectoriales tiene su propio esquema. Un esquema consiste en nombres de capas, atributos, selección de elementos, etc.
-
-No existe un esquema que sirva para todo. Existen varios esquemas como por ejemplo: OpenMapTiles, Mapbox Streets, etc.
+* para qué sirven y para qué no,
 
 * listado de software que soporta/maneja VT
 
