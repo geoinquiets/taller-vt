@@ -177,6 +177,3 @@ TODO
 
 * para qué sirven y para qué no,
 
-* listado de software que soporta/maneja VT
-
-https://github.com/mapbox/awesome-vector-tiles
