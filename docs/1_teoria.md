@@ -1,24 +1,8 @@
 # Qué son las teselas vectoriales
 
-* qué son,
+Las teselas vectoriales son un formato de datos liviano para almacenar datos vectoriales geoespaciales, como puntos, líneas y polígonos. Las teselas vectoriales codifican información geográfica de acuerdo con la especificación de teselas vector de Mapbox. La especificación de Mapbox es un estándar abierto bajo una licencia Creative Commons Attribution 3.0 US.
 
-https://mappinggis.com/2017/09/que-son-los-vector-tiles-y-como-generarlos-con-geoserver/
-
-https://www.mapbox.com/vector-tiles/
-
-https://wiki.openstreetmap.org/wiki/Vector_tiles
-
-https://en.wikipedia.org/wiki/Vector_tiles
-
-http://blog.sourcepole.ch/assets/2017/t-rex-foss4g2017.pdf
-
-https://www.slideshare.net/jgarnett/vector-tiles-with-geoserver-and-openlayers
-
-https://www.mapbox.com/help/glossary/
-
-
-* para qué sirven y para qué no,
-TODO
+Una tesela vectorial (vector tiles) contiene datos vectoriales georreferenciados (puede contener múltiples capas), recortados en teselas para facilitar su recuperación. Son equivalentes a las teselas raster tradicionales (WMTS, TMS) pero retornan datos vectoriales en lugar de una imagen.
 
 ## Un poco de Historia
 
@@ -40,24 +24,34 @@ Marzo de 2015 ESRI (el que no debe ser nombrado) anuncia que soportará MVT.
 
 Mapbox actualmente está trabajando en la versión 3.
 
-
-TODO
-
-* Concepto teórico, diferencias con "raster" tiles y con formatos vectoriales existentes.
-
 ## Diferencias entre teselas raster y teselas vectoriales
 
 * El estilo se define en el cliente (vector) y no en el servidor (raster)
 * Teselas vectoriales sólo se necesita teselar la información una sola vez y se pueden tener múltiples mapas
 * Vectores se ven mejor en dispositivos de alta resolución
-* Teselas raster son más fáciles de consumir
+* Teselas raster son más fáciles de consumir.
+* El tamaño de una tesela vectorial (se recomienda máximo 500kb) suele ser menor que una tesela de imágenes (promedio 75% más pequeñas), lo que permite una mayor velocidad de transferencia.
+* El cliente tiene acceso nativo a la información actual del objeto geográfico (atributos y geometría), lo que permite un procesamiento muy sofisticado.
+* Las cache de datos vectoriales ocupa mucho menos espacio que las restar. Esto hace que sea fáctible el uso de teselas vectorials en dispositivos móviles sin conexión.
+* Las teselas vectoriales permiten *Overzoom* sin perder resolución. Con las teselas raster si queremos hacer un zoom a un nivel mayor del que está definido la imagen se verá borrosa y pixelada.
+
+Overzooming is a vector-tile specific technique that allows a specific tile to be rendered beyond its intended zoom level, so it continues to be visible on the map. If a tileset had a minzoom of 6 and a maxzoom of 12, those are the valid ranges calculated by the tile generator (more on that below). If you were to zoom your map beyond zoom level 12, the map renderer can continue to use zoom 12 by scaling the vector data upwards. This, of course, can result in gross simplifications of data if geometries are rendered too far above their actual level of detail.
+
+Overzoom is the result of a tileset being zoomed in beyond its given zoom extent.
+
+Raster tilesets will appear to lose clarity if overzoom occurs. For example, if you are displaying a raster tileset with a zoom extent between z0 and z6, if you zoom to a higher zoom level past z6, the imagery will become blurry and difficult to see.
+
+The effects of overzoom are not as noticeable with vector tilesets since vector data is not stored in a pixel-based format, but rather encoded and calculated from a series of points, lines, and polygons. Because of this, vector data can be overzoomed and visualized to zoom 22.
+
+![Comparativa pesos teselas vector vs raster](img/vector-raster.png)
+Comparativa pesos teselas vector vs raster. Fuente https://plot.ly/~mourner/118.embed
 
 ### Comparación con otros formatos
 
 #### WMS
 
-* No teselado, con lo cual no hay problemas de etiquetas, etc.
-* Se puede "imprimir facilmente"
+* No teselado, con lo cual no hay problemas de etiquetas, etc
+* Se puede imprimir pero hay problemas con Hi-DPI
 
 #### WMTS
 
@@ -77,17 +71,39 @@ TODO
 * Hi-DPI (impresión)
 * Retorna datos en vector modificados (generalizados, simplificados)
 
-## Presentación de ejemplos visuales hechos con vt
+## Cómo están hechas por dentro
 
-* Terreno https://openicgc.github.io/
-* Luces LA https://cityhubla.github.io/lacity_exploration_18/index.html#16.38/34.053569/-118.242875/36/55
-* https://twitter.com/jessewhazel/status/981379944440877058 código https://codepen.io/jwhazel/pen/NYzpWG
-* https://vimeo.com/263466166 blog explicativo https://medium.com/@erdag/mappox-mapmadness18-round-4-1251a8c10421
+Las geometrías y los atributos se codifican como datos binarios de Google Protobuf (PBF).
 
+### Codificar geometrías
 
-## Exponer esquema general de lo que se va a hacer en el taller.
+Para codificar información geográfica en una tesela vectorial, una herramienta debe convertir las coordenadas geográficas, como la latitud y la longitud, en coordenadas vectoriales de cuadrículas. Las teselas de vectoriales no tienen ningún concepto de información geográfica. Codifican puntos, líneas y polígonos como pares x/y relativos a la esquina superior izquierda de la cuadrícula de forma descendente.
 
-TODO
+Las geometrías son transformadas a una sola tesela, con un sistema de coordenadas de píxel local, que por defecto va de la esquina superior izquierda (0,0) a la esquina inferior derecha (4096,4096).
+
+![Codificar geometría](img/geo2pbf.gif)
+
+Codificar geometría. Fuente https://www.mapbox.com/vector-tiles/specification/#encoding-geom
+
+### Codificar atributos
+
+los atributos de características se codifican como un conjunto único de claves (algo así como un esquema de campos de capa) y la lista de sus valores.
+
+Los atributos están codificados en una serie de etiquetas que existen dentro de un elemento en el vector que tienen valores enteros que hacen referencia a las claves y los valores que provienen de la geometría. Para geometrías grandes, esto elimina la redundancia de los atributos que tienen las mismas claves y valores similares.
+
+![Codificar atributos](img/atributos2pbf.png)
+
+Codificar atributos. Fuente https://www.mapbox.com/vector-tiles/specification/#encoding-attr
+
+### Winding order
+
+El *Winding order*(dirección de digitalización) se refiere a la dirección en que se dibuja un anillo en un mosaico vectorial, ya sea en sentido horario o antihorario. Muchas geometrías son multipolígonos con "agujeros", que también se representan como anillos de polígono. Es importante poder inferir orden para extraer datos fuente de un mosaico vectorial y comprender si la geometría es parte de un polígono múltiple o un polígono único.
+
+Para que los procesadores distingan de manera apropiada qué polígonos son agujeros y cuáles son geometrías únicas, la especificación requiere que todos los polígonos sean válidos (validez de OGC). Cualquier anillo interior poligonal debe orientarse con el orden opuesto al de su anillo exterior principal y todos los anillos interiores deben seguir directamente el anillo exterior al que pertenecen. Los anillos exteriores deben estar orientados en el sentido de las agujas del reloj y los anillos interiores deben estar orientados en sentido contrario a las agujas del reloj.
+
+![Winding order](img/winding-order.png)
+
+Winding order. Fuente https://www.mapbox.com/vector-tiles/specification/#winding-order
 
 ## Diferentes especificaciones: mbtiles, vt, pbf, tilejson, style, sprites, glyphs.
 
@@ -119,23 +135,21 @@ A diferencia de Spatialite, GeoJSON y Rasterlite, MBTiles no es un almacenamient
 
 Esta especificación intenta crear un estándar para representar metadatos sobre múltiples tipos de capas, para ayudar a los clientes en la configuración y navegación.
 
+## Presentación de ejemplos visuales hechos con vt
 
-* cómo están hechas por dentro,
+* Terreno https://openicgc.github.io/
+* Luces LA https://cityhubla.github.io/lacity_exploration_18/index.html#16.38/34.053569/-118.242875/36/55
+* https://twitter.com/jessewhazel/status/981379944440877058 código https://codepen.io/jwhazel/pen/NYzpWG
+* https://vimeo.com/263466166 blog explicativo https://medium.com/@erdag/mappox-mapmadness18-round-4-1251a8c10421
+
+* para qué sirven y para qué no,
+TODO
+
+## Exponer esquema general de lo que se va a hacer en el taller.
 
 TODO
 
-feature geometries are transformed to a single tile, local, pixel coordinate system, which by default goes from upper-left(0,0) to lower-right (4096,4096), i.e. an affine transformation with integer rounding.
-features attributes are encoded as a unique set of keys (something like a layer fields schema) and the list of their values.
-geometries and attributes are encoded as Google Protobuf (PBF) binary data.
 
-
-Protocol buffer format (PBF, binary,
-Streamable)
-> Geometry in screen pixel coordinates
-(Integers, ZigZag encoded)
-> Multipoint/Multiline/Multipolygon
-> Non-spatial attributes (optional Feature-ID)
-> Multiple layers per tile
 
 
 * cómo se almacenan y distribuyen,
