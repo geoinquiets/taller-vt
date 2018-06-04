@@ -32,6 +32,11 @@ De momento tenemos los subdirectorios:
 
 ## Comprobación del software preinstalado
 
+En el aula de la práctica se ha preinstalado una serie de software necesario para el taller.
+En caso de que falte alguno, se pueden consultar las instrucciones de instalación en el siguiente apartado.
+
+Comandos de comprobación: 
+
 * `Alt + F2` => "terminator" debería abrir un terminal.
 * `google-chrome http://tileserver.fonts.cat/styles/dark-matter/style.json` debería abrir Chrome y mostrar un JSON formateado y coloreado.
 * `google-chrome http://tileserver.fonts.cat/styles/dark-matter-3d/?vector#16.09/41.3861/2.19226/-47.2/60` debería mostrar un mapa de Barcelona con edificios en 3D, y moverse con soltura.
@@ -40,13 +45,10 @@ De momento tenemos los subdirectorios:
 * `code -v`
 * `tippecanoe -v`
 
-En caso de que falte alguno, se pueden consultar las instrucciones de instalación a continuación.
-
-
-## Extra: Instalación de requisitos de software
+## Instalación de requisitos de software
 
 El software de base para el taller ya está instalado en los ordenadores del aula, pero indicamos aquí cómo instalarlo
-tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04).
+tomando como base OSGeo Live 11 (también valdrá para Ubuntu 16.04, en el que además debería instalarse PostGIS).
 
 1. [Google Chrome](https://www.google.com/chrome/)
 2. La extensión [json-viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh) en Chrome
