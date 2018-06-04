@@ -168,7 +168,7 @@ blog explicativo https://medium.com/@erdag/mappox-mapmadness18-round-4-1251a8c10
 
 [![Temático](img/heatmap.png)](https://blog.mapbox.com/heatmaps-at-scale-for-business-intelligence-285dbbc3d7b3)
 
-## Exponer esquema general de lo que se va a hacer en el taller.
+## Esquema general de lo que se va a hacer en el taller.
 
 ![Esquema taller](img/esquema-vt.png)
 
