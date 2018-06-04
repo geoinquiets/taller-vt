@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="UTF-8">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='big.css' rel='stylesheet' type='text/css'/>
+    <script src='big.js'></script>
+    <script src='showdown.js'></script>
+</head>
+<body class="light">
+&harr; para navegar
+
+# Teselas Vectoriales
+#### aka *Vector Tiles* o *VT* o *MVT*
+
+# ¿Con qué estándar serviríais *VT*?
+
+![Etapas](etapas.svg)
+
+# Especificación *MVT*
+####[Protocol Buffers](https://developers.google.com/protocol-buffers/): Extensión *PBF*... sin [`.proto`](https://github.com/mapbox/vector-tile-spec/blob/master/2.1/vector_tile.proto), no significa nada
+![MVT](../img/geo2pbf.gif)
+####[MapBox Vector Tile Specification](https://www.mapbox.com/vector-tiles/specification/)
+
+# `.mbtiles`
+TODO
+
+# TileJSON
+TODO
+
+# Ejemplos molones
+TODO
+</body>
+<footer>
+    <script>var converter = new Showdown.converter()
+    var slides = document.body.innerHTML.split('\n\n')
+    document.body.innerHTML = ''
+    for (var i = 0; i < slides.length - 1; i++) {
+      console.log(i)
+      document.body.innerHTML += '<div>' + converter.makeHtml(slides[i]) + '</div>'
+    }</script>
+</footer>
+</html>
