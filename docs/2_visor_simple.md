@@ -9,7 +9,7 @@ automáticamente cuando se modifica el contenido de algún fichero.
 Para instalarlo, se usará el comando:
 
 ```bash
-sudo npm install -g live-server
+npm install -g live-server
 ```
 
 Para arrancarlo, basta con situarse en el directorio que queramos servir y ejecutar:
