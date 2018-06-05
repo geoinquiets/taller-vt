@@ -40,6 +40,7 @@ tileserver-gl-light -v # Deberia devolver: v2.3.1
 Crear una carpeta llamada `tileserver/data` y copiar en ella el fichero `datos/barcelona.mbtiles:
  
 ```bash
+cd ~/Desktop/taller-vt
 mkdir -p tileserver/data
 cp datos/barcelona.mbtiles tileserver/data
 ```
@@ -112,7 +113,6 @@ Modificaremos nuestro archivo *index.html* para que el visor de mapas consuma la
 Paremos el servidor y volvamos a arrancarlo, pero esta vez con la opción `-V` (verbose):
 
 ```bash
-cd tileserver
 tileserver-gl-light data/barcelona.mbtiles -p 8081 -V
 ```
 

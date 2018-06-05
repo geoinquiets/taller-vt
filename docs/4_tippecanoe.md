@@ -25,7 +25,7 @@ En concreto usaremos las siguientes capas:
 Nosotros descargaremos las 10 capas de un zip y las descomprimiremos en `taller-vt/datos/naturalearth`:
 
 ```bash
-cd datos
+cd ~/Desktop/taller-vt/datos
 wget https://geoinquiets.github.io/taller-vt/downloads/naturalearth.zip
 unzip naturalearth.zip 
 ```

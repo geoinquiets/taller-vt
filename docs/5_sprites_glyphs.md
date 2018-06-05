@@ -71,7 +71,7 @@ Para generar los sprites y sus json a partir de una colección de imágenes en f
 librería de Mapbox [spritezero-cli](https://github.com/mapbox/spritezero-cli), de la siguiente manera:
 
 ```bash
-cd datos
+cd ~/Desktop/taller-vt/datos
 npm install -g @mapbox/spritezero-cli
 spritezero sprite iconos-maki-svg
 spritezero --retina sprite@2x iconos-maki-svg
@@ -186,6 +186,7 @@ de la siguiente manera:
 
 
 ```bash
+cd ~/Desktop/taller-vt
 git clone https://github.com/gencat/ICGC-fonticon-generator
 npm i -g gulp
 cd ICGC-fonticon-generator/

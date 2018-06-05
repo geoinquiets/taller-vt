@@ -11,6 +11,7 @@ Los datos están en `datos/bcn_geodata.sql`.
 Cargarlos en PostGIS:
 
 ```bash
+cd ~/Desktop/taller-vt
 psql < datos/bcn_geodata.sql
 ```
 
@@ -45,6 +46,12 @@ Tegola necesita de un [fichero de configuración en formato toml](http://tegola.
 En él estableceremos los parámetros de conexión con la BDD y las características de las capas que queremos servir.
 
 Creemos pues un directorio llamado `tegola`, y en él, un fichero llamado `config.toml`.
+
+```bash
+mkdir tegola
+cd tegola
+touch config.toml
+```
 
 Lo primero es definir una sección con el puerto que usaremos para levantar el servicio: 
 
