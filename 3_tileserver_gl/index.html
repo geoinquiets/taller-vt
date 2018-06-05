@@ -974,12 +974,6 @@ de los datos.</p>
 </span>        <span class="nx">hash</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">});</span>
 
-    <span class="c1">// Agrega controles de navegación (zoom, rotación) al mapa:</span>
-    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
-
-    <span class="c1">// Agregar el control de inspección</span>
-    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">MapboxInspect</span><span class="p">());</span>
-
 <span class="hll">    <span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span><span class="hll">        <span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s2">&quot;buildings&quot;</span><span class="p">,</span> <span class="p">{</span>
 </span><span class="hll">            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
@@ -997,7 +991,13 @@ de los datos.</p>
 </span><span class="hll">                <span class="s2">&quot;fill-outline-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#000&quot;</span>
 </span><span class="hll">            <span class="p">}</span>
 </span><span class="hll">        <span class="p">});</span>
-</span>    <span class="p">});</span>
+</span><span class="hll">    <span class="p">});</span>
+</span>
+    <span class="c1">// Agrega controles de navegación (zoom, rotación) al mapa:</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
+
+    <span class="c1">// Agregar el control de inspección</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">MapboxInspect</span><span class="p">());</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </td></tr></table>
@@ -1050,12 +1050,6 @@ de los datos.</p>
         <span class="nx">hash</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">});</span>
 
-    <span class="c1">// Agrega controles de navegación (zoom, rotación) al mapa:</span>
-    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
-
-    <span class="c1">// Agregar el control de inspección</span>
-    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">MapboxInspect</span><span class="p">());</span>
-
     <span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s2">&quot;buildings&quot;</span><span class="p">,</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
@@ -1074,6 +1068,12 @@ de los datos.</p>
 </span>            <span class="p">}</span>
         <span class="p">});</span>
     <span class="p">});</span>
+
+    <span class="c1">// Agrega controles de navegación (zoom, rotación) al mapa:</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
+
+    <span class="c1">// Agregar el control de inspección</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">MapboxInspect</span><span class="p">());</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </td></tr></table>
