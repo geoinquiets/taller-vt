@@ -365,25 +365,43 @@ Para visualizar los datos de edificios en `barcelona.html`, usar el siguiente c�
 
 Incluso podemos usar una regla de simbolización de extrusión para verlos en 3D:
 
-```javascript hl_lines="11 12 13 14 15 16"
-map.on('load', function() {
-    map.addSource("buildings", {
-        "type": "vector",
-        "url": "http://localhost:8081/data/buildings.json"
+```html hl_lines="28 30 31 32"
+<script>
+    var map = new mapboxgl.Map({
+        container: 'map', // id del elemento HTML que contendrá el mapa
+        style: 'http://localhost:8081/styles/klokantech-basic/style.json',
+        center: [2.19224, 41.38585],
+        zoom: 15,
+        bearing: -45,
+        pitch: 60,
+        hash: true
     });
 
-    map.addLayer({
-        "id": "buildings",
-        "source": "buildings",
-        "source-layer": "buildingpart",
-        "type": "fill-extrusion",
-        "paint": {
-            "fill-extrusion-opacity": 0.75,
-            "fill-extrusion-color": "#E9DFCD",
-            "fill-extrusion-height": ["*", 3, ["get", "floors"]]
-        }
+    // Agrega controles de navegación (zoom, rotación) al mapa:
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Agregar el control de inspección
+    map.addControl(new MapboxInspect());
+
+    map.on('load', function() {
+        map.addSource("buildings", {
+            "type": "vector",
+            "url": "http://localhost:8081/data/buildings.json"
+        });
+
+        map.addLayer({
+            "id": "buildings",
+            "source": "buildings",
+            "source-layer": "buildingpart",
+            "type": "fill-extrusion",
+            "paint": {
+                "fill-extrusion-opacity": 0.75,
+                "fill-extrusion-color": "#E9DFCD",
+                "fill-extrusion-height": ["*", 3, ["get", "floors"]]
+            }
+        });
     });
-});
+</script>
 ```
 
 En la regla de simbolización hemos utilizado como altura de la extrusión el número de plantas multiplicado por 3.
