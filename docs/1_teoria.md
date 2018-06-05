@@ -1,5 +1,8 @@
 # Qué son las teselas vectoriales
 
+!!! tip "Presentación"
+    Ver este capítulo en [formato presentación](presentacion/)
+
 Las teselas vectoriales son un formato de datos liviano para almacenar datos vectoriales geoespaciales, como puntos, líneas y polígonos. Las teselas vectoriales codifican información geográfica de acuerdo con la especificación de teselas vector de Mapbox. La especificación de Mapbox es un estándar abierto bajo una licencia Creative Commons Attribution 3.0 US.
 
 Una tesela vectorial (vector tiles) contiene datos vectoriales georreferenciados (puede contener múltiples capas), recortados en teselas para facilitar su recuperación. Son equivalentes a las teselas raster tradicionales (WMTS, TMS) pero retornan datos vectoriales en lugar de una imagen.
@@ -40,7 +43,7 @@ Mapbox actualmente está trabajando en la versión 3.
 
 ## Diferencias entre teselas raster y teselas vectoriales
 
-| Tesalas vectoriales | Teselas raster |
+| Teselas vectoriales | Teselas raster |
 |---|---|
 |Estilo se define en el cliente|Estilo se define en el servidor|
 |Sólo se necesita teselar la información una sola vez y se pueden tener múltiples mapas|Hay que teselas la información para cada mapa|
@@ -164,12 +167,21 @@ blog explicativo https://medium.com/@erdag/mappox-mapmadness18-round-4-1251a8c10
 
 [![Temático](img/vt-ny-carto.gif)](https://carto.com/blog/using-mvt-in-carto/)
 
+### Filtrado al vuelo
+
+![Temático](img/ejemplo-turf.png)
+
+### Animación de rutas
+
+![Temático](../img/ejemplo-trips.gif)
+
 ### Mapa de calor
 
 [![Temático](img/heatmap.png)](https://blog.mapbox.com/heatmaps-at-scale-for-business-intelligence-285dbbc3d7b3)
 
+
 ## Esquema general de lo que se va a hacer en el taller
 
-![Esquema taller](img/esquema-vt.png)
+![Esquema taller](img/esquema-vt.svg)
 
 Esquema taller

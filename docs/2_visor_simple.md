@@ -151,7 +151,7 @@ Agregar el código de la librería, e instanciar el control tras crear el mapa:
 Se recargará la página en el navegador con un nuevo botón que permite la "visión de rayos X" sobre los datos.
 
 ![Resultado visor simple](img/visor_inspect.png)
-Resultado visor simple
+Inspect
 
 
 ## Contenido de un fichero de estilo

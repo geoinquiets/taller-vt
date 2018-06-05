@@ -144,3 +144,15 @@ body.jump-mode div.slide-container {
 body.jump-mode div.slide-container:hover {
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
+
+table {
+  border-spacing: 0;
+}
+
+th {
+  background-color: lightgray;
+}
+
+td {
+  border-bottom: 1px solid lightgray;
+}

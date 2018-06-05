@@ -387,4 +387,4 @@ map.on('load', function() {
 
 En la regla de simbolización hemos utilizado como altura de la extrusión el número de plantas multiplicado por 3.
 
-![Buildings 2d](img/buildings-3d.png)
+![Buildings 3d](img/buildings-3d.png)
