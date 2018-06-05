@@ -172,10 +172,9 @@ Por defecto `Tileserver GL` viene con dos estilos incorporados (`klokantech-basi
 Vamos a copiar estos recursos en nuestro directorio de trabajo:
 
 ```bash
-mkdir styles
-mkdir fonts
-cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/styles styles
-cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/fonts fonts
+cd ~/Desktop/taller-vt/tileserver
+cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/styles .
+cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/fonts .
 ```
 
 Comprobemos que en `~/Desktop/taller-vt/tileserver` tenemos tres directorios `data`, `fonts` y `styles`, y el fichero `config.json`.
