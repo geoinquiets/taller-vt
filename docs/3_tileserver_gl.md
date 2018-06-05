@@ -110,13 +110,14 @@ Modificaremos nuestro archivo `barcelona.html` para que el visor de mapas consum
 
 ## Configuración completa
 
-Paremos el servidor y volvamos a arrancarlo, pero esta vez con la opción `-V` (verbose):
+Vamos a extraer un primer fichero de configuración. Para ello, debemos parar el servidor `tileserver-gl-light` y vamos
+a arrancarlo de nuevo, pero esta vez con la opción `-V` (verbose):
 
 ```bash
 tileserver-gl-light data/barcelona.mbtiles -p 8081 -V
 ```
 
-Observaremos que nos dice "Automatically creating config file for barcelona.mbtiles", y a continuación nos muestra
+Observaremos que nos responde "Automatically creating config file for barcelona.mbtiles", y a continuación nos muestra
 el fichero de configuración que ha autogenerado, y que aproximadamente tendrá este aspecto:
 
 ```json
@@ -157,7 +158,7 @@ La configuración se divide en estos tres elementos:
 * `styles`: Ficheros de estilos y alguna información adicional para generar el fichero auxiliar TileJSON.
 * `data`: Origenes de datos. Apunta a los diferentes ficheros `.mbtiles` que queramos servir.
 
-Copiemos la configuración que nos ha devuelto `tileserver-gl-light` en el fichero de configuración `tileserver/config.json`.
+Copiemos la configuración que nos ha devuelto `tileserver-gl-light -V` en un nuevo fichero llamado `tileserver/config.json`.
 
 !!! warning
     Atención a la ruta de `options.paths`, que puede variar ligeramente entre estos apuntes y la ruta en vuestra máquina,
@@ -215,15 +216,16 @@ Modifiquemos ahora el fichero `config.json` para apuntar a nuestros recursos:
 
 De paso hemos modificado el BBOX de los datos de Barcelona, que no estaba bien ajustado.
 
-Arrancamos tileserver de nuevo, sin indicar el fichero de datos:
+Ahora paramos y arrancamos tileserver de nuevo, sin más parámetros que el puerto, y leerá automáticamente la
+configuración del nuevo fichero `config.json`:
 
 ```bash
 tileserver-gl-light -p 8081
 ```
 
 Tileserver deberá decir "Using specified config file from config.json". Si vamos a http://localhost:8081 deberíamos
-ver lo mismo que antes, pero ahora podremos ir añadiendo nuestros propios datasets, estilos, tipografías e iconos al
-servidor.
+ver lo mismo que antes, pero ahora podremos ir añadiendo y modificando los recursos (datos, estilos, tipografías e iconos)
+ que servimos.
 
 
 ## Añadiendo datos de edificios
