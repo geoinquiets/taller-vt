@@ -15,8 +15,9 @@ npm install -g live-server
 Para arrancarlo, basta con situarse en el directorio que queramos servir y ejecutar:
 
 ```bash
-mkdir taller-vt
-cd taller-vt
+cd ~/Desktop/taller-vt
+mkdir visor
+cd visor
 live-server
 ```
 
