@@ -169,11 +169,8 @@ blog explicativo https://medium.com/@erdag/mappox-mapmadness18-round-4-1251a8c10
 
 ### Filtrado al vuelo
 
-![Temático](img/ejemplo-turf.png)
+![Temático](img/ejemplo-turf.gif)
 
-### Animación de rutas
-
-![Temático](../img/ejemplo-trips.gif)
 
 ### Mapa de calor
 
