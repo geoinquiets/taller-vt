@@ -66,7 +66,7 @@ Dejar el terminal abierto con el servidor arrancado.
 
 ### Modificar el visor de mapas
 
-Modificaremos nuestro archivo *index.html* para que el visor de mapas consuma las teselas vectoriales servidas por
+Modificaremos nuestro archivo `barcelona.html` para que el visor de mapas consuma las teselas vectoriales servidas por
  nuestro TileServer:
 
 ``` html hl_lines="22"
