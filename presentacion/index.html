@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head><title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="UTF-8">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='big.css' rel='stylesheet' type='text/css'/>
+    <script src='big.js'></script>
+    <script src='showdown.min.js'></script>
+</head>
+<body class="light">
+(usa &harr; para navegar)
+
+
+# Somos
+* Wladimir Szczerban (alias Bolo) *@bolosig*
+* Geostarter (ICGC): [betaportal.icgc.cat](http://betaportal.icgc.cat)
+
+
+# Somos
+* Oscar Fonts *@oscarfonts*
+* [geomati.co](http://geomati.co) GIS Freelance Network
+
+
+# Somos
+#### Geoinquietos [geoinquiets.cat](http://geoinquiets.cat)
+
+
+# Teselas Vectoriales
+#### aka *Vector Tiles* o *VT* o *MVT*
+
+
+# Historia
+* **1966** Sistema de Información Geográfica de Canadá (CGIS) utiliza “marco” para almacenar información
+* **1975** Servicio de Vida Silvestre EE.UU. utiliza “geounit” para almacenar datos
+* **Finales de 1980** teselas se vuelven “invisibles” para el usuario final. Manejo de datos continuo
+* **Abril 2014** Mapbox saca la version 1.0 de la especificación Mapbox Vector Tile
+
+
+![Etapas](etapas.svg)
+
+
+# ¿Con qué estándar OGC serviríais *VT*?
+
+
+# Diferencias entre teselas raster y teselas vectoriales
+| Teselas vectoriales | Teselas raster |
+|---|---|
+|Estilo se define en el cliente|Estilo se define en el servidor|
+|Sólo se necesita teselar la información una sola vez y se pueden tener múltiples mapas|Hay que teselas la información para cada mapa|
+|*Overzoom* se mantiene resolución|*Overzoom* pierde resolución (pixelado)|
+|Menor tamaño (se recomienda máximo 500kb)|Más fáciles de consumir|
+|Cache ocupa mucho menos espacio. Fáctible el uso en dispositivos móviles sin conexión|Cache ocupa mucho espacio. Uso en dispositivos móviles requiere mucho espacio de disco|
+|Acceso nativo a la información del objeto (atributos y geometría), lo que permite un procesamiento muy sofisticado||
+|Se ven mejor en dispositivos de alta resolución||
+
+
+# Overzoom
+![Overzoom](../img/overzoom.png)
+
+
+# Comparativa pesos teselas vector vs raster
+![Comparativa pesos teselas vector vs raster](../img/vector-raster.png)
+#### Fuente https://plot.ly/~mourner/118.embed
+
+
+# Comparación con otros formatos
+|Teselas Vectoriales|WMS|WMTS|WFS|
+|---|---|---|---|
+|Nivel de zoom continuo|Nivel de zoom continuo|Nivel de zoom discreto|Nivel de zoom continuo|
+|Teselado|No teselado, con lo cual no hay problemas de etiquetas|Teselado|No teselado|
+|Retorna datos en vector modificados (generalizados, simplificados)|Retorna imagen raster|Retorna imagen raster|Retorna datos en vector sin modificar|
+|Cache tanto en cliente como en servidor|No cache|Cache tanto en cliente como en servidor|No cache|
+|Escalabilidad||Escalabilidad||
+|Interactivo|No interactivo (se pueden hacer consultas getFeatureInfo)|No interactivo|Interactivo|
+|Estilo flexible (cliente es quien define el estilo)|Estilo fijo (se puede modificar via SLD pero lo renderiza el servidor)|Estilo fijo (definido en el servidor)|Estilo flexible|
+|Impresión Hi-DPI|Impresión problemas con Hi-DPI|Difícil impresión (montar el mosaico de imáges y problemas con Hi-DPI)|Impresión Hi-DPI|
+
+
+
+# Ejemplos
+
+
+# Terreno
+#### https://openicgc.github.io/
+[![Terreno](../img/terreno-icgc.png)](https://openicgc.github.io/mapbox_map.html#13/41.3993/2.16145/-55.2/43)
+
+
+# Luces LA
+[![Luces](../img/luces-la.png)](https://cityhubla.github.io/lacity_exploration_18/index.html#16.38/34.053569/-118.242875/36/55)
+
+
+# Edificios con música
+[![Edificios](../img/edificios-musica.gif)](https://twitter.com/jessewhazel/status/981379944440877058)
+#### Demo: https://codepen.io/jwhazel/pen/NYzpWG
+#### Blog explicativo https://medium.com/@erdag/mappox-mapmadness18-round-4-1251a8c10421
+
+
+# Temático filtro
+[![Temático](../img/vt-ny-carto.gif)](https://carto.com/blog/using-mvt-in-carto/)
+
+
+# Filtrado al vuelo
+![Temático](../img/ejemplo-turf.gif)
+
+
+# Animación de rutas
+![Temático](../img/ejemplo-trips.gif)
+
+
+# Mapa de calor
+[![Temático](../img/heatmap.png)](https://blog.mapbox.com/heatmaps-at-scale-for-business-intelligence-285dbbc3d7b3)
+
+
+# Especificación *MVT*
+#### [Protocol Buffers](https://developers.google.com/protocol-buffers/): Extensión *PBF*... sin [`.proto`](https://github.com/mapbox/vector-tile-spec/blob/master/2.1/vector_tile.proto), no significa nada
+![MVT](../img/geo2pbf.gif)
+#### [MapBox Vector Tile Specification](https://www.mapbox.com/vector-tiles/specification/)
+
+
+# Especificación *`.mbtiles`*
+
+Pirámide de teselas guardada en una BDD SQLite con un esquema determinado:
+
+* `tiles`
+    * `zoom_level` (z)
+    * `tile_column` (x)
+    * `tile_row` (y)
+    * `tile_data` (blob!)
+
+* `metadata`
+    * `format` ('*pbf*')
+    * `attribution`
+    * `minZoom` / `maxZoom`
+    * `BBOX`
+    * `json`
+
+
+# Especificación *TileJSON*
+Metadatos: Capas y atributos. También nombre, atribución, minZoom, maxZoom.
+
+```json
+{
+  "tilejson": "2.0.0"
+  "name": "Catastro Building Parts",
+  "tiles":["http://tileserver.fonts.cat/data/buildingpart/{z}/{x}/{y}.pbf"],
+  "minzoom": 14,
+  "maxzoom": 16,
+  "bounds": [2.038039, 41.278439, 2.268328, 41.573783],
+  "type": "overlay",
+  "attribution": "Catastro",
+  "vector_layers": [
+    {
+      "id": "buildingpart",
+      "minzoom": 14,
+      "maxzoom": 16,
+      "fields": {
+        "floors": "Number",
+        "id": "String",
+        "parcel": "String"
+      }
+    }
+  ]
+}
+```
+
+
+# Especificación *Mapbox GL Style*
+#### ¡La iremos viendo durante el taller!
+#### https://www.mapbox.com/mapbox-gl-js/style-spec/
+
+
+# Productos
+
+
+![Resultado visor simple](../img/visor_simple.png)
+
+
+![Buildings 3d](../img/buildings-3d.png)
+
+
+![Natural Earth Final](../img/natural_earth_final.png)
+
+
+![Sección Censal 3D](../img/tegola-tematico-3.png)
+
+
+# Esquema taller
+
+![Esquema taller](../img/esquema-vt.svg)
+
+</body>
+<footer>
+    <script>var converter = new showdown.Converter()
+    converter.setOption('tables', true)
+    converter.setOption('openLinksInNewWindow', true)
+    converter.setFlavor('github')
+    var slides = document.body.innerHTML.split('\n\n\n')
+    document.body.innerHTML = ''
+    for (var i = 0; i < slides.length - 1; i++) {
+      console.log(i)
+      document.body.innerHTML += '<div>' + converter.makeHtml(slides[i]) + '</div>'
+    }</script>
+</footer>
+</html>
