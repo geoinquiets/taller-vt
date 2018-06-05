@@ -204,3 +204,7 @@ Habitualmente también se usan otras propiedades para indicar la vista inicial d
 !!! tip
     La especificación completa del fichero de estilo es parte de la [documentación on-line de Mapbox GL
     JS](https://www.mapbox.com/mapbox-gl-js/style-spec/).
+
+!!! tip
+    Si quisiéramos editar el fichero de estilo, basta con guardarnos una copia local junto a `barcelona.html` y
+    modificar la propiedad `style` para apuntar a una URL relativa. Lo veremos con más detalle en el punto 6.
