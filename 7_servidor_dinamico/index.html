@@ -552,7 +552,9 @@ Martín González los convirtió a GeoJSON (<a href="https://github.com/martgnz/
 Para el taller los hemos convertido de GeoJSON a PostGIS.</p>
 </div>
 <p>Cargarlos en PostGIS:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>psql &lt; datos/bcn_geodata.sql
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Desktop/taller-vt
+psql &lt; datos/bcn_geodata.sql
 </pre></div>
 </td></tr></table>
 
@@ -582,6 +584,14 @@ rm tegola_linux_amd64.zip
 <p>Tegola necesita de un <a href="http://tegola.io/documentation/configuration">fichero de configuración en formato toml</a> para funcionar.
 En él estableceremos los parámetros de conexión con la BDD y las características de las capas que queremos servir.</p>
 <p>Creemos pues un directorio llamado <code>tegola</code>, y en él, un fichero llamado <code>config.toml</code>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir tegola
+<span class="nb">cd</span> tegola
+touch config.toml
+</pre></div>
+</td></tr></table>
+
 <p>Lo primero es definir una sección con el puerto que usaremos para levantar el servicio: </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">[webserver]</span>

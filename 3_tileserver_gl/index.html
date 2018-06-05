@@ -536,7 +536,9 @@ tileserver-gl-light -v <span class="c1"># Deberia devolver: v2.3.1 </span>
 <h3 id="obtener-datos-de-barcelona">Obtener datos de Barcelona</h3>
 <p>Crear una carpeta llamada <code>tileserver/data</code> y copiar en ella el fichero `datos/barcelona.mbtiles:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir -p tileserver/data
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Desktop/taller-vt
+mkdir -p tileserver/data
 cp datos/barcelona.mbtiles tileserver/data
 </pre></div>
 </td></tr></table>
@@ -559,7 +561,7 @@ tileserver-gl-light data/barcelona.mbtiles -p <span class="m">8081</span>
 <p><img alt="TileServer GL Light" src="../img/tileServerGL.png" />
 <em>TileServer GL Light</em></p>
 <h3 id="modificar-el-visor-de-mapas">Modificar el visor de mapas</h3>
-<p>Modificaremos nuestro archivo <em>index.html</em> para que el visor de mapas consuma las teselas vectoriales servidas por
+<p>Modificaremos nuestro archivo <code>barcelona.html</code> para que el visor de mapas consuma las teselas vectoriales servidas por
  nuestro TileServer:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -636,14 +638,13 @@ tileserver-gl-light data/barcelona.mbtiles -p <span class="m">8081</span>
 </td></tr></table>
 
 <h2 id="configuracion-completa">Configuración completa</h2>
-<p>Paremos el servidor y volvamos a arrancarlo, pero esta vez con la opción <code>-V</code> (verbose):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> tileserver
-tileserver-gl-light data/barcelona.mbtiles -p <span class="m">8081</span> -V
+<p>Vamos a extraer un primer fichero de configuración. Para ello, debemos parar el servidor <code>tileserver-gl-light</code> y vamos
+a arrancarlo de nuevo, pero esta vez con la opción <code>-V</code> (verbose):</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tileserver-gl-light data/barcelona.mbtiles -p <span class="m">8081</span> -V
 </pre></div>
 </td></tr></table>
 
-<p>Observaremos que nos dice "Automatically creating config file for barcelona.mbtiles", y a continuación nos muestra
+<p>Observaremos que nos responde "Automatically creating config file for barcelona.mbtiles", y a continuación nos muestra
 el fichero de configuración que ha autogenerado, y que aproximadamente tendrá este aspecto:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -711,7 +712,7 @@ el fichero de configuración que ha autogenerado, y que aproximadamente tendrá 
 <li><code>styles</code>: Ficheros de estilos y alguna información adicional para generar el fichero auxiliar TileJSON.</li>
 <li><code>data</code>: Origenes de datos. Apunta a los diferentes ficheros <code>.mbtiles</code> que queramos servir.</li>
 </ul>
-<p>Copiemos la configuración que nos ha devuelto <code>tileserver-gl-light</code> en el fichero de configuración <code>tileserver/config.json</code>.</p>
+<p>Copiemos la configuración que nos ha devuelto <code>tileserver-gl-light -V</code> en un nuevo fichero llamado <code>tileserver/config.json</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Atención a la ruta de <code>options.paths</code>, que puede variar ligeramente entre estos apuntes y la ruta en vuestra máquina,
@@ -724,11 +725,9 @@ próximas instrucciones. El resto de la configuración debería ser la misma. </
 <p>Vamos a copiar estos recursos en nuestro directorio de trabajo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir styles
-mkdir fonts
-cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/styles styles
-cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/fonts fonts
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Desktop/taller-vt/tileserver
+cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/styles .
+cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/fonts .
 </pre></div>
 </td></tr></table>
 
@@ -795,14 +794,15 @@ cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light
 </td></tr></table>
 
 <p>De paso hemos modificado el BBOX de los datos de Barcelona, que no estaba bien ajustado.</p>
-<p>Arrancamos tileserver de nuevo, sin indicar el fichero de datos:</p>
+<p>Ahora paramos y arrancamos tileserver de nuevo, sin más parámetros que el puerto, y leerá automáticamente la
+configuración del nuevo fichero <code>config.json</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>tileserver-gl-light -p <span class="m">8081</span>
 </pre></div>
 </td></tr></table>
 
 <p>Tileserver deberá decir "Using specified config file from config.json". Si vamos a <a href="http://localhost:8081">http://localhost:8081</a> deberíamos
-ver lo mismo que antes, pero ahora podremos ir añadiendo nuestros propios datasets, estilos, tipografías e iconos al
-servidor.</p>
+ver lo mismo que antes, pero ahora podremos ir añadiendo y modificando los recursos (datos, estilos, tipografías e iconos)
+ que servimos.</p>
 <h2 id="anadiendo-datos-de-edificios">Añadiendo datos de edificios</h2>
 <p>Vamos a copiar un nuevo <code>.mbtiles</code> con información de edificios:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>cp ../datos/buildings.mbtiles data/
@@ -1021,24 +1021,60 @@ de los datos.</p>
 15
 16
 17
-18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s2">&quot;buildings&quot;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8081/data/buildings.json&quot;</span>
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
+        <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="c1">// id del elemento HTML que contendrá el mapa</span>
+        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8081/styles/klokantech-basic/style.json&#39;</span><span class="p">,</span>
+        <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">2.19224</span><span class="p">,</span> <span class="mf">41.38585</span><span class="p">],</span>
+        <span class="nx">zoom</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="nx">bearing</span><span class="o">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span>
+        <span class="nx">pitch</span><span class="o">:</span> <span class="mi">60</span><span class="p">,</span>
+        <span class="nx">hash</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">});</span>
 
-    <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">({</span>
-        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;source-layer&quot;</span><span class="o">:</span> <span class="s2">&quot;buildingpart&quot;</span><span class="p">,</span>
-<span class="hll">        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fill-extrusion&quot;</span><span class="p">,</span>
-</span><span class="hll">        <span class="s2">&quot;paint&quot;</span><span class="o">:</span> <span class="p">{</span>
-</span><span class="hll">            <span class="s2">&quot;fill-extrusion-opacity&quot;</span><span class="o">:</span> <span class="mf">0.75</span><span class="p">,</span>
-</span><span class="hll">            <span class="s2">&quot;fill-extrusion-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#E9DFCD&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="s2">&quot;fill-extrusion-height&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;floors&quot;</span><span class="p">]]</span>
-</span><span class="hll">        <span class="p">}</span>
-</span>    <span class="p">});</span>
-<span class="p">});</span>
+    <span class="c1">// Agrega controles de navegación (zoom, rotación) al mapa:</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">NavigationControl</span><span class="p">());</span>
+
+    <span class="c1">// Agregar el control de inspección</span>
+    <span class="nx">map</span><span class="p">.</span><span class="nx">addControl</span><span class="p">(</span><span class="k">new</span> <span class="nx">MapboxInspect</span><span class="p">());</span>
+
+    <span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s2">&quot;buildings&quot;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://localhost:8081/data/buildings.json&quot;</span>
+        <span class="p">});</span>
+
+        <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">({</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="o">:</span> <span class="s2">&quot;buildingpart&quot;</span><span class="p">,</span>
+<span class="hll">            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fill-extrusion&quot;</span><span class="p">,</span>
+</span>            <span class="s2">&quot;paint&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                <span class="s2">&quot;fill-extrusion-opacity&quot;</span><span class="o">:</span> <span class="mf">0.75</span><span class="p">,</span>
+</span><span class="hll">                <span class="s2">&quot;fill-extrusion-color&quot;</span><span class="o">:</span> <span class="s2">&quot;#E9DFCD&quot;</span><span class="p">,</span>
+</span><span class="hll">                <span class="s2">&quot;fill-extrusion-height&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;floors&quot;</span><span class="p">]]</span>
+</span>            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </td></tr></table>
 

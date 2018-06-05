@@ -468,15 +468,17 @@
 En nuestro caso usaremos <code>live-server</code>, que permite servir los contenidos de un directorio y recargar la página
 automáticamente cuando se modifica el contenido de algún fichero.</p>
 <p>Para instalarlo, se usará el comando:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>sudo npm install -g live-server
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>npm install -g live-server
 </pre></div>
 </td></tr></table>
 
 <p>Para arrancarlo, basta con situarse en el directorio que queramos servir y ejecutar:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>mkdir taller-vt
-<span class="nb">cd</span> taller-vt
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Desktop/taller-vt
+mkdir visor
+<span class="nb">cd</span> visor
 live-server
 </pre></div>
 </td></tr></table>
@@ -511,7 +513,7 @@ y se mostrará el contenido del directorio para poder navegar por él.</p>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mapa VT<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">body</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span><span class="p">&gt;</span>
-    <span class="ni">&amp;#x1f596;</span> <span class="ni">&amp;#x1f30d;</span>
+    Hola mundo
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
@@ -731,6 +733,11 @@ ser la toponimia o los PoIs.</li>
 <p class="admonition-title">Tip</p>
 <p>La especificación completa del fichero de estilo es parte de la <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/">documentación on-line de Mapbox GL
 JS</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Si quisiéramos editar el fichero de estilo, basta con guardarnos una copia local junto a <code>barcelona.html</code> y
+modificar la propiedad <code>style</code> para apuntar a una URL relativa. Lo veremos con más detalle en el punto 6.</p>
 </div>
                 
                   
