@@ -322,7 +322,7 @@ catastral a la que pertenece cada construcción, y el número de plantas para ca
 
 Para visualizar los datos de edificios en `barcelona.html`, usar el siguiente código javascript:
 
-```html hl_lines="4 5 6 7 8 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34"
+```html hl_lines="4 5 6 7 8 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29"
 <script>
     var map = new mapboxgl.Map({
         container: 'map', // id del elemento HTML que contendrá el mapa
@@ -333,12 +333,6 @@ Para visualizar los datos de edificios en `barcelona.html`, usar el siguiente c�
         pitch: 60,
         hash: true
     });
-
-    // Agrega controles de navegación (zoom, rotación) al mapa:
-    map.addControl(new mapboxgl.NavigationControl());
-
-    // Agregar el control de inspección
-    map.addControl(new MapboxInspect());
 
     map.on('load', function() {
         map.addSource("buildings", {
@@ -358,6 +352,12 @@ Para visualizar los datos de edificios en `barcelona.html`, usar el siguiente c�
             }
         });
     });
+
+    // Agrega controles de navegación (zoom, rotación) al mapa:
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Agregar el control de inspección
+    map.addControl(new MapboxInspect());
 </script>
 ```
 
@@ -365,7 +365,7 @@ Para visualizar los datos de edificios en `barcelona.html`, usar el siguiente c�
 
 Incluso podemos usar una regla de simbolización de extrusión para verlos en 3D:
 
-```html hl_lines="28 30 31 32"
+```html hl_lines="22 24 25 26"
 <script>
     var map = new mapboxgl.Map({
         container: 'map', // id del elemento HTML que contendrá el mapa
@@ -376,12 +376,6 @@ Incluso podemos usar una regla de simbolización de extrusión para verlos en 3D
         pitch: 60,
         hash: true
     });
-
-    // Agrega controles de navegación (zoom, rotación) al mapa:
-    map.addControl(new mapboxgl.NavigationControl());
-
-    // Agregar el control de inspección
-    map.addControl(new MapboxInspect());
 
     map.on('load', function() {
         map.addSource("buildings", {
@@ -401,6 +395,12 @@ Incluso podemos usar una regla de simbolización de extrusión para verlos en 3D
             }
         });
     });
+
+    // Agrega controles de navegación (zoom, rotación) al mapa:
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Agregar el control de inspección
+    map.addControl(new MapboxInspect());
 </script>
 ```
 
