@@ -48,7 +48,7 @@ Crea un fichero `barcelona.html`:
     <title>Mapa VT</title>
 </head>
 <body id="map">
-    &#x1f596; &#x1f30d;
+    Hola mundo
 </body>
 </html>
 ```
