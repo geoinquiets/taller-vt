@@ -27,12 +27,6 @@
         hash: true
     });
 
-    // Agrega controles de navegación (zoom, rotación) al mapa:
-    map.addControl(new mapboxgl.NavigationControl());
-
-    // Agregar el control de inspección
-    map.addControl(new MapboxInspect());
-
     map.on('load', function() {
         map.addSource("buildings", {
             "type": "vector",
@@ -63,8 +57,14 @@
                 "fill-extrusion-height": ["*", 3, ["get", "floors"]]
             }
         });
-*/
+        */
     });
+
+    // Agrega controles de navegación (zoom, rotación) al mapa:
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Agregar el control de inspección
+    map.addControl(new MapboxInspect());
 </script>
 </body>
 </html>
