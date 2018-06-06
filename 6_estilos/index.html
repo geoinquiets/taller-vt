@@ -794,7 +794,7 @@ live-server --port<span class="o">=</span><span class="m">8082</span>
 <p>En la barra de menú seleccionamos la opción <strong>Open</strong>.
 Del apartado <strong>Gallery Styles</strong>, seleccionamos <strong>Empty Style</strong>.</p>
 <h3 id="agregar-un-origen-de-datos-source">Agregar un origen de datos (Source)</h3>
-<p>En la barra de menú seleccionamos la opción <strong>Source</strong>.
+<p>En la barra de menú seleccionamos la opción <strong>Sources</strong>.
 En la parte inferior del diálogo está la sección: <strong>Add New Source</strong>.</p>
 <p><img alt="Maputnik Add Source" src="../img/maputnik_add_source.png" /></p>
 <ul>
@@ -821,7 +821,7 @@ indicar el rango de zooms en que los datos son válidos.</p>
 <li><code>ID</code>: identificador único de la capa. Pondremos <code>fondo</code>.</li>
 <li><code>Type</code>: tipo de capa. Seleccionar la opción de <code>Background</code>.</li>
 </ul>
-<p>Seleccionamos el color en <strong>Paint properties</strong> =&gt; <strong>Color</strong>: "#50A8E7".</p>
+<p>Seleccionamos el color en <strong>Paint properties</strong> =&gt; <strong>Color</strong>: "#F8F4F0".</p>
 <p>El fondo del mapa pasa a un gris claro.</p>
 <h4 id="oceanos">Océanos</h4>
 <p>Añadimos ahora los océanos: </p>
@@ -832,7 +832,7 @@ indicar el rango de zooms en que los datos son válidos.</p>
 <li><code>Source Layer</code>: identificador de la capa dentro del origen de datos. Pondremos <code>ocean</code>.</li>
 </ul>
 <p>Aparecerán los océanos de color negro.</p>
-<p>Simbolizamos la capa seleccionando un color RGB en <strong>Paint properties</strong> =&gt; <strong>Color</strong>: "#50A8E7".</p>
+<p>Simbolizamos la capa seleccionando un color RGB en <strong>Paint properties</strong> =&gt; <strong>Color</strong>: "#A0C8F0".</p>
 <p>En el apartado inferior del panel de propiedades de la capa, vamos viendo la definición tal
 como se guardará en el fichero json de estilo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -849,7 +849,7 @@ como se guardará en el fichero json de estilo:</p>
   <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;naturalearth&quot;</span><span class="p">,</span>
   <span class="nt">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;ocean&quot;</span><span class="p">,</span>
   <span class="nt">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#50A8E7&quot;</span>
+    <span class="nt">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#A0C8F0&quot;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -873,56 +873,56 @@ como se guardará en el fichero json de estilo:</p>
 <td>fondo</td>
 <td>Background</td>
 <td>--</td>
-<td>#F8F4F0</td>
+<td><code>#F8F4F0</code></td>
 <td>--</td>
 </tr>
 <tr>
 <td>oceanos</td>
 <td>Fill</td>
 <td>ocean</td>
-<td>#A0C8F0</td>
+<td><code>#A0C8F0</code></td>
 <td>--</td>
 </tr>
 <tr>
 <td>tierra</td>
 <td>Fill</td>
 <td>land</td>
-<td>#E6C7C7</td>
+<td><code>#E6C7C7</code></td>
 <td>--</td>
 </tr>
 <tr>
 <td>costa</td>
 <td>Line</td>
 <td>coastline</td>
-<td>#4793E8</td>
+<td><code>#4793E8</code></td>
 <td>--</td>
 </tr>
 <tr>
 <td>rios</td>
 <td>Line</td>
 <td>rivers</td>
-<td>#4793E8</td>
+<td><code>#4793E8</code></td>
 <td>--</td>
 </tr>
 <tr>
 <td>lagos</td>
 <td>Fill</td>
 <td>lakes</td>
-<td>#A0C8F0</td>
-<td>"stroke-color": "#4793E8"</td>
+<td><code>#A0C8F0</code></td>
+<td>Outline color: <code>#4793E8</code></td>
 </tr>
 <tr>
 <td>ferrocarril</td>
 <td>Line</td>
 <td>rail</td>
-<td>#707070</td>
+<td><code>#707070</code></td>
 <td>--</td>
 </tr>
 <tr>
 <td>carreteras</td>
 <td>Line</td>
 <td>roads</td>
-<td>#BF5757</td>
+<td><code>#BF5757</code></td>
 <td>--</td>
 </tr>
 </tbody>
@@ -930,9 +930,12 @@ como se guardará en el fichero json de estilo:</p>
 <p><img alt="Maputnik Add Filter" src="../img/maputnik_mapa_base.png" /></p>
 <h3 id="filtrar-los-datos-a-mostrar-en-una-capa">Filtrar los datos a mostrar en una capa</h3>
 <p>Vamos a eliminar las rutas de ferry que se muestran como carreteras.</p>
-<p>Hay dos maneras de definir un filtro en un estilo MapboxGL:
-1. <strong>Filters</strong>: La forma clásica, que implementa Maputnik: <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#other-filter">https://www.mapbox.com/mapbox-gl-js/style-spec/#other-filter</a>
-2. <strong>Decision Expressions</strong>: La nueva forma, más potente, pero que Maputnik no implementa: <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-decision">https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-decision</a></p>
+<p>Hay dos maneras de definir un filtro en un estilo MapboxGL:</p>
+<ol>
+<li><strong>Filters</strong>: La forma clásica, que implementa Maputnik: <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#other-filter">https://www.mapbox.com/mapbox-gl-js/style-spec/#other-filter</a></li>
+<li><strong>Decision Expressions</strong>: La nueva forma, más potente, pero que Maputnik no implementa: <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-decision">https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-decision</a></li>
+</ol>
+<p>Ahora aprenderemos a crear un <strong>Filter</strong> con Maputnik, y más adelante aplicaremos <strong>Expressions</strong> directamente sobre el fichero json de estilo.</p>
 <p>En Maputnik, seleccionando la capa <code>carreteras</code>, apartado <strong>Filter</strong>: Presionamos el botón <strong>Add filter</strong>.
 La condición será:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    featurecla == Road
@@ -965,12 +968,8 @@ la siguiente información:</p>
 <p>En el apartado <strong>Text layout properties</strong>:</p>
 <ul>
 <li>En la propiedad <code>Field</code> escribir <code>{NAME}</code> (el nombre del campo a mostrar, entre llaves).</li>
-<li>En la propiedad <code>Font</code>, escribir <code>Comic Sans</code>, tipografía que hemos generado y publicado en el apartado anterior (nota: el taller sobre cómo evitar hacer mapas feos es esta tarde).</li>
+<li>En la propiedad <code>Font</code>, escribir <code>Comic Sans</code>, tipografía que hemos generado y publicado en el apartado anterior (nota: el taller sobre cómo hacer mapas bonitos es esta tarde).</li>
 </ul>
-</li>
-<li>
-<p>Estilizar las etiquetas. En el apartado de <strong>Text paint properties</strong>:
- Para los textos podemos definir un Halo para que el teto destaque mejor en nuestro mapa.</p>
 </li>
 </ol>
 <h3 id="utilizar-un-icono-para-simbolizar-nuestra-capa">Utilizar un icono para simbolizar nuestra capa</h3>
@@ -1004,20 +1003,44 @@ la siguiente información:</p>
 <p>Seleccionar la opción <strong>Export</strong>, y luego el boton de <strong>Download</strong> para descargar el estilo en nuestro ordenador.
 Descargamos el archivo, lo renombramos a <code>style.json</code> y lo movemos a la carpeta <code>tileserver/styles/natural-earth/</code>,
 donde ya habíamos copiado los sprites generados en el apartado anterior.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>cp ~/Downloads/xxxxxx.json ~/Desktop/taller-vt/tileserver/styles/natural-earth/style.json
+</pre></div>
+</td></tr></table>
+
 <p>Habrá que editar el fichero de configuración de tileserver <code>tileserver/config.json</code> para añadir el estilo: </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;styles&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;natural-earth&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;natural-earth/style.json&quot;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;styles&quot;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&quot;klokantech-basic&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;klokantech-basic/style.json&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tilejson&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.898</span><span class="p">,</span> <span class="mf">41.246</span><span class="p">,</span> <span class="mf">2.312</span><span class="p">,</span> <span class="mf">41.533</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;osm-bright&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;osm-bright/style.json&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tilejson&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;bounds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.898</span><span class="p">,</span> <span class="mf">41.246</span><span class="p">,</span> <span class="mf">2.312</span><span class="p">,</span> <span class="mf">41.533</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;natural-earth&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nt">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;natural-earth/style.json&quot;</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1110,15 +1133,15 @@ cada tipo de carretera):</p>
     <span class="nt">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;roads&quot;</span><span class="p">,</span>
     <span class="nt">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="s2">&quot;featurecla&quot;</span><span class="p">,</span> <span class="s2">&quot;Road&quot;</span><span class="p">]],</span>
     <span class="nt">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;line-color&quot;</span><span class="p">:</span> <span class="p">[</span>
-<span class="hll">            <span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">],</span>
+<span class="hll">        <span class="nt">&quot;line-color&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class="hll">            <span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">],</span>
 </span><span class="hll">            <span class="s2">&quot;Major Highway&quot;</span><span class="p">,</span>     <span class="s2">&quot;rgba(20, 52, 232, 1)&quot;</span><span class="p">,</span>
 </span><span class="hll">            <span class="s2">&quot;Secondary Highway&quot;</span><span class="p">,</span> <span class="s2">&quot;rgba(206, 32, 79, 1)&quot;</span><span class="p">,</span>
 </span><span class="hll">            <span class="s2">&quot;Road&quot;</span><span class="p">,</span>              <span class="s2">&quot;rgba(49, 137, 52, 1)&quot;</span><span class="p">,</span>
 </span><span class="hll">            <span class="s2">&quot;rgba(255, 204, 0, 1)&quot;</span>
-</span>        <span class="p">],</span>
-        <span class="nt">&quot;line-width&quot;</span><span class="p">:</span> <span class="mi">2</span>
-    <span class="p">}</span>
+</span><span class="hll">        <span class="p">],</span>
+</span><span class="hll">        <span class="nt">&quot;line-width&quot;</span><span class="p">:</span> <span class="mi">2</span>
+</span>    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
@@ -1326,23 +1349,29 @@ será <code>10 - SCALERANK</code>: </p>
 <ul>
 <li>Añadiremos un nuevo <code>source</code> de tipo <code>raster</code>, a continuación del source <code>naturalearth</code>:</li>
 </ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="err">...</span>
-    <span class="nt">&quot;relief&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;raster&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;tiles&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png&quot;</span><span class="p">],</span>
-        <span class="nt">&quot;tileSize&quot;</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
-        <span class="nt">&quot;maxzoom&quot;</span><span class="p">:</span> <span class="mi">6</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;sources&quot;</span><span class="err">:</span> <span class="p">{</span>
+  <span class="nt">&quot;naturalearth&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8081/data/natural_earth.json&quot;</span>
+  <span class="p">},</span>
+<span class="hll">  <span class="nt">&quot;relief&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;raster&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;tiles&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png&quot;</span><span class="p">],</span>
+</span><span class="hll">    <span class="nt">&quot;tileSize&quot;</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;maxzoom&quot;</span><span class="p">:</span> <span class="mi">6</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1384,26 +1413,24 @@ aeropuertos:</p>
 14
 15
 16
-17
-18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;aeropuertos&quot;</span><span class="p">,</span>
   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;symbol&quot;</span><span class="p">,</span>
   <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;naturalearth&quot;</span><span class="p">,</span>
   <span class="nt">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;airports&quot;</span><span class="p">,</span>
   <span class="nt">&quot;layout&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;symbol-placement&quot;</span><span class="p">:</span> <span class="s2">&quot;point&quot;</span><span class="p">,</span>
 <span class="hll">    <span class="nt">&quot;icon-image&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
 </span><span class="hll">    <span class="nt">&quot;text-font&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Geostart Regular&quot;</span><span class="p">],</span>
 </span><span class="hll">    <span class="nt">&quot;text-size&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
 </span><span class="hll">    <span class="nt">&quot;text-field&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span>
 </span>  <span class="p">},</span>
-  <span class="nt">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;text-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#fabada&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;text-halo-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#888&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;text-halo-width&quot;</span><span class="p">:</span> <span class="mi">2</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<span class="hll">  <span class="nt">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="nt">&quot;text-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#fabada&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;text-halo-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#888&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;text-halo-width&quot;</span><span class="p">:</span> <span class="mi">2</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="hll"><span class="p">}</span>
+</span></pre></div>
 </td></tr></table>
 
 <p>En las líneas destacadas se observa cómo no se usa una <code>icon-image</code>, sino una etiqueta de texto (<code>text-font</code>, <code>text-size</code>

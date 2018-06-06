@@ -574,8 +574,9 @@ mv sprite* ../tileserver/styles/natural-earth
 </td></tr></table>
 
 <h2 id="glyphs">Glyphs</h2>
-<p>En la propiedad <code>glyphs</code> se indica una plantilla de URL para cargar tipografías en formato PBF, que se usarán para
-dibujar etiquetas en el mapa. Por ejemplo:</p>
+<p>En la propiedad <code>glyphs</code> se indica una plantilla de URL para cargar <em>glyphs</em> codificados en PBF (el formato es
+distinto que MVT, ya que el <a href="https://github.com/mapbox/glyph-pbf-composite/blob/master/proto/glyphs.proto"><code>.proto</code></a>
+utilizado es distinto), que se usarán para dibujar textos en el mapa. Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -595,8 +596,8 @@ dibujar etiquetas en el mapa. Por ejemplo:</p>
 <ul>
 <li><a href="http://localhost:8081/fonts/Open%20Sans%20Bold/0-255.pbf">http://localhost:8081/fonts/Open%20Sans%20Bold/0-255.pbf</a></li>
 </ul>
-<p>Un glyph contiene una derivada de la tipografía binaria que permite escalarla sin el pixelado, y sería una imagen en
- escala de grises con este aspecto:</p>
+<p>Un glyph contiene una derivada de la tipografía binaria llamada <a href="https://www.youtube.com/watch?v=d8cfgcJR9Tk"><em>signed distance field</em></a>
+que permite escalarla sin el pixelado. Una composición de varios glyphs daría una imagen con este aspecto:</p>
 <p><img alt="Signed Distance Field Glyph" src="../img/signed_distance_field.png" /></p>
 <h3 id="como-crear-tus-propios-glyphs">Cómo crear tus propios glyphs</h3>
 <p>Descargar el proyecto de github <code>openmaptiles/fonts</code></p>
@@ -629,7 +630,7 @@ node generate.js
 <p>El directorio <code>_output</code> no se borra entre ejecuciones, con lo que habremos conservado todas las fuentes anteriores,
 además de la recién generada "Comic Sans".</p>
 <p>Finalmente, copiaremos el contenido de <code>_output</code> al directorio <code>tileserver/fonts</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>cp -r _output/* ../tileserver/fonts
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="se">\c</span>p -r _output/* ../tileserver/fonts
 </pre></div>
 </td></tr></table>
 

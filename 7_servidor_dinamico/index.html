@@ -702,7 +702,7 @@ invalidar partes de la caché. En nuestro caso, no hemos usado caché.</p>
 <h2 id="arrancando-tegola">Arrancando tegola</h2>
 <p>Arrancamos el servicio desde el directorio donde hayamos guardato <code>config.toml</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> tegola
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>~/Desktop/taller-vt/tegola
 tegola serve
 </pre></div>
 </td></tr></table>
@@ -712,7 +712,8 @@ tegola serve
 <p>Activando "Inspect Features" podremos ver los atributos de cada elemento.</p>
 <p>Las teselas están disponibles en: <a href="http://localhost:8083/maps/bcn_geodata/{z}/{x}/{y}.pbf">http://localhost:8083/maps/bcn_geodata/{z}/{x}/{y}.pbf</a></p>
 <h2 id="incorporando-los-datos-en-el-visor-de-barcelona">Incorporando los datos en el visor de Barcelona</h2>
-<p>Añadiremos el siguiente código javascript a <code>barcelona.html</code> para incorporar el nuevo origen de datos, y una simbolización básica para mostrar las secciones censales:</p>
+<p>Sustituiremos el contenido de <code>map.on('load', ...)</code>, y donde antes agregábamos los edificios de catastro en 3D,
+ahora agregaremos las secciones censales. El código es:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -751,7 +752,7 @@ tegola serve
 </pre></div>
 </td></tr></table>
 
-<p><img alt="Sección Censal 3D" src="../img/tegola-tematico-1.png" /></p>
+<p><img alt="Sección Censal 1" src="../img/tegola-tematico-1.png" /></p>
 <h3 id="tematico-avanzado">Temático avanzado</h3>
 <h4 id="expresiones-matematicas">Expresiones matemáticas</h4>
 <p>En las tablas tenemos los campos de población divididos en hombres (<code>homes</code>) y mujeres (<code>dones</code>), así como el área en
@@ -914,10 +915,10 @@ que a su vez están inspirados en ColorBrewer. </p>
 </td></tr></table>
 
 <p>Obtendremos:</p>
-<p><img alt="Sección Censal 3D" src="../img/tegola-tematico-2.png" /></p>
+<p><img alt="Sección Censal 2" src="../img/tegola-tematico-2.png" /></p>
 <h2 id="ejercicio-extra-anadir-extrusion-3d">Ejercicio extra: Añadir extrusión 3D</h2>
 <p>Aplicar una extrusión a cada sección censal de altura proporcional a su densidad de población:</p>
-<p><img alt="Sección Censal 3D" src="../img/tegola-tematico-3.png" /></p>
+<p><img alt="Sección Censal 3" src="../img/tegola-tematico-3.png" /></p>
 <!---
 map.addLayer({
     "id": "densidad",
