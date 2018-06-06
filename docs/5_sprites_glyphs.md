@@ -87,8 +87,9 @@ mv sprite* ../tileserver/styles/natural-earth
 
 ## Glyphs
 
-En la propiedad `glyphs` se indica una plantilla de URL para cargar tipografías en formato PBF, que se usarán para
-dibujar etiquetas en el mapa. Por ejemplo:
+En la propiedad `glyphs` se indica una plantilla de URL para cargar *glyphs* codificados en PBF (el formato es
+distinto que MVT, ya que el [`.proto`](https://github.com/mapbox/glyph-pbf-composite/blob/master/proto/glyphs.proto)
+utilizado es distinto), que se usarán para dibujar textos en el mapa. Por ejemplo:
 
 ```json
 {
@@ -106,8 +107,8 @@ Una petición real tendría la forma:
 
 * http://localhost:8081/fonts/Open%20Sans%20Bold/0-255.pbf
 
-Un glyph contiene una derivada de la tipografía binaria que permite escalarla sin el pixelado, y sería una imagen en
- escala de grises con este aspecto:
+Un glyph contiene una derivada de la tipografía binaria llamada [*signed distance field*](https://www.youtube.com/watch?v=d8cfgcJR9Tk)
+que permite escalarla sin el pixelado. Una composición de varios glyphs daría una imagen con este aspecto:
 
 ![Signed Distance Field Glyph](img/signed_distance_field.png)
 
@@ -143,7 +144,7 @@ además de la recién generada "Comic Sans".
 Finalmente, copiaremos el contenido de `_output` al directorio `tileserver/fonts`:
 
 ```bash
-cp -r _output/* ../tileserver/fonts
+\cp -r _output/* ../tileserver/fonts
 ```
 
 Para que el tileserver publique estos recursos, hay que añadir una propiedad a `tileserver/config.json`:

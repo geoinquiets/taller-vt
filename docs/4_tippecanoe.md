@@ -93,7 +93,7 @@ cd ../../tileserver
 
 Editamos `config.json` y añadimos la nueva capa:
 
-```json hl_lines="28 29 30"
+```json hl_lines="10 11 12"
 {
   ...
   "data": {
@@ -110,7 +110,8 @@ Editamos `config.json` y añadimos la nueva capa:
 }
 ```
 
-Abrir el navegador y escribir http://localhost:8081 y comprobar que aparece la página del TileServer con nuestro mbtiles:
+Tras parar y arrancar el `tileserver` de nuevo, abrir el navegador y escribir http://localhost:8081 y comprobar que
+aparece la página del TileServer con nuestro mbtiles:
 
 ![TileServer GL Light](img/mbtiles_tippecanoe.png)
 

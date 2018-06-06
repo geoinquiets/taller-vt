@@ -35,10 +35,10 @@ Abre una nueva ventana de terminal (recuerda dejar el servidor activo) y ejecuta
 (o el editor que prefieras):
 
 ```bash
-code .
+code ~/Desktop/taller-vt
 ```
 
-Crea un fichero `barcelona.html`:
+Crea un fichero en el directorio `visor` llamado `barcelona.html`:
 
 ```html
 <!DOCTYPE html>

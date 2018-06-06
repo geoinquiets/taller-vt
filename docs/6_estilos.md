@@ -35,7 +35,7 @@ Del apartado **Gallery Styles**, seleccionamos **Empty Style**.
 
 ### Agregar un origen de datos (Source)
 
-En la barra de menú seleccionamos la opción **Source**.
+En la barra de menú seleccionamos la opción **Sources**.
 En la parte inferior del diálogo está la sección: **Add New Source**.
 
 ![Maputnik Add Source](img/maputnik_add_source.png)
@@ -72,7 +72,7 @@ Añadimos una primera capa de fondo:
 * `ID`: identificador único de la capa. Pondremos `fondo`.
 * `Type`: tipo de capa. Seleccionar la opción de `Background`.
 
-Seleccionamos el color en **Paint properties** => **Color**: "#50A8E7".
+Seleccionamos el color en **Paint properties** => **Color**: "#F8F4F0".
 
 El fondo del mapa pasa a un gris claro.
 
@@ -87,7 +87,7 @@ Añadimos ahora los océanos:
 
 Aparecerán los océanos de color negro.
 
-Simbolizamos la capa seleccionando un color RGB en **Paint properties** => **Color**: "#50A8E7".
+Simbolizamos la capa seleccionando un color RGB en **Paint properties** => **Color**: "#A0C8F0".
 
 En el apartado inferior del panel de propiedades de la capa, vamos viendo la definición tal
 como se guardará en el fichero json de estilo:
@@ -99,7 +99,7 @@ como se guardará en el fichero json de estilo:
   "source": "naturalearth",
   "source-layer": "ocean",
   "paint": {
-    "fill-color": "#50A8E7"
+    "fill-color": "#A0C8F0"
   }
 }
 ``` 
@@ -112,14 +112,14 @@ El resto de capas se puede simbolizar procediendo de la misma manera:
 
 | id | type | source-layer | color | otras propiedades "paint" |
 |----|------|--------------|-------|-------------------|
-| fondo | Background | -- | #F8F4F0 | -- |
-| oceanos | Fill | ocean | #A0C8F0 | -- |
-| tierra | Fill | land | #E6C7C7 | -- |
-| costa | Line | coastline | #4793E8 | -- |
-| rios | Line | rivers | #4793E8 | -- |
-| lagos | Fill | lakes | #A0C8F0 | "stroke-color": "#4793E8" |
-| ferrocarril | Line | rail | #707070 | -- | 
-| carreteras | Line | roads | #BF5757 | -- |
+| fondo | Background | -- | `#F8F4F0` | -- |
+| oceanos | Fill | ocean | `#A0C8F0` | -- |
+| tierra | Fill | land | `#E6C7C7` | -- |
+| costa | Line | coastline | `#4793E8` | -- |
+| rios | Line | rivers | `#4793E8` | -- |
+| lagos | Fill | lakes | `#A0C8F0` | Outline color: `#4793E8` |
+| ferrocarril | Line | rail | `#707070` | -- | 
+| carreteras | Line | roads | `#BF5757` | -- |
 
 ![Maputnik Add Filter](img/maputnik_mapa_base.png)
 
@@ -128,8 +128,11 @@ El resto de capas se puede simbolizar procediendo de la misma manera:
 Vamos a eliminar las rutas de ferry que se muestran como carreteras.
 
 Hay dos maneras de definir un filtro en un estilo MapboxGL:
+
 1. **Filters**: La forma clásica, que implementa Maputnik: https://www.mapbox.com/mapbox-gl-js/style-spec/#other-filter
 2. **Decision Expressions**: La nueva forma, más potente, pero que Maputnik no implementa: https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-decision
+
+Ahora aprenderemos a crear un **Filter** con Maputnik, y más adelante aplicaremos **Expressions** directamente sobre el fichero json de estilo.
 
 En Maputnik, seleccionando la capa `carreteras`, apartado **Filter**: Presionamos el botón **Add filter**.
 La condición será:
@@ -164,10 +167,7 @@ la siguiente información:
 2. En el apartado **Text layout properties**:
 
     * En la propiedad `Field` escribir `{NAME}` (el nombre del campo a mostrar, entre llaves).
-    * En la propiedad `Font`, escribir `Comic Sans`, tipografía que hemos generado y publicado en el apartado anterior (nota: el taller sobre cómo evitar hacer mapas feos es esta tarde).
-
-3. Estilizar las etiquetas. En el apartado de **Text paint properties**:
- Para los textos podemos definir un Halo para que el teto destaque mejor en nuestro mapa.
+    * En la propiedad `Font`, escribir `Comic Sans`, tipografía que hemos generado y publicado en el apartado anterior (nota: el taller sobre cómo hacer mapas bonitos es esta tarde).
 
 
 ### Utilizar un icono para simbolizar nuestra capa
@@ -197,16 +197,30 @@ Seleccionar la opción **Export**, y luego el boton de **Download** para descarg
 Descargamos el archivo, lo renombramos a `style.json` y lo movemos a la carpeta `tileserver/styles/natural-earth/`,
 donde ya habíamos copiado los sprites generados en el apartado anterior.
 
+```bash
+cp ~/Downloads/xxxxxx.json ~/Desktop/taller-vt/tileserver/styles/natural-earth/style.json
+```
+
 Habrá que editar el fichero de configuración de tileserver `tileserver/config.json` para añadir el estilo: 
 
 
-```json
-{
-  "styles": {
+```json hl_lines="14 15 16"
+"styles": {
+    "klokantech-basic": {
+        "style": "klokantech-basic/style.json",
+        "tilejson": {
+            "bounds": [1.898, 41.246, 2.312, 41.533]
+        }
+    },
+    "osm-bright": {
+        "style": "osm-bright/style.json",
+        "tilejson": {
+            "bounds": [1.898, 41.246, 2.312, 41.533]
+        }
+    },
     "natural-earth": {
-      "style": "natural-earth/style.json"
+        "style": "natural-earth/style.json"
     }
-  }
 }
 ```
 
@@ -279,7 +293,7 @@ cada tipo de carretera):
 
 Para obtener el valor de la propiedad de una feature se usa la expresión Get: `["get", <nombre_propiedad>]`.
 
-```json hl_lines="9 10 11 12 13"
+```json hl_lines="8 9 10 11 12 13 14 15"
 {
     "id": "carreteras",
     "type": "line",
@@ -445,15 +459,18 @@ Por último, vamos a añadir un fondo raster al mapa, procedente de otro tileser
 
 * Añadiremos un nuevo `source` de tipo `raster`, a continuación del source `naturalearth`:
 
-```json
-{
-    ...
-    "relief": {
-        "type": "raster",
-        "tiles": ["http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"],
-        "tileSize": 256,
-        "maxzoom": 6
-    }
+```json hl_lines="6 7 8 9 10 11"
+"sources": {
+  "naturalearth": {
+    "type": "vector",
+    "url": "http://localhost:8081/data/natural_earth.json"
+  },
+  "relief": {
+    "type": "raster",
+    "tiles": ["http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"],
+    "tileSize": 256,
+    "maxzoom": 6
+  }
 }
 ```
 
@@ -480,14 +497,13 @@ a partir de una colección de iconos, ahora veremos cómo utilizarla en el Layer
 aeropuertos:
 
 
-```json hl_lines="8 9 10 11"
+```json hl_lines="7 8 9 10 12 13 14 15 16 17"
 {
   "id": "aeropuertos",
   "type": "symbol",
   "source": "naturalearth",
   "source-layer": "airports",
   "layout": {
-    "symbol-placement": "point",
     "icon-image": "",
     "text-font": ["Geostart Regular"],
     "text-size": 25,

@@ -130,7 +130,7 @@ invalidar partes de la caché. En nuestro caso, no hemos usado caché.
 Arrancamos el servicio desde el directorio donde hayamos guardato `config.toml`:
 
 ```bash
-cd tegola
+~/Desktop/taller-vt/tegola
 tegola serve
 ```
 
@@ -145,7 +145,8 @@ Las teselas están disponibles en: http://localhost:8083/maps/bcn_geodata/{z}/{x
 
 ## Incorporando los datos en el visor de Barcelona
 
-Añadiremos el siguiente código javascript a `barcelona.html` para incorporar el nuevo origen de datos, y una simbolización básica para mostrar las secciones censales:
+Sustituiremos el contenido de `map.on('load', ...)`, y donde antes agregábamos los edificios de catastro en 3D,
+ahora agregaremos las secciones censales. El código es:
 
 ```javascript
     map.on('load', function() {
@@ -168,7 +169,7 @@ Añadiremos el siguiente código javascript a `barcelona.html` para incorporar e
     });
 ```
 
-![Sección Censal 3D](img/tegola-tematico-1.png)
+![Sección Censal 1](img/tegola-tematico-1.png)
 
 
 ### Temático avanzado
@@ -291,14 +292,14 @@ Aplicada a la propiedad `fill-color` del estilo:
 
 Obtendremos:
 
-![Sección Censal 3D](img/tegola-tematico-2.png)
+![Sección Censal 2](img/tegola-tematico-2.png)
 
 
 ## Ejercicio extra: Añadir extrusión 3D
 
 Aplicar una extrusión a cada sección censal de altura proporcional a su densidad de población:
 
-![Sección Censal 3D](img/tegola-tematico-3.png)
+![Sección Censal 3](img/tegola-tematico-3.png)
 
 <!---
 map.addLayer({
