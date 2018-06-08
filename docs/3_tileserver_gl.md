@@ -124,10 +124,10 @@ el fichero de configuración que ha autogenerado, y que aproximadamente tendrá 
 {
   "options": {
     "paths": {
-      "root": "/home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles",
+      "root": "/home/siglibre/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles",
       "fonts": "fonts",
       "styles": "styles",
-      "mbtiles": "/home/user/Desktop/taller-vt/tileserver/data"
+      "mbtiles": "/home/siglibre/Desktop/taller-vt/tileserver/data"
     }
   },
   "styles": {
@@ -173,8 +173,8 @@ Vamos a copiar estos recursos en nuestro directorio de trabajo:
 
 ```bash
 cd ~/Desktop/taller-vt/tileserver
-cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/styles .
-cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/fonts .
+cp -r /home/siglibre/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/styles .
+cp -r /home/siglibre/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/fonts .
 ```
 
 Comprobemos que en `~/Desktop/taller-vt/tileserver` tenemos tres directorios `data`, `fonts` y `styles`, y el fichero `config.json`.
