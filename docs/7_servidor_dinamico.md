@@ -12,7 +12,7 @@ Cargarlos en PostGIS:
 
 ```bash
 cd ~/Desktop/taller-vt
-psql < datos/bcn_geodata.sql
+psql -U user < datos/bcn_geodata.sql
 ```
 
 Se creará una BDD `bcn_geodata` con las tablas `barrios`, `distritos` y `seccion_censal`.

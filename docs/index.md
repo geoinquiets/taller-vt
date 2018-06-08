@@ -28,9 +28,9 @@ Y ambos somos [geoinquiets](http://geoinquiets.cat)!
 
 ## Esenciales para moverse por OSGeo Live
 
-* Usuario: "user"
-* Password: "user"
-* `Alt + F2` Para lanzar un programa de forma rápida
+* Usuario: "siglibre"
+* Password: "siglibre"
+* Para lanzar un programa de forma rápida: Menú inicio => Ejecutar
 * `Shift + Ctrl + V` para pegar un texto del portapapeles en el terminal
 
 
