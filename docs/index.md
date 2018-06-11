@@ -28,8 +28,8 @@ Y ambos somos [geoinquiets](http://geoinquiets.cat)!
 
 ## Esenciales para moverse por OSGeo Live
 
-* Usuario: "siglibre"
-* Password: "siglibre"
+* Usuario: "user"
+* Password: "user"
 * Para lanzar un programa de forma rápida: Menú inicio => Ejecutar
 * `Shift + Ctrl + V` para pegar un texto del portapapeles en el terminal
 
