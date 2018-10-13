@@ -1,6 +1,6 @@
 # Teselas Vectoriales en la IDE
 
-# https://geomati.co/taller-vt-jiide/
+# http://geomati.co/taller-vt-jiide/
 
 ## Guión del taller
 
