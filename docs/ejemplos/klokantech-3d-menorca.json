@@ -9,14 +9,14 @@
     "sources": {
         "openmaptiles": {
             "type": "vector",
-            "url": "http://tileserver.fonts.cat/data/menorca_base.json"
+            "url": "https://tileserver.fonts.cat/data/menorca_base.json"
         },
         "buildingpart": {
             "type": "vector",
-            "url": "http://tileserver.fonts.cat/data/menorca_buildings.json"
+            "url": "https://tileserver.fonts.cat/data/menorca_buildings.json"
         }
     },
-    "glyphs": "http://tileserver.fonts.cat/fonts/{fontstack}/{range}.pbf",
+    "glyphs": "https://tileserver.fonts.cat/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
