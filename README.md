@@ -1,16 +1,6 @@
 # Teselas Vectoriales en la IDE
 
-# http://geomati.co/taller-vt-jiide/
-
-## Guión del taller
-
-* Concepto de tesela vectorial: Qué es, para qué sirve y para qué no.
-* Creación y almacenaje de teselas vectoriales: Especificación mvt, formato pbf, fichero mbtiles.
-* Servicio básico teselas vectoriales: Especificación TileJSON, servicio XYZ.
-* Publicación mediante estándares WMS y WMTS.
-* Formatos usados para los iconos y las tipografías: sprites y glyphs.
-* Especificación de estilo "Mapbox GL Style spec".
-* Visualizadores web basados en "Mapbox GL JS".
+# http://geomati.co/taller-vt-jiide
 
 ## Herramienta de documentación
 
