@@ -1,4 +1,4 @@
-# Integración de las teselas vectoriales en servicios estándar OGC
+# Integración de las teselas vectoriales con servicios estándar OGC
 
 Las teselas vectoriales están pensadas para su *visualización*, **no son un servicio de descarga**. Por tanto, la
 manera de servirlas mediante estándares OGC es usando WMTS para la versión teselada, e incluso WMTS si quisiéramos

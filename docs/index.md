@@ -21,7 +21,7 @@ Este manual está publicado aquí:
 
     `[Caso práctico: tilserver-gl]`
 
-4. Publicación mediante **estándares WMS y WMTS**.
+4. Integración de teselas vectoriales con servicios estándar OGC.
 
     `[Caso práctico: geoserver]`
 
@@ -31,11 +31,11 @@ Este manual está publicado aquí:
 
 6. **Especificación de estilo** "Mapbox GL Style spec".
 
-    `[Caso práctico: maputnik]`
+    `[Caso práctico: sources, layers y expressions]`
 
-7. **Visores** web basados en "Mapbox GL JS".
+7. **Visor web** basado en "Mapbox GL JS".
 
-    `[Caso práctico: Menorca Offline]`
+    `[Caso práctico: "Menorca Online"]`
 
 8. **Recursos adicionales**
 
@@ -44,8 +44,7 @@ Este manual está publicado aquí:
 
 * Oscar Fonts *@oscarfonts*, desarrollador freelance en [geomati.co](http://geomati.co)
 * Wladimir Szczerban (alias Bolo) *@bolosig*, [geostarter](http://betaportal.icgc.cat) (ICGC)
-
-Y ambos somos [geoinquiets](http://geoinquiets.cat)!
+* Micho García *@michogar*, desarrollador freelance en [geomati.co](http://geomati.co)
 
 !!! note "Condiciones de reutilización de estos apuntes"
 

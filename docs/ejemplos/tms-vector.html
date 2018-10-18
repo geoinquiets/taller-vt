@@ -21,13 +21,13 @@
       'wmts-source': {
         'type': 'raster',
         'tiles': [
-          'http://www.ign.es/wmts/pnoa-ma?Layer=OI.OrthoimageCoverage&Style=default&TileMatrixSet=GoogleMapsCompatible&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/jpeg&TileMatrix={z}&TileCol={x}&TileRow={y}'
+              'https://www.ign.es/wmts/pnoa-ma?Layer=OI.OrthoimageCoverage&Style=default&TileMatrixSet=GoogleMapsCompatible&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/jpeg&TileMatrix={z}&TileCol={x}&TileRow={y}'
         ],
         'tileSize': 256
       },
       'vectortile-tms-source': {
         'type': 'vector',
-        'tiles': ['http://demo.fonts.cat:8000/geoserver/gwc/service/tms/1.0.0/TMB%3ALINIES_METRO@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf'],
+        'tiles': ['http://demo.fonts.cat/geoserver/gwc/service/tms/1.0.0/TMB%3ALINIES_METRO@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf'],
         'scheme': 'tms'
       }
     },
