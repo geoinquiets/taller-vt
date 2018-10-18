@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa WMTS</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet'/>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id='map'>
+<script>
+  var estilo = {
+    'version': 8,
+    'sources': {
+      'wmts-source': {
+        'type': 'raster',
+        'tiles': [
+          'http://www.ign.es/wmts/pnoa-ma?Layer=OI.OrthoimageCoverage&Style=default&TileMatrixSet=GoogleMapsCompatible&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/jpeg&TileMatrix={z}&TileCol={x}&TileRow={y}'
+        ],
+        'tileSize': 256
+      }
+    },
+    'layers': [{
+      'id': 'wmts-layer',
+      'type': 'raster',
+      'source': 'wmts-source'
+    }]
+  }
+
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: estilo,
+    center: [4.05, 39.95],
+    zoom: 10.5,
+    hash: true
+  })
+  map.addControl(new mapboxgl.NavigationControl())
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa WMS</title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet'/>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body id='map'>
+<script>
+  var estilo = {
+    'version': 8,
+    'sources': {
+      'wms-source': {
+        'type': 'raster',
+        'tiles': [
+          'http://www.ign.es/wms-inspire/pnoa-ma?bbox={bbox-epsg-3857}&format=image/jpeg&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=OI.OrthoimageCoverage'
+        ],
+        'tileSize': 256
+      }
+    },
+    'layers': [{
+      'id': 'wms-layer',
+      'type': 'raster',
+      'source': 'wms-source'
+    }]
+  }
+
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: estilo,
+    center: [4.05, 39.95],
+    zoom: 10.5,
+    hash: true
+  })
+  map.addControl(new mapboxgl.NavigationControl())
+</script>
+</body>
+</html>
