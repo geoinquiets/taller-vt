@@ -44,8 +44,7 @@ Este manual está publicado aquí:
 
 * Oscar Fonts *@oscarfonts*, desarrollador freelance en [geomati.co](http://geomati.co)
 * Wladimir Szczerban (alias Bolo) *@bolosig*, [geostarter](http://betaportal.icgc.cat) (ICGC)
-
-Y ambos somos [geoinquiets](http://geoinquiets.cat)!
+* Micho García *@michogar*, desarrollador freelance en [geomati.co](http://geomati.co)
 
 !!! note "Condiciones de reutilización de estos apuntes"
 
