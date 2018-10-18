@@ -95,7 +95,7 @@ A partir de los recursos de este enlace:
 
         psql -U postgres -W < vt_dump.sql
     
-2. Conectándonos a la nueva base de datos `vt` con el usuario `vt` y password `vt`:
+2. Conectándonos a la nueva base de datos `vt`, con usuario `vt`, y password `vt`:
 
     * Creamos una función auxiliar que calcula el BBOX de una tesela en función de los parámetros (x, y, z):
 
@@ -142,5 +142,5 @@ La tesela resultante correspondería a este área de Barcelona:
 Obviamente, generar una sola tesela no tiene sentido. Pero ya tenemos la pieza principal para construir un generador de pirámides de teselas,
 o construir un servicio web de tipo `{z}/{x}/{y}`.
 
-Esta capacidad la utilizan múltiples implementaciones, entre ellas el generador de teselas de OpenMapTiles, llamado
+Esta capacidad la utilizan múltiples implementaciones como tegola, t-rex, o el generador de teselas de OpenMapTiles, llamado
 [postserve](https://github.com/openmaptiles/postserve/blob/master/server.py#L27).

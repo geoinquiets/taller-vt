@@ -79,7 +79,7 @@ CREATE TABLE public.barrios (
 );
 
 
-ALTER TABLE public.barrios OWNER TO "user";
+ALTER TABLE public.barrios OWNER TO "vt";
 
 --
 -- Name: barrios_gid_seq; Type: SEQUENCE; Schema: public; Owner: user
@@ -93,7 +93,7 @@ CREATE SEQUENCE public.barrios_gid_seq
     CACHE 1;
 
 
-ALTER TABLE public.barrios_gid_seq OWNER TO "user";
+ALTER TABLE public.barrios_gid_seq OWNER TO "vt";
 
 --
 -- Name: barrios_gid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
@@ -117,7 +117,7 @@ CREATE TABLE public.distritos (
 );
 
 
-ALTER TABLE public.distritos OWNER TO "user";
+ALTER TABLE public.distritos OWNER TO "vt";
 
 --
 -- Name: distritos_gid_seq; Type: SEQUENCE; Schema: public; Owner: user
@@ -131,7 +131,7 @@ CREATE SEQUENCE public.distritos_gid_seq
     CACHE 1;
 
 
-ALTER TABLE public.distritos_gid_seq OWNER TO "user";
+ALTER TABLE public.distritos_gid_seq OWNER TO "vt";
 
 --
 -- Name: distritos_gid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
@@ -159,7 +159,7 @@ CREATE TABLE public.seccion_censal (
 );
 
 
-ALTER TABLE public.seccion_censal OWNER TO "user";
+ALTER TABLE public.seccion_censal OWNER TO "vt";
 
 --
 -- Name: seccion_censal_gid_seq; Type: SEQUENCE; Schema: public; Owner: user
@@ -173,7 +173,7 @@ CREATE SEQUENCE public.seccion_censal_gid_seq
     CACHE 1;
 
 
-ALTER TABLE public.seccion_censal_gid_seq OWNER TO "user";
+ALTER TABLE public.seccion_censal_gid_seq OWNER TO "vt";
 
 --
 -- Name: seccion_censal_gid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user
