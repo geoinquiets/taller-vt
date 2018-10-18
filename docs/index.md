@@ -21,7 +21,7 @@ Este manual está publicado aquí:
 
     `[Caso práctico: tilserver-gl]`
 
-4. Publicación mediante **estándares WMS y WMTS**.
+4. Integración de teselas vectoriales con servicios estándar OGC.
 
     `[Caso práctico: geoserver]`
 
