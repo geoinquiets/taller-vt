@@ -34,8 +34,31 @@ Pirámide de teselas guardada en una BDD SQLite, con un esquema determinado. Tab
 !!! warning
     Mbtiles no es equivalente a geopackage. Aunque ambos son esencialmente una BDD SQLite, guardan los datos en una estructura distinta y tienen diferente propósito.
 
+## Tippecanoe
 
-## Caso práctico: generación de una pirámide de teselas vectoriales con tippecanoe
+[Tippecanoe](https://github.com/mapbox/tippecanoe) es la herramienta que permite crear teselas vectoriales de
+grandes colecciones de elementos en formato GeoJSON.
+
+El objetivo de Tippecanoe es permitir una visión de sus datos independiente de la escala, de modo que en cualquier
+nivel, desde el mundo entero hasta un solo edificio, se pueda apreciar la densidad y la textura de los datos, en
+lugar de una simplificación geométrica, que puede eliminar vértices importantes que cambien la apariencia de los datos
+en su versión simplificada.
+
+Algunos ejemplos:
+
+* Teniendo todo el callejero de OpenStreetMap, la vista general devolverá algo que se parece a
+"Todas las calles" en lugar de algo que parece un atlas de carreteras interestatal.
+* Teniendo todas las plantas de edificios de una ciudad, en la vista general donde los edificios individuales ya no
+sean perceptibles, aún deberías poder ver la extensión y variedad del desarrollo en cada vecindario,
+no solo para los edificios más voluminosos.
+
+Esto hace que la calidad de los resultados de Tippecanoe sea muy superior a otras alternativas, que utilizan algoritmos
+de simplificación más convencionales, motivo por el cual lo recomendamos en este taller.
+
+Además, es sorprendentemente rápido procesando los datos.
+
+
+## Caso práctico: generación de una pirámide de teselas vectoriales
 
 1. Instalar [mapbox/tippecanoe](https://github.com/mapbox/tippecanoe). Esto es muy sencillo en un Mac con brew, algo
     menos sencillo en Ubuntu (hay que asegurarse de tener todas las dependencias y compilar), y no está definido cómo
