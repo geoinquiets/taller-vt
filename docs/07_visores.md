@@ -1,3 +1,3 @@
-# Mapbox GL JS
+# Visor Mapbox GL JS: Menorca Online
 
-`[Caso práctico: Menorca Offline]`
+http://geomati.co/taller-vt-jiide/ejemplos/menorca-online.html

@@ -31,11 +31,11 @@ Este manual está publicado aquí:
 
 6. **Especificación de estilo** "Mapbox GL Style spec".
 
-    `[Caso práctico: maputnik]`
+    `[Caso práctico: sources, layers y expressions]`
 
-7. **Visores** web basados en "Mapbox GL JS".
+7. **Visor web** basado en "Mapbox GL JS".
 
-    `[Caso práctico: Menorca Offline]`
+    `[Caso práctico: "Menorca Online"]`
 
 8. **Recursos adicionales**
 
