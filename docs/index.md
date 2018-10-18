@@ -9,11 +9,11 @@ Este manual está publicado aquí:
 
 ## Guión del taller
 
-1. **Concepto de tesela vectorial**: Qué es, para qué sirve y para qué no.
+1. **Concepto de tesela vectorial**: Qué es, formato pbf, especificación mvt.
         
     `[Caso práctico: PostGIS]`
 
-2. **Creación y almacenaje** de teselas vectoriales: Especificación mvt, formato pbf, fichero mbtiles.
+2. **Creación y almacenaje** de teselas vectoriales: fichero mbtiles.
 
     `[Caso práctico: tippecanoe]`
 
