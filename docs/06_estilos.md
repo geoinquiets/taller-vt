@@ -110,7 +110,7 @@ En el caso de un WMS deberemos incluir la URL del servicio que soporte EPSG:3857
 }
 ```
 
-### "layers"
+## Layers
 
 Cada *"source"* dispondrá de una o múltiples capas que podremos referenciar desde esta sección del JSON y que serán el punto donde definiremos mediante dos grupos de propiedades, "paint" y "layout" el estilo de nuestros datos. Existen también múltiples tipos de capas *"background"*, *"fill"*, *"line"*, *"symbol"*, *"raster"*, *"circle"*, *"fill-extrusion"*, *"heatmap"*, *"hillshade"* y cada una de ellas tendrá unas características diferentes
 
