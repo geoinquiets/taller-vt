@@ -1,0 +1,98 @@
+{
+	"version": 8,
+	"name": "ICGC",
+	"metadata": {},
+	"center": [
+	  1.537786,
+	  41.837539
+	],
+	"zoom": 12,
+	"bearing": 0,
+	"pitch": 0,
+	"sources": {
+	  "openmaptiles": {
+		"type": "vector",
+		  "tiles": [
+		  "http://localhost:3333/{z}/{x}/{y}.pbf"
+		  ]
+	  }
+	},
+	"sprite": "https://geoserveis.icgc.cat/contextmaps/sprites/sprite@1",
+	"glyphs": "https://geoserveis.icgc.cat/contextmaps/glyphs/{fontstack}/{range}.pbf",
+	"layers": [
+	  {
+		"id": "background",
+		"type": "background",
+		"paint": {
+		  "background-color": "#f8f4f0"
+		}
+	  },
+	  {
+		"id": "distritos",
+		"type": "fill",
+		"maxzoom": 12,
+		"source": "openmaptiles",
+		"source-layer": "distritos",
+		"layout": {
+		  "visibility": "visible"
+		},
+		"paint": {
+		  "fill-color": "#ff00ff",
+		  "fill-opacity": 0.5
+		}
+	  },
+	  {
+		"id": "barrios",
+		"type": "fill",
+		"minzoom": 12,
+		"maxzoom": 15,
+		"source": "openmaptiles",
+		"source-layer": "barrios",
+		"layout": {
+		  "visibility": "visible"
+		},
+		"paint": {
+		  "fill-color": "#ff0000",
+		  "fill-opacity": {
+			"base": 1,
+			"stops": [
+			  [
+				11,
+				0.9
+			  ],
+			  [
+				15,
+				0.3
+			  ]
+			]
+		  }
+		}
+	  },
+	  {
+		"id": "seccion_censal",
+		"source": "openmaptiles",
+		"source-layer": "seccion_censal",
+		"type": "fill",
+		"minzoom": 15,
+		"maxzoom": 22,
+		"paint": {
+			"fill-opacity": 0.75,
+			"fill-color": ["step",
+				["/",
+					["+", ["get", "homes"], ["get", "dones"]],
+					["/", ["get", "area"], 1000000]
+				],
+				"#3d5941",
+				17703, "#778868",
+				29678, "#b5b991",
+				37617, "#f6edbd",
+				46016, "#edbb8a",
+				54401, "#de8a5a",
+				66570, "#ca562c"
+			],
+			"fill-outline-color": "#000"
+		}
+	  }
+	],
+	"id": "bcn-geodata"
+  }
