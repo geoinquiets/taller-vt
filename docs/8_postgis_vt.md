@@ -6,7 +6,7 @@ A partir de la versión 2.4.0 de PostGIS están disponibles dos nuevas funciones
 
 La función ST_AsMVTGeom transforma una geometría al espacio de coordenadas de una tesela vectorial. Transforma las coordenadas de una geometría en coordenadas dentro de una tesela.
 
-Ejemplo para la tesela 14/8289/6119 z=14 x=8289 y=6119
+Ejemplo para la capa barrios y la tesela 14/8289/6119 z=14 x=8289 y=6119
 ``` sql
 SELECT gid, c_distri, n_distri, c_barri, n_barri, homes, dones, area, 
   ST_AsMvtGeom(
@@ -23,7 +23,7 @@ AND ST_Intersects(geom, BBox(14, 8289, 6119));
 
 ## Función ST_AsMVT
 
-La función ST_AsMVT codifica una geometria en coordenadas de teselas como una capa (Layer) **mvt** (pbf)
+La función ST_AsMVT codifica una geometría en coordenadas de teselas como una capa (Layer) **mvt** (pbf)
 
 Ejemplo para la capa barrios y la tesela 14/8289/6119
 ``` sql
@@ -117,7 +117,7 @@ Descargamos el archivo que contiene el script de creacion de la base de datos y 
 wget https://raw.githubusercontent.com/geoinquiets/taller-vt/master/resultado/datos/bcn_geodata.sql
 ```
 
-Modificamos el archivo bcn_geodata.sql y remplazamos donde dice owner "user" por owner "postgres". Una vez modificado el archivo cargamos el script con psql
+Modificamos el archivo bcn_geodata.sql y remplazamos donde dice *owner "user"* por *owner "postgres"*. Una vez modificado el archivo cargamos el script con psql
 
 ```bash
 psql -U postgres -h localhost < bcn_geodata.sql
@@ -125,7 +125,7 @@ psql -U postgres -h localhost < bcn_geodata.sql
 
 ## Combinar varias capas en una misma tesela
 
-Como comentamos anteriormente "un **mvt** es una succesion de capas, para crear un vector tile multicapa se pueden concatenar varias consultas".
+Como comentamos anteriormente *"un **mvt** es una succesion de capas, para crear un vector tile multicapa se pueden concatenar varias consultas"*.
 
 Para combinar varias capas en una misma tesela podemos utilizar una serie de funciones desarrolladas por el ICGC https://github.com/gencat/ICGC-vt-postgis que facilitan este trabajo.
 
@@ -199,9 +199,9 @@ SELECT icgc_vt.tile_pbf(15,16578,12236);
 
 ## Configurar un servidor web para que sirva las capas de postgis
 
-Crearemos un servidor web utilizando el express server que nos permita servir los datos de la basa de datos como un Vector Tiles. Para ello utilizaremos una aplicación desarrollada por el ICGC https://github.com/gencat/ICGC-vtServer
+Crearemos un servidor web utilizando el express server que nos permita servir los datos de la base de datos como un Vector Tiles. Para ello utilizaremos una aplicación desarrollada por el ICGC https://github.com/gencat/ICGC-vtServer
 
-Clonamos el repositorio 
+Clonamos el repositorio
 
 ``` bash
 git clone https://github.com/gencat/ICGC-vtServer.git
