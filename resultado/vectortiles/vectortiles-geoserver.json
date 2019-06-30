@@ -1,0 +1,58 @@
+{
+    "version": 8,
+    "name": "VectorTiles GeoServer",
+    "id": "vectortiles-geoserver",
+    "metadata": {
+      "mapbox:autocomposite": false,
+      "mapbox:type": "template",
+      "maputnik:renderer": "mbgljs",
+      "openmaptiles:version": "3.x"
+    },
+    "sources": {
+      "bcn_geodata": {
+        "tiles": ["http://localhost:8090/geoserver/gwc/service/tms/1.0.0/bcn_geodata@EPSG:900913@pbf/{z}/{x}/{y}.pbf"],
+        "scheme": "tms",
+        "type": "vector"
+      }
+    },
+    "sprite": "https://geoserveis.icgc.cat/contextmaps/sprites/sprite@1",
+    "glyphs": "https://geoserveis.icgc.cat/contextmaps/glyphs/{fontstack}/{range}.pbf",
+    "layers": [
+      {
+          "id": "barrios",
+          "type": "fill",
+          "source": "bcn_geodata",
+          "source-layer": "barrios",
+          "layout": {
+              "visibility": "visible"
+          },
+          "paint": {
+              "fill-color": "#ff0000",
+              "fill-opacity": {
+              "base": 1,
+              "stops": [
+                  [
+                      9,
+                      0.9
+                  ],
+                  [
+                      22,
+                      0.3
+                  ]
+              ]
+          }
+        }
+      },
+      {
+          "id": "seccion_censal",
+          "source": "bcn_geodata",
+          "source-layer": "seccion_censal",
+          "type": "fill",
+          "paint": {
+              "fill-opacity": 0.6,
+              "fill-color": "#fcc",
+              "fill-outline-color": "#000"
+          }
+      }
+    ]
+  }
