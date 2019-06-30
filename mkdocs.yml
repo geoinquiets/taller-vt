@@ -18,3 +18,4 @@ pages:
 - 5. Sprites y Glyphs: 5_sprites_glyphs.md
 - 6. Cómo simbolizarlas: 6_estilos.md
 - 7. Cómo servir datos dinámicos: 7_servidor_dinamico.md
+- 8. Cómo servir datos desde PostGIS: 8_postgis_vt.md
