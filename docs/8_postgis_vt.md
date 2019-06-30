@@ -111,7 +111,7 @@ ALTER FUNCTION public.tilebbox(integer, integer, integer, integer)
 !!! warning
     Si ya hemos creado la base de datos en el apartado anterior ignorar esta parte
 
-Descargamos el archivo que contiene el sxript de creacion de la base de datos y las tablas correspondientes
+Descargamos el archivo que contiene el script de creacion de la base de datos y las tablas correspondientes
 
 ``` bash
 wget https://raw.githubusercontent.com/geoinquiets/taller-vt/master/resultado/datos/bcn_geodata.sql
