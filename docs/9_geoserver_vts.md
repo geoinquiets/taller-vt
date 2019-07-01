@@ -56,7 +56,7 @@ Si seleccionamos uno de estos formatos accederemos al visor de GeoWebCache donde
 
 ## Publicar las capas como grupos de capas
 
-Como ya se ha comentado a lo largo del tutorial, el formato de vector tiles nos permite enviar información de diferentes capas en una misma tesela. Para realizar esto coni GeoServer, tendremos que generar un grupo de capas con los datos que nos interese y publicarlos de la misma manera que las capas anteriores.
+Como ya se ha comentado a lo largo del tutorial, el formato de vector tiles nos permite enviar información de diferentes capas en una misma tesela. Para realizar esto con GeoServer, tendremos que generar un grupo de capas con los datos que nos interese y publicarlos de la misma manera que las capas anteriores.
 
 !!! warning
     Todas las capas que formen el grupo de capas deberán estar publicadas con el formato de vector tiles que queramos usar. En nuestro caso `application/vnd.mapbox-vector-tile`
