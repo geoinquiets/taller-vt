@@ -599,7 +599,7 @@ simbolizar los mismos se encuentran en la red.</p>
 <span class="hll"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 </span><span class="hll">    <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
 </span><span class="hll">        <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="c1">// id del elemento HTML que contendrá el mapa</span>
-</span><span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
+</span><span class="hll">        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;https://geoserveis.icgc.cat/contextmaps/osm-bright.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
 </span><span class="hll">        <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">2.175</span><span class="p">,</span> <span class="mf">41.39</span><span class="p">],</span> <span class="c1">// Ubicación inicial</span>
 </span><span class="hll">        <span class="nx">zoom</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span> <span class="c1">// Zoom inicial</span>
 </span><span class="hll">        <span class="nx">bearing</span><span class="o">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="c1">// Ángulo de rotación inicial</span>
@@ -676,7 +676,7 @@ de un VT y también permite pasar el cursor sobre los elementos para ver sus pro
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
         <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="c1">// id del elemento HTML que contendrá el mapa</span>
-        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
+        <span class="nx">style</span><span class="o">:</span> <span class="s1">&#39;https://geoserveis.icgc.cat/contextmaps/osm-bright.json&#39;</span><span class="p">,</span> <span class="c1">// Ubicación del estilo</span>
         <span class="nx">center</span><span class="o">:</span> <span class="p">[</span><span class="mf">2.175</span><span class="p">,</span> <span class="mf">41.39</span><span class="p">],</span> <span class="c1">// Ubicación inicial</span>
         <span class="nx">zoom</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span> <span class="c1">// Zoom inicial</span>
         <span class="nx">bearing</span><span class="o">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="c1">// Ángulo de rotación inicial</span>
@@ -699,7 +699,7 @@ de un VT y también permite pasar el cursor sobre los elementos para ver sus pro
 Inspect</p>
 <h2 id="contenido-de-un-fichero-de-estilo">Contenido de un fichero de estilo</h2>
 <p>Como vemos, el visor es muy sencillo, y parece que toda la "magia" se esconde en el fichero de estilo tras la URL
-<code>https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json</code>.</p>
+<code>https://geoserveis.icgc.cat/contextmaps/osm-bright.json</code>.</p>
 <p>Si lo abrimos, es un objeto JSON bastante complejo, pero si nos fijamos en las propiedades de primer nivel, son pocas.
 Las principales: </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -712,8 +712,8 @@ Las principales: </p>
 8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OSM Bright&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;sprite&quot;</span><span class="p">:</span> <span class="s2">&quot;https://openmaptiles.github.io/osm-bright-gl-style/sprite&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;glyphs&quot;</span><span class="p">:</span> <span class="s2">&quot;https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sprite&quot;</span><span class="p">:</span> <span class="s2">&quot;https://geoserveis.icgc.cat/contextmaps/sprites/sprite@1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;glyphs&quot;</span><span class="p">:</span> <span class="s2">&quot;https://geoserveis.icgc.cat/contextmaps/glyphs/{fontstack}/{range}.pbf&quot;</span><span class="p">,</span>
   <span class="nt">&quot;sources&quot;</span><span class="p">:</span> <span class="p">{</span><span class="err">...</span><span class="p">},</span>
   <span class="nt">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="err">...</span><span class="p">]</span>
 <span class="p">}</span>
