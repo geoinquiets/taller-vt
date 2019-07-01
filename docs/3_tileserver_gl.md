@@ -177,6 +177,10 @@ cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light
 cp -r /home/user/.nvm/versions/node/v6.14.2/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/fonts .
 ```
 
+!!! warning
+    La ruta de instalación global del tileserver-gl-light puede variar de ubicación. Tener en cuenta el usuario y la versión de node
+    o puede estar en */usr/local/lib/* Ejemplo. cp -r /usr/local/lib/node_modules/tileserver-gl-light/node_modules/tileserver-gl-styles/styles .
+
 Comprobemos que en `~/Desktop/taller-vt/tileserver` tenemos tres directorios `data`, `fonts` y `styles`, y el fichero `config.json`.
 
 Modifiquemos ahora el fichero `config.json` para apuntar a nuestros recursos:
