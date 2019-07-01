@@ -85,7 +85,7 @@ Modificar el archivo `barcelona.html` para que contenga el siguiente código:
 <script>
     var map = new mapboxgl.Map({
         container: 'map', // id del elemento HTML que contendrá el mapa
-        style: 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json', // Ubicación del estilo
+        style: 'https://geoserveis.icgc.cat/contextmaps/osm-bright.json', // Ubicación del estilo
         center: [2.175, 41.39], // Ubicación inicial
         zoom: 13, // Zoom inicial
         bearing: -45, // Ángulo de rotación inicial
@@ -132,7 +132,7 @@ Agregar el código de la librería, e instanciar el control tras crear el mapa:
 <script>
     var map = new mapboxgl.Map({
         container: 'map', // id del elemento HTML que contendrá el mapa
-        style: 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json', // Ubicación del estilo
+        style: 'https://geoserveis.icgc.cat/contextmaps/osm-bright.json', // Ubicación del estilo
         center: [2.175, 41.39], // Ubicación inicial
         zoom: 13, // Zoom inicial
         bearing: -45, // Ángulo de rotación inicial
@@ -158,7 +158,7 @@ Inspect
 ## Contenido de un fichero de estilo
 
 Como vemos, el visor es muy sencillo, y parece que toda la "magia" se esconde en el fichero de estilo tras la URL
-`https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json`.
+`https://geoserveis.icgc.cat/contextmaps/osm-bright.json`.
 
 Si lo abrimos, es un objeto JSON bastante complejo, pero si nos fijamos en las propiedades de primer nivel, son pocas.
 Las principales: 
@@ -167,8 +167,8 @@ Las principales:
 {
   "version": 8,
   "name": "OSM Bright",
-  "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
-  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo",
+  "sprite": "https://geoserveis.icgc.cat/contextmaps/sprites/sprite@1",
+  "glyphs": "https://geoserveis.icgc.cat/contextmaps/glyphs/{fontstack}/{range}.pbf",
   "sources": {...},
   "layers": [...]
 }
