@@ -19,3 +19,4 @@ pages:
 - 6. Cómo simbolizarlas: 6_estilos.md
 - 7. Cómo servir datos dinámicos: 7_servidor_dinamico.md
 - 8. Cómo servir datos desde PostGIS: 8_postgis_vt.md
+- 9. Servir vector tiles desde GeoServer: 9_geoserver_vts.md
