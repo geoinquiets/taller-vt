@@ -14,7 +14,7 @@ Lo primero para poder usar Vector Tiles con GeoServer será instalar la librerí
 
 ## Instalar la extensión de Vector Tiles en GeoServer
 
-Para instalar la extensi de GeoServer que nos permita usar vector tiles lo primero que haremos será descargar la librería de la versión de geoserver que estemos utilizando (para este ejemplo es la versión 2.14.4):
+Para instalar la extensión de GeoServer que nos permita usar vector tiles lo primero que haremos será descargar la librería de la versión de geoserver que estemos utilizando (para este ejemplo es la versión 2.14.4):
 
 ```bash
 wget http://sourceforge.net/projects/geoserver/files/GeoServer/2.14.4/extensions/geoserver-2.14.4-vectortiles-plugin.zip
